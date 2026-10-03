@@ -1,0 +1,44 @@
+{
+  "archive_version": "0.2.0",
+  "archive_status": "release-candidate",
+  "prepared_at": "2026-10-03",
+  "repository": "https://github.com/xyforge/sensor-set-conditioning-rul",
+  "intended_release_tag": "v0.2.0",
+  "study_author": "Yu Xin",
+  "freeze_scope": {
+    "protocol": "reproducibility/contracts/formal_experiment_protocol.md",
+    "problem_specification": "reproducibility/contracts/formal_problem_spec.md",
+    "oracle_and_eligibility": "reproducibility/contracts/oracle_and_cell_eligibility_spec.md",
+    "claim_metric_registry": "reproducibility/contracts/claim_metric_registry.md",
+    "c1_contract": "reproducibility/contracts/c1_outcome_aware_contract.json",
+    "c2_contract": "reproducibility/contracts/c2_formal_contract.json",
+    "oracle_thresholds": "reproducibility/contracts/oracle_thresholds.json"
+  },
+  "decision_snapshots": {
+    "C1": {
+      "decision": "C1-OA-PASS",
+      "decision_file": "reproducibility/decisions/c1_oa_decision.json",
+      "test_score": "reproducibility/decisions/c1_oa_test_score.json",
+      "lockbox_score": "reproducibility/decisions/c1_oa_lockbox_score.json"
+    },
+    "C2": {
+      "decision": "C2-CORE-FAIL",
+      "decision_file": "reproducibility/decisions/c2_f3_decision.json",
+      "test_score": "reproducibility/decisions/c2_f3_test_score.json",
+      "lockbox_score": "reproducibility/decisions/c2_f3_lockbox_score.json"
+    }
+  },
+  "secondary_audit": {
+    "description": "Post-hoc oracle-relative geometry audit; it does not alter preregistered decisions.",
+    "summary": "reproducibility/oracle_audit/oracle_alignment_summary.json",
+    "test_audit": "reproducibility/oracle_audit/c2_pair_distance_audit_test.npz",
+    "lockbox_audit": "reproducibility/oracle_audit/c2_pair_distance_audit_lockbox.npz"
+  },
+  "excluded_inputs": [
+    "raw C-MAPSS data",
+    "large formal prediction stores",
+    "local GPU checkpoints",
+    "private server configuration and credentials"
+  ],
+  "integrity_note": "The archive records contract IDs, file paths, version, timestamps, and decision statuses. No credential, private path, or hash value is included."
+}

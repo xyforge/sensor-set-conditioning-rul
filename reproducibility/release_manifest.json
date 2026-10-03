@@ -1,11 +1,15 @@
 {
   "release_name": "sensor-set-conditioning-manuscript",
-  "release_version": "0.1.0",
-  "release_status": "pre-publication",
+  "release_version": "0.2.0",
+  "release_status": "timestamped-archive-candidate",
+  "prepared_at": "2026-10-03",
   "author": "Yu Xin",
+  "repository_url": "https://github.com/xyforge/sensor-set-conditioning-rul",
+  "intended_release_tag": "v0.2.0",
   "included": [
     "paper/",
     "scripts/analysis/calibration_analysis.py",
+    "scripts/analysis/oracle_alignment_analysis.py",
     "scripts/cmapss/train_cmapss_shared.py",
     "scripts/cmapss/evaluate_cmapss_geometry_shared.py",
     "cmapss_results/SHARED_MODEL_RUN_REPORT.md",
@@ -13,6 +17,11 @@
     "calibration_results/calibration_results.json",
     "calibration_results/calibration_compact.json",
     "reproducibility/contracts/",
+    "reproducibility/decisions/",
+    "reproducibility/oracle_audit/",
+    "reproducibility/freeze_manifest.json",
+    "reproducibility/RELEASE_CHECKLIST.md",
+    "zenodo.json",
     "requirements-calibration.txt"
   ],
   "external_inputs": [
@@ -25,11 +34,16 @@
     "local GPU checkpoints",
     "private server configuration and credentials"
   ],
+  "decision_statuses": {
+    "C1": "C1-OA-PASS",
+    "C2": "C2-CORE-FAIL"
+  },
   "reproducibility_notes": [
-    "The public bundle contains compact calibration outputs; the large C1 prediction stores remain in the full research workspace.",
+    "The public bundle contains compact calibration and oracle-relative geometry outputs; the large C1 prediction stores remain in the full research workspace.",
     "C-MAPSS shared-model artifacts record training and evaluation seeds and configurations.",
-    "Calibration is descriptive and does not modify preregistered decision rules."
+    "Calibration and oracle-relative geometry are descriptive secondary analyses and do not modify preregistered decision rules.",
+    "The C2 failure is retained in the decision snapshot rather than omitted from the archive."
   ],
   "doi": null,
-  "repository_url": "https://github.com/xyforge/sensor-set-conditioning-rul"
+  "doi_status": "pending Zenodo publication"
 }

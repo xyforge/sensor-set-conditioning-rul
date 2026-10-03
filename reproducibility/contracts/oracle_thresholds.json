@@ -1,0 +1,85 @@
+{
+  "registry_id": "F0-ORACLE-THRESHOLDS-01",
+  "status": "LOCKED-EXECUTION",
+  "source_partition": "development/world_design",
+  "candidate_cell_effects_accessed": false,
+  "learned_model_outcomes_accessed": false,
+  "assets_per_generator_family": 12,
+  "base_seed": 2026081820,
+  "task_scale_reference": {
+    "definition": "Bayes ambiguity with past operating context and survival known but no sensor history",
+    "median": 0.07708934051683378,
+    "q25": 0.07240247000984955,
+    "q75": 0.08181379316156287,
+    "family_medians": {
+      "GEN-A": 0.0723670318343477,
+      "GEN-B": 0.08205726967844297
+    }
+  },
+  "thresholds": {
+    "OC-T01": {
+      "name": "tau_tract",
+      "value": 0.05781700538762533,
+      "unit": "joint normalized energy-score unit",
+      "derivation": "75% of median no-sensor-history ambiguity"
+    },
+    "OC-T02": {
+      "name": "epsilon_A",
+      "value": 0.003854467025841689,
+      "unit": "joint normalized energy-score unit",
+      "derivation": "5% of median no-sensor-history ambiguity"
+    },
+    "OC-T03": {
+      "name": "epsilon_D",
+      "value": 0.003854467025841689,
+      "unit": "joint normalized energy-distance unit",
+      "derivation": "5% of median no-sensor-history ambiguity"
+    },
+    "OC-T04": {
+      "name": "delta_A",
+      "value": 0.007708934051683378,
+      "unit": "joint normalized energy-score unit",
+      "derivation": "10% of median no-sensor-history ambiguity"
+    },
+    "OC-T05": {
+      "name": "delta_crit",
+      "value": 0.003854467025841689,
+      "unit": "joint normalized energy-score unit",
+      "derivation": "5% of median no-sensor-history ambiguity"
+    },
+    "OC-T06": {
+      "name": "kappa_MC",
+      "value": 0.25,
+      "unit": "ratio",
+      "derivation": "oracle numerical half-width may consume at most one quarter of the scientific effect"
+    },
+    "OC-T07": {
+      "name": "final_ESS_fraction_floor",
+      "value": 0.1,
+      "unit": "fraction of particles",
+      "derivation": "stress-audit lower-tail requirement from OR-A05"
+    },
+    "OC-T08": {
+      "name": "maximum_normalized_weight_limit",
+      "value": 0.2,
+      "unit": "normalized particle weight",
+      "derivation": "stress-audit upper-tail requirement from OR-A05"
+    },
+    "OC-T09": {
+      "name": "match_overlap_floor",
+      "value": 0.9,
+      "unit": "overlap fraction",
+      "derivation": "minimum common support if exact triplet matching is unavailable"
+    },
+    "OC-T10": {
+      "name": "weighted_match_health",
+      "value": {
+        "effective_fraction_floor": 0.7,
+        "maximum_weight": 0.1
+      },
+      "unit": "fraction and normalized weight",
+      "derivation": "precision-preserving fallback for weighted matching; exact matching remains preferred"
+    }
+  },
+  "numerical_precision_rule": "Eligibility estimates must separately demonstrate that aggregate oracle MC uncertainty is within OC-T06; thresholds are not enlarged when precision is inadequate."
+}

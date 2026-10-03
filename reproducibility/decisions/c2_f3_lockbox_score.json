@@ -1,0 +1,1321 @@
+{
+  "artifact_id": "F3-C2-FORMAL-SPLIT-SCORE-01",
+  "contract_id": "f3-c2-formal-a40-0.1.0",
+  "split_role": "lockbox",
+  "status": "SCORED",
+  "scientific_status": "CORE-FAIL",
+  "execution_status": "VALID",
+  "primary_estimands": {
+    "C2-P1:delta_R_crit": {
+      "estimate": 0.0008275288233158387,
+      "ci": [
+        0.0007043686286281482,
+        0.000943972951202419
+      ],
+      "bootstrap_se": 7.412306367618693e-05,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091804
+    },
+    "C2-P2:delta_G_loss": {
+      "estimate": 0.0006182575123775041,
+      "ci": [
+        0.00020032696865286795,
+        0.0010250401722825145
+      ],
+      "bootstrap_se": 0.00024965735882753466,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091804
+    },
+    "C2-P3:I_R": {
+      "estimate": 0.0004912956285773328,
+      "ci": [
+        0.0002530010138731018,
+        0.0007467377792366918
+      ],
+      "bootstrap_se": 0.0001498903610101098,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091804
+    }
+  },
+  "guardrails": {
+    "C2-G0:critical_R_absolute": {
+      "estimate": 0.004802206039500931,
+      "ci": [
+        0.004403303453734595,
+        0.005241998693166767
+      ],
+      "bootstrap_se": 0.00025420572744463076,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091804
+    },
+    "C2-G0:loss_G_absolute": {
+      "estimate": 0.012496501642052724,
+      "ci": [
+        0.011361916097861458,
+        0.013742494268931277
+      ],
+      "bootstrap_se": 0.0007338393705643769,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091804
+    },
+    "C2-G2:failure_CRPS_delta": {
+      "estimate": 7.50580366638011e-05,
+      "ci": [
+        -0.0003901406629268951,
+        0.0005130197978224844
+      ],
+      "bootstrap_se": 0.00027346713590332126,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091804
+    },
+    "C2-G4:full_R_delta": {
+      "estimate": 0.0003398497428476475,
+      "ci": [
+        0.00019460319796707682,
+        0.0004780899645185045
+      ],
+      "bootstrap_se": 8.529610886058316e-05,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091804
+    },
+    "C2-G3-MODEL": {
+      "pass": true,
+      "model_support": {
+        "PROP-DIRECT": {
+          "row_count": 19803,
+          "expected_row_count": 19803,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        },
+        "B-STDPROB": {
+          "row_count": 19803,
+          "expected_row_count": 19803,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        },
+        "B-INDEP": {
+          "row_count": 19803,
+          "expected_row_count": 19803,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        },
+        "B-INVAR": {
+          "row_count": 19803,
+          "expected_row_count": 19803,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        },
+        "B-CDE": {
+          "row_count": 19803,
+          "expected_row_count": 19803,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        },
+        "B-SET": {
+          "row_count": 19803,
+          "expected_row_count": 19803,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        },
+        "B-WIDEN": {
+          "row_count": 19803,
+          "expected_row_count": 19803,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        }
+      }
+    }
+  },
+  "checks": {
+    "C2-P1": false,
+    "C2-P2": false,
+    "C2-P3": false,
+    "C2-G0-critical": true,
+    "C2-G0-loss": true,
+    "C2-G2": true,
+    "C2-G3-MODEL": true,
+    "C2-G4": true
+  },
+  "admissibility": {
+    "C2-G6a": true,
+    "source_prediction_manifests_clean": true,
+    "source_reference_manifests_clean": true,
+    "formal_outcomes_accessed_before_scoring": false
+  },
+  "numerical_health": {
+    "pass": true,
+    "pair_class_counts": {
+      "critical_parent": 39606,
+      "critical_matched_random": 6601,
+      "critical_redundant": 39606
+    },
+    "asset_count": 96,
+    "critical_cell_count": 6,
+    "models": [
+      "PROP-DIRECT",
+      "B-STDPROB",
+      "B-INDEP",
+      "B-INVAR",
+      "B-CDE",
+      "B-SET",
+      "B-WIDEN"
+    ],
+    "auxiliary_models_not_recomputed": []
+  },
+  "diagnostics": {
+    "loss_by_class": {
+      "PROP-DIRECT": {
+        "f2exec01/gen-a/lockbox/000000": {
+          "critical_parent": 0.012256540030378987,
+          "critical_matched_random": 0.015593798727624947,
+          "critical_redundant": 0.012016087649735037
+        },
+        "f2exec01/gen-a/lockbox/000001": {
+          "critical_parent": 0.011029673188372896,
+          "critical_matched_random": 0.01106812535888619,
+          "critical_redundant": 0.010724853034372683
+        },
+        "f2exec01/gen-a/lockbox/000002": {
+          "critical_parent": 0.0119122422852174,
+          "critical_matched_random": 0.005240531431304083,
+          "critical_redundant": 0.012230322851488987
+        },
+        "f2exec01/gen-a/lockbox/000003": {
+          "critical_parent": 0.007466815998432814,
+          "critical_matched_random": 0.006201022408074803,
+          "critical_redundant": 0.007065090402546856
+        },
+        "f2exec01/gen-a/lockbox/000004": {
+          "critical_parent": 0.01578363438171369,
+          "critical_matched_random": 0.01672771293669939,
+          "critical_redundant": 0.015128691663482673
+        },
+        "f2exec01/gen-a/lockbox/000005": {
+          "critical_parent": 0.015689587099822582,
+          "critical_matched_random": 0.02123178665836652,
+          "critical_redundant": 0.015894509041336952
+        },
+        "f2exec01/gen-a/lockbox/000006": {
+          "critical_parent": 0.00875163802670108,
+          "critical_matched_random": 0.008718687523570325,
+          "critical_redundant": 0.009043395277802591
+        },
+        "f2exec01/gen-a/lockbox/000007": {
+          "critical_parent": 0.0059779553881122,
+          "critical_matched_random": 0.004488462685710854,
+          "critical_redundant": 0.005904277838352653
+        },
+        "f2exec01/gen-a/lockbox/000008": {
+          "critical_parent": 0.021345626114419213,
+          "critical_matched_random": 0.018693291685647432,
+          "critical_redundant": 0.02157295067553167
+        },
+        "f2exec01/gen-a/lockbox/000009": {
+          "critical_parent": 0.01282515431995745,
+          "critical_matched_random": 0.0069794219194187065,
+          "critical_redundant": 0.012569904120432004
+        },
+        "f2exec01/gen-a/lockbox/000010": {
+          "critical_parent": 0.010266667904539242,
+          "critical_matched_random": 0.008920539998345904,
+          "critical_redundant": 0.010379749988378198
+        },
+        "f2exec01/gen-a/lockbox/000011": {
+          "critical_parent": 0.008614849661373429,
+          "critical_matched_random": 0.004751248078213798,
+          "critical_redundant": 0.008758698986774243
+        },
+        "f2exec01/gen-a/lockbox/000012": {
+          "critical_parent": 0.01307131401780579,
+          "critical_matched_random": 0.018207097012135718,
+          "critical_redundant": 0.013563769869506359
+        },
+        "f2exec01/gen-a/lockbox/000013": {
+          "critical_parent": 0.013752011220074361,
+          "critical_matched_random": 0.010321350561247932,
+          "critical_redundant": 0.014349448132432168
+        },
+        "f2exec01/gen-a/lockbox/000014": {
+          "critical_parent": 0.00652174591259272,
+          "critical_matched_random": 0.009103812173836762,
+          "critical_redundant": 0.006814421620219946
+        },
+        "f2exec01/gen-a/lockbox/000015": {
+          "critical_parent": 0.009151141521417432,
+          "critical_matched_random": 0.007724574456612269,
+          "critical_redundant": 0.008648378326109162
+        },
+        "f2exec01/gen-a/lockbox/000016": {
+          "critical_parent": 0.009137914740239029,
+          "critical_matched_random": 0.012062219488951894,
+          "critical_redundant": 0.009943197981488926
+        },
+        "f2exec01/gen-a/lockbox/000017": {
+          "critical_parent": 0.01759045991908621,
+          "critical_matched_random": 0.010489328453938166,
+          "critical_redundant": 0.01685665637530662
+        },
+        "f2exec01/gen-a/lockbox/000018": {
+          "critical_parent": 0.014069126815431647,
+          "critical_matched_random": 0.017873163748946454,
+          "critical_redundant": 0.015060720189164082
+        },
+        "f2exec01/gen-a/lockbox/000019": {
+          "critical_parent": 0.008347459844555016,
+          "critical_matched_random": 0.010987721073130766,
+          "critical_redundant": 0.008258177760850501
+        },
+        "f2exec01/gen-a/lockbox/000020": {
+          "critical_parent": 0.007813330998437272,
+          "critical_matched_random": 0.007957164094679885,
+          "critical_redundant": 0.008544222865667608
+        },
+        "f2exec01/gen-a/lockbox/000021": {
+          "critical_parent": 0.02675258475183337,
+          "critical_matched_random": 0.03178790946387582,
+          "critical_redundant": 0.027092311048397308
+        },
+        "f2exec01/gen-a/lockbox/000022": {
+          "critical_parent": 0.013808222918736715,
+          "critical_matched_random": 0.013855541435380777,
+          "critical_redundant": 0.013700383525617697
+        },
+        "f2exec01/gen-a/lockbox/000023": {
+          "critical_parent": 0.00895531496240033,
+          "critical_matched_random": 0.008302485156390402,
+          "critical_redundant": 0.008626952215477273
+        },
+        "f2exec01/gen-a/lockbox/000024": {
+          "critical_parent": 0.031208372088494123,
+          "critical_matched_random": 0.029855733323428363,
+          "critical_redundant": 0.03148938360175601
+        },
+        "f2exec01/gen-a/lockbox/000025": {
+          "critical_parent": 0.017780712081326377,
+          "critical_matched_random": 0.018771807766622964,
+          "critical_redundant": 0.01830504227567602
+        },
+        "f2exec01/gen-a/lockbox/000026": {
+          "critical_parent": 0.01826105121937063,
+          "critical_matched_random": 0.022147753068970308,
+          "critical_redundant": 0.018737842501313596
+        },
+        "f2exec01/gen-a/lockbox/000027": {
+          "critical_parent": 0.010612191684130167,
+          "critical_matched_random": 0.012343311578863196,
+          "critical_redundant": 0.010911949479055624
+        },
+        "f2exec01/gen-a/lockbox/000028": {
+          "critical_parent": 0.008033238368591777,
+          "critical_matched_random": 0.007234738104873233,
+          "critical_redundant": 0.007945221296891018
+        },
+        "f2exec01/gen-a/lockbox/000029": {
+          "critical_parent": 0.009191249859415824,
+          "critical_matched_random": 0.009702350426879195,
+          "critical_redundant": 0.009508857227585934
+        },
+        "f2exec01/gen-a/lockbox/000030": {
+          "critical_parent": 0.0069490593892556655,
+          "critical_matched_random": 0.004446698766615656,
+          "critical_redundant": 0.006963543214455799
+        },
+        "f2exec01/gen-a/lockbox/000031": {
+          "critical_parent": 0.012277685330007915,
+          "critical_matched_random": 0.008399506616923543,
+          "critical_redundant": 0.011508992097030083
+        },
+        "f2exec01/gen-a/lockbox/000032": {
+          "critical_parent": 0.014866431743872387,
+          "critical_matched_random": 0.020076187637945015,
+          "critical_redundant": 0.015442599128517837
+        },
+        "f2exec01/gen-a/lockbox/000033": {
+          "critical_parent": 0.015228394746642422,
+          "critical_matched_random": 0.015296111814677715,
+          "critical_redundant": 0.015305676307805159
+        },
+        "f2exec01/gen-a/lockbox/000034": {
+          "critical_parent": 0.00833448900461749,
+          "critical_matched_random": 0.00827682918558518,
+          "critical_redundant": 0.008155294262838585
+        },
+        "f2exec01/gen-a/lockbox/000035": {
+          "critical_parent": 0.012464406796627575,
+          "critical_matched_random": 0.006246335907942719,
+          "critical_redundant": 0.012857318976549086
+        },
+        "f2exec01/gen-a/lockbox/000036": {
+          "critical_parent": 0.012261508843275133,
+          "critical_matched_random": 0.0119262993749645,
+          "critical_redundant": 0.012502878611148509
+        },
+        "f2exec01/gen-a/lockbox/000037": {
+          "critical_parent": 0.013091183767688495,
+          "critical_matched_random": 0.01841854304075241,
+          "critical_redundant": 0.013331324189763377
+        },
+        "f2exec01/gen-a/lockbox/000038": {
+          "critical_parent": 0.01389582539667134,
+          "critical_matched_random": 0.023738558093706768,
+          "critical_redundant": 0.01366085559129715
+        },
+        "f2exec01/gen-a/lockbox/000039": {
+          "critical_parent": 0.011160191976361806,
+          "critical_matched_random": 0.014937360046638383,
+          "critical_redundant": 0.011097456190597127
+        },
+        "f2exec01/gen-a/lockbox/000040": {
+          "critical_parent": 0.005911665226988219,
+          "critical_matched_random": 0.005059360733462704,
+          "critical_redundant": 0.005976795943246947
+        },
+        "f2exec01/gen-a/lockbox/000041": {
+          "critical_parent": 0.005943341301409183,
+          "critical_matched_random": 0.008016828447580338,
+          "critical_redundant": 0.006397367524052107
+        },
+        "f2exec01/gen-a/lockbox/000042": {
+          "critical_parent": 0.010272734401816572,
+          "critical_matched_random": 0.010087505396869449,
+          "critical_redundant": 0.010333773455824015
+        },
+        "f2exec01/gen-a/lockbox/000043": {
+          "critical_parent": 0.011791223711851569,
+          "critical_matched_random": 0.016323923650715087,
+          "critical_redundant": 0.013165215858154826
+        },
+        "f2exec01/gen-a/lockbox/000044": {
+          "critical_parent": 0.01135464611083821,
+          "critical_matched_random": 0.00894585500160853,
+          "critical_redundant": 0.01180692689700259
+        },
+        "f2exec01/gen-a/lockbox/000045": {
+          "critical_parent": 0.02906306862348208,
+          "critical_matched_random": 0.039209465496242046,
+          "critical_redundant": 0.02808572615807255
+        },
+        "f2exec01/gen-a/lockbox/000046": {
+          "critical_parent": 0.010838344124042327,
+          "critical_matched_random": 0.008086154547830423,
+          "critical_redundant": 0.010587357157082469
+        },
+        "f2exec01/gen-a/lockbox/000047": {
+          "critical_parent": 0.007026951915274062,
+          "critical_matched_random": 0.005626680019001166,
+          "critical_redundant": 0.007258004370938848
+        },
+        "f2exec01/gen-a/lockbox/000048": {
+          "critical_parent": 0.008684408850967886,
+          "critical_matched_random": 0.009103746256894535,
+          "critical_redundant": 0.00850910543360644
+        },
+        "f2exec01/gen-a/lockbox/000049": {
+          "critical_parent": 0.0110378236061445,
+          "critical_matched_random": 0.007549485709104273,
+          "critical_redundant": 0.011045361041194864
+        },
+        "f2exec01/gen-a/lockbox/000050": {
+          "critical_parent": 0.008606434299576061,
+          "critical_matched_random": 0.007928039671646224,
+          "critical_redundant": 0.00844452673293374
+        },
+        "f2exec01/gen-a/lockbox/000051": {
+          "critical_parent": 0.014189556258282174,
+          "critical_matched_random": 0.010793607268068524,
+          "critical_redundant": 0.014051501846147908
+        },
+        "f2exec01/gen-a/lockbox/000052": {
+          "critical_parent": 0.017388810369151613,
+          "critical_matched_random": 0.01518667872167296,
+          "critical_redundant": 0.01722944565807228
+        },
+        "f2exec01/gen-a/lockbox/000053": {
+          "critical_parent": 0.007834097629206048,
+          "critical_matched_random": 0.004613152084251245,
+          "critical_redundant": 0.007967970903135009
+        },
+        "f2exec01/gen-a/lockbox/000054": {
+          "critical_parent": 0.01158018568875613,
+          "critical_matched_random": 0.014195737635923756,
+          "critical_redundant": 0.011246065867857799
+        },
+        "f2exec01/gen-a/lockbox/000055": {
+          "critical_parent": 0.011560963794451068,
+          "critical_matched_random": 0.01149819501572185,
+          "critical_redundant": 0.011371660029032714
+        },
+        "f2exec01/gen-a/lockbox/000056": {
+          "critical_parent": 0.0047782520177187746,
+          "critical_matched_random": 0.005269604321155284,
+          "critical_redundant": 0.005393979932974886
+        },
+        "f2exec01/gen-a/lockbox/000057": {
+          "critical_parent": 0.005981183645349962,
+          "critical_matched_random": 0.007262683680488004,
+          "critical_redundant": 0.005788689099804119
+        },
+        "f2exec01/gen-a/lockbox/000058": {
+          "critical_parent": 0.010935938330712143,
+          "critical_matched_random": 0.0135000871701373,
+          "critical_redundant": 0.011554186266881449
+        },
+        "f2exec01/gen-a/lockbox/000059": {
+          "critical_parent": 0.020727140311565667,
+          "critical_matched_random": 0.017405436063806217,
+          "critical_redundant": 0.020091920401211136
+        },
+        "f2exec01/gen-a/lockbox/000060": {
+          "critical_parent": 0.007028728792512859,
+          "critical_matched_random": 0.008585883097516166,
+          "critical_redundant": 0.0073419965769129765
+        },
+        "f2exec01/gen-a/lockbox/000061": {
+          "critical_parent": 0.009349049586388799,
+          "critical_matched_random": 0.011497694792018997,
+          "critical_redundant": 0.009475464656673096
+        },
+        "f2exec01/gen-a/lockbox/000062": {
+          "critical_parent": 0.00538670456174899,
+          "critical_matched_random": 0.006065059039327833,
+          "critical_redundant": 0.005637509713846225
+        },
+        "f2exec01/gen-a/lockbox/000063": {
+          "critical_parent": 0.016451688190163283,
+          "critical_matched_random": 0.014298772232400047,
+          "critical_redundant": 0.016518166685407912
+        },
+        "f2exec01/gen-a/lockbox/000064": {
+          "critical_parent": 0.011657718638027155,
+          "critical_matched_random": 0.014179133603142368,
+          "critical_redundant": 0.012212354517369359
+        },
+        "f2exec01/gen-a/lockbox/000065": {
+          "critical_parent": 0.008404436900659845,
+          "critical_matched_random": 0.011443160163859526,
+          "critical_redundant": 0.008534647110435698
+        },
+        "f2exec01/gen-a/lockbox/000066": {
+          "critical_parent": 0.0071978157351690305,
+          "critical_matched_random": 0.006749822551177607,
+          "critical_redundant": 0.007357258642851202
+        },
+        "f2exec01/gen-a/lockbox/000067": {
+          "critical_parent": 0.009072453352726167,
+          "critical_matched_random": 0.011747356504201889,
+          "critical_redundant": 0.009250969315568605
+        },
+        "f2exec01/gen-a/lockbox/000068": {
+          "critical_parent": 0.00680131673881853,
+          "critical_matched_random": 0.003938545162479082,
+          "critical_redundant": 0.00682169373181683
+        },
+        "f2exec01/gen-a/lockbox/000069": {
+          "critical_parent": 0.007139210158062202,
+          "critical_matched_random": 0.008819252976940738,
+          "critical_redundant": 0.006998278804261374
+        },
+        "f2exec01/gen-a/lockbox/000070": {
+          "critical_parent": 0.02180023908753086,
+          "critical_matched_random": 0.014505565580394534,
+          "critical_redundant": 0.02212387551036146
+        },
+        "f2exec01/gen-a/lockbox/000071": {
+          "critical_parent": 0.012004430819716716,
+          "critical_matched_random": 0.008384519463611973,
+          "critical_redundant": 0.01153945277824446
+        },
+        "f2exec01/gen-a/lockbox/000072": {
+          "critical_parent": 0.012386043625021421,
+          "critical_matched_random": 0.009213895640439458,
+          "critical_redundant": 0.013283469127836052
+        },
+        "f2exec01/gen-a/lockbox/000073": {
+          "critical_parent": 0.009558937909012591,
+          "critical_matched_random": 0.008681786350078054,
+          "critical_redundant": 0.009293401993259237
+        },
+        "f2exec01/gen-a/lockbox/000074": {
+          "critical_parent": 0.011492320733075894,
+          "critical_matched_random": 0.011970701420472728,
+          "critical_redundant": 0.010770379876097044
+        },
+        "f2exec01/gen-a/lockbox/000075": {
+          "critical_parent": 0.008575655037054307,
+          "critical_matched_random": 0.014792440976533624,
+          "critical_redundant": 0.007755454629659652
+        },
+        "f2exec01/gen-a/lockbox/000076": {
+          "critical_parent": 0.007398131010295065,
+          "critical_matched_random": 0.012020146681202784,
+          "critical_redundant": 0.00769346676490925
+        },
+        "f2exec01/gen-a/lockbox/000077": {
+          "critical_parent": 0.00737472116533253,
+          "critical_matched_random": 0.010437178632451428,
+          "critical_redundant": 0.007426266955142771
+        },
+        "f2exec01/gen-a/lockbox/000078": {
+          "critical_parent": 0.006845116132387408,
+          "critical_matched_random": 0.004878607682055897,
+          "critical_redundant": 0.006789416661141095
+        },
+        "f2exec01/gen-a/lockbox/000079": {
+          "critical_parent": 0.011152953771805321,
+          "critical_matched_random": 0.008605707850721147,
+          "critical_redundant": 0.010502054114584568
+        },
+        "f2exec01/gen-a/lockbox/000080": {
+          "critical_parent": 0.01706573737923194,
+          "critical_matched_random": 0.02328932285308838,
+          "critical_redundant": 0.017525239623393175
+        },
+        "f2exec01/gen-a/lockbox/000081": {
+          "critical_parent": 0.008074503064293552,
+          "critical_matched_random": 0.008111059251758788,
+          "critical_redundant": 0.008254788057119758
+        },
+        "f2exec01/gen-a/lockbox/000082": {
+          "critical_parent": 0.050668350662346234,
+          "critical_matched_random": 0.04329692241218355,
+          "critical_redundant": 0.04892835569464499
+        },
+        "f2exec01/gen-a/lockbox/000083": {
+          "critical_parent": 0.007906948785401054,
+          "critical_matched_random": 0.006132424291637208,
+          "critical_redundant": 0.007623700752716375
+        },
+        "f2exec01/gen-a/lockbox/000084": {
+          "critical_parent": 0.011722516872126748,
+          "critical_matched_random": 0.01764817660053571,
+          "critical_redundant": 0.011996288076732997
+        },
+        "f2exec01/gen-a/lockbox/000085": {
+          "critical_parent": 0.027622230635542006,
+          "critical_matched_random": 0.035133163134256996,
+          "critical_redundant": 0.026704069666771423
+        },
+        "f2exec01/gen-a/lockbox/000086": {
+          "critical_parent": 0.010176816748248206,
+          "critical_matched_random": 0.016191818647914462,
+          "critical_redundant": 0.00995820519272928
+        },
+        "f2exec01/gen-a/lockbox/000087": {
+          "critical_parent": 0.008092277579837376,
+          "critical_matched_random": 0.0055116429511043764,
+          "critical_redundant": 0.007694830134924916
+        },
+        "f2exec01/gen-a/lockbox/000088": {
+          "critical_parent": 0.010559318000795665,
+          "critical_matched_random": 0.010080454043216175,
+          "critical_redundant": 0.010345129123716443
+        },
+        "f2exec01/gen-a/lockbox/000089": {
+          "critical_parent": 0.039002926287206786,
+          "critical_matched_random": 0.04573260589192311,
+          "critical_redundant": 0.03815839193864829
+        },
+        "f2exec01/gen-a/lockbox/000090": {
+          "critical_parent": 0.00788866814777807,
+          "critical_matched_random": 0.0075698122382164,
+          "critical_redundant": 0.008513501586599482
+        },
+        "f2exec01/gen-a/lockbox/000091": {
+          "critical_parent": 0.008698784470282219,
+          "critical_matched_random": 0.009316701545483535,
+          "critical_redundant": 0.008717730072223477
+        },
+        "f2exec01/gen-a/lockbox/000092": {
+          "critical_parent": 0.01806784474670335,
+          "critical_matched_random": 0.021009796919922035,
+          "critical_redundant": 0.01856392068374488
+        },
+        "f2exec01/gen-a/lockbox/000093": {
+          "critical_parent": 0.007037065043631527,
+          "critical_matched_random": 0.007168078174193702,
+          "critical_redundant": 0.007520177694796413
+        },
+        "f2exec01/gen-a/lockbox/000094": {
+          "critical_parent": 0.01668264747907718,
+          "critical_matched_random": 0.009032157560189566,
+          "critical_redundant": 0.01706570724922198
+        },
+        "f2exec01/gen-a/lockbox/000095": {
+          "critical_parent": 0.009162241127341986,
+          "critical_matched_random": 0.009696137056582505,
+          "critical_redundant": 0.009296696564113653
+        }
+      },
+      "B-STDPROB": {
+        "f2exec01/gen-a/lockbox/000000": {
+          "critical_parent": 0.008683540737601341,
+          "critical_matched_random": 0.0075838590661684675,
+          "critical_redundant": 0.008264674011755872
+        },
+        "f2exec01/gen-a/lockbox/000001": {
+          "critical_parent": 0.008553246398352914,
+          "critical_matched_random": 0.008039456895656055,
+          "critical_redundant": 0.008458522217417204
+        },
+        "f2exec01/gen-a/lockbox/000002": {
+          "critical_parent": 0.011153219112505516,
+          "critical_matched_random": 0.00469892689337333,
+          "critical_redundant": 0.010547992928574482
+        },
+        "f2exec01/gen-a/lockbox/000003": {
+          "critical_parent": 0.006750262204419683,
+          "critical_matched_random": 0.009006416839030053,
+          "critical_redundant": 0.007382046758990597
+        },
+        "f2exec01/gen-a/lockbox/000004": {
+          "critical_parent": 0.016847802101875895,
+          "critical_matched_random": 0.024258475336763594,
+          "critical_redundant": 0.01681027716646592
+        },
+        "f2exec01/gen-a/lockbox/000005": {
+          "critical_parent": 0.010978132244889383,
+          "critical_matched_random": 0.01771742757409811,
+          "critical_redundant": 0.01065356867318904
+        },
+        "f2exec01/gen-a/lockbox/000006": {
+          "critical_parent": 0.010673051527528852,
+          "critical_matched_random": 0.010431335204177432,
+          "critical_redundant": 0.010434141003147318
+        },
+        "f2exec01/gen-a/lockbox/000007": {
+          "critical_parent": 0.005452704995318696,
+          "critical_matched_random": 0.006073513689140479,
+          "critical_redundant": 0.0051314991519407
+        },
+        "f2exec01/gen-a/lockbox/000008": {
+          "critical_parent": 0.024160952600478024,
+          "critical_matched_random": 0.02421961528145605,
+          "critical_redundant": 0.023510580123574643
+        },
+        "f2exec01/gen-a/lockbox/000009": {
+          "critical_parent": 0.012613523923964413,
+          "critical_matched_random": 0.007813225810726484,
+          "critical_redundant": 0.01209255849459657
+        },
+        "f2exec01/gen-a/lockbox/000010": {
+          "critical_parent": 0.014816560144363729,
+          "critical_matched_random": 0.018915774300694466,
+          "critical_redundant": 0.01422135285274298
+        },
+        "f2exec01/gen-a/lockbox/000011": {
+          "critical_parent": 0.009207526722026092,
+          "critical_matched_random": 0.004265453562968307,
+          "critical_redundant": 0.009224641619733088
+        },
+        "f2exec01/gen-a/lockbox/000012": {
+          "critical_parent": 0.016576376122732956,
+          "critical_matched_random": 0.019194786540336076,
+          "critical_redundant": 0.015429782508699981
+        },
+        "f2exec01/gen-a/lockbox/000013": {
+          "critical_parent": 0.01613661358822827,
+          "critical_matched_random": 0.011332427254981464,
+          "critical_redundant": 0.015196274120912505
+        },
+        "f2exec01/gen-a/lockbox/000014": {
+          "critical_parent": 0.006342115294602182,
+          "critical_matched_random": 0.006304212328460481,
+          "critical_redundant": 0.005609035250489358
+        },
+        "f2exec01/gen-a/lockbox/000015": {
+          "critical_parent": 0.009552864685516667,
+          "critical_matched_random": 0.01330795863436328,
+          "critical_redundant": 0.009097217082011479
+        },
+        "f2exec01/gen-a/lockbox/000016": {
+          "critical_parent": 0.010881907668792538,
+          "critical_matched_random": 0.009877054952085018,
+          "critical_redundant": 0.0107184411716406
+        },
+        "f2exec01/gen-a/lockbox/000017": {
+          "critical_parent": 0.01666577467349944,
+          "critical_matched_random": 0.007514575703276527,
+          "critical_redundant": 0.017157670282931237
+        },
+        "f2exec01/gen-a/lockbox/000018": {
+          "critical_parent": 0.012716466353999242,
+          "critical_matched_random": 0.01699003390967846,
+          "critical_redundant": 0.01299550636085095
+        },
+        "f2exec01/gen-a/lockbox/000019": {
+          "critical_parent": 0.01009786741256162,
+          "critical_matched_random": 0.01101733920060926,
+          "critical_redundant": 0.009577879199275264
+        },
+        "f2exec01/gen-a/lockbox/000020": {
+          "critical_parent": 0.008277280670073297,
+          "critical_matched_random": 0.008503904048767354,
+          "critical_redundant": 0.007302459743287828
+        },
+        "f2exec01/gen-a/lockbox/000021": {
+          "critical_parent": 0.0287299548379249,
+          "critical_matched_random": 0.02714311817867888,
+          "critical_redundant": 0.027391433681326887
+        },
+        "f2exec01/gen-a/lockbox/000022": {
+          "critical_parent": 0.01262845826783666,
+          "critical_matched_random": 0.012171722327669462,
+          "critical_redundant": 0.012944485578272076
+        },
+        "f2exec01/gen-a/lockbox/000023": {
+          "critical_parent": 0.008077752190055671,
+          "critical_matched_random": 0.0060257667468653795,
+          "critical_redundant": 0.008016296714130377
+        },
+        "f2exec01/gen-a/lockbox/000024": {
+          "critical_parent": 0.034216967997727575,
+          "critical_matched_random": 0.030006866074270677,
+          "critical_redundant": 0.03396947643961067
+        },
+        "f2exec01/gen-a/lockbox/000025": {
+          "critical_parent": 0.018147295616843084,
+          "critical_matched_random": 0.019905092401636973,
+          "critical_redundant": 0.01696302496862632
+        },
+        "f2exec01/gen-a/lockbox/000026": {
+          "critical_parent": 0.01605106816040697,
+          "critical_matched_random": 0.013768614994155035,
+          "critical_redundant": 0.015911185613798874
+        },
+        "f2exec01/gen-a/lockbox/000027": {
+          "critical_parent": 0.01101419284801792,
+          "critical_matched_random": 0.014855629454056421,
+          "critical_redundant": 0.010525801494993546
+        },
+        "f2exec01/gen-a/lockbox/000028": {
+          "critical_parent": 0.008536537988456312,
+          "critical_matched_random": 0.00535075676937898,
+          "critical_redundant": 0.008171266669200527
+        },
+        "f2exec01/gen-a/lockbox/000029": {
+          "critical_parent": 0.00926317290092508,
+          "critical_matched_random": 0.010459209999276532,
+          "critical_redundant": 0.010060408014666152
+        },
+        "f2exec01/gen-a/lockbox/000030": {
+          "critical_parent": 0.005868853880437436,
+          "critical_matched_random": 0.004370029394825299,
+          "critical_redundant": 0.005980088944650359
+        },
+        "f2exec01/gen-a/lockbox/000031": {
+          "critical_parent": 0.010580131456393888,
+          "critical_matched_random": 0.010110618132683966,
+          "critical_redundant": 0.01114289581568705
+        },
+        "f2exec01/gen-a/lockbox/000032": {
+          "critical_parent": 0.015466748650565193,
+          "critical_matched_random": 0.022066329812837973,
+          "critical_redundant": 0.015595458948087913
+        },
+        "f2exec01/gen-a/lockbox/000033": {
+          "critical_parent": 0.009400882292538881,
+          "critical_matched_random": 0.008960245073669488,
+          "critical_redundant": 0.009515308274853009
+        },
+        "f2exec01/gen-a/lockbox/000034": {
+          "critical_parent": 0.007064140539754321,
+          "critical_matched_random": 0.005196590390470293,
+          "critical_redundant": 0.007300856833656629
+        },
+        "f2exec01/gen-a/lockbox/000035": {
+          "critical_parent": 0.013071533361518825,
+          "critical_matched_random": 0.008737610653042793,
+          "critical_redundant": 0.012858357228752637
+        },
+        "f2exec01/gen-a/lockbox/000036": {
+          "critical_parent": 0.009325272817578579,
+          "critical_matched_random": 0.010811900409559408,
+          "critical_redundant": 0.00922824787320914
+        },
+        "f2exec01/gen-a/lockbox/000037": {
+          "critical_parent": 0.008293518279161718,
+          "critical_matched_random": 0.0064217930452691195,
+          "critical_redundant": 0.008756075157887405
+        },
+        "f2exec01/gen-a/lockbox/000038": {
+          "critical_parent": 0.012093319488620316,
+          "critical_matched_random": 0.018891979215873614,
+          "critical_redundant": 0.013045759612901345
+        },
+        "f2exec01/gen-a/lockbox/000039": {
+          "critical_parent": 0.011209337230495832,
+          "critical_matched_random": 0.018329794415169295,
+          "critical_redundant": 0.010895628896024493
+        },
+        "f2exec01/gen-a/lockbox/000040": {
+          "critical_parent": 0.006128652383469873,
+          "critical_matched_random": 0.009387832548883226,
+          "critical_redundant": 0.006203695493577806
+        },
+        "f2exec01/gen-a/lockbox/000041": {
+          "critical_parent": 0.006948237979991567,
+          "critical_matched_random": 0.009910378812087907,
+          "critical_redundant": 0.006853818496758187
+        },
+        "f2exec01/gen-a/lockbox/000042": {
+          "critical_parent": 0.012540113974224639,
+          "critical_matched_random": 0.015572616416547032,
+          "critical_redundant": 0.012845875936801787
+        },
+        "f2exec01/gen-a/lockbox/000043": {
+          "critical_parent": 0.013143233058077318,
+          "critical_matched_random": 0.01643202743596501,
+          "critical_redundant": 0.01284733269777563
+        },
+        "f2exec01/gen-a/lockbox/000044": {
+          "critical_parent": 0.0056730638844547454,
+          "critical_matched_random": 0.004583488632407453,
+          "critical_redundant": 0.005897654306695417
+        },
+        "f2exec01/gen-a/lockbox/000045": {
+          "critical_parent": 0.033848602824878914,
+          "critical_matched_random": 0.04518660944369104,
+          "critical_redundant": 0.034361832378501135
+        },
+        "f2exec01/gen-a/lockbox/000046": {
+          "critical_parent": 0.01121635141747969,
+          "critical_matched_random": 0.012406334694888855,
+          "critical_redundant": 0.01061248413666531
+        },
+        "f2exec01/gen-a/lockbox/000047": {
+          "critical_parent": 0.007411296738104687,
+          "critical_matched_random": 0.005043318288193809,
+          "critical_redundant": 0.007156567544572882
+        },
+        "f2exec01/gen-a/lockbox/000048": {
+          "critical_parent": 0.006212783787675479,
+          "critical_matched_random": 0.006429570520089732,
+          "critical_redundant": 0.006024731616317122
+        },
+        "f2exec01/gen-a/lockbox/000049": {
+          "critical_parent": 0.008394534371931245,
+          "critical_matched_random": 0.004999840735561318,
+          "critical_redundant": 0.008334606868663318
+        },
+        "f2exec01/gen-a/lockbox/000050": {
+          "critical_parent": 0.007645840463400991,
+          "critical_matched_random": 0.004976663324568007,
+          "critical_redundant": 0.007490266959562346
+        },
+        "f2exec01/gen-a/lockbox/000051": {
+          "critical_parent": 0.012117519922968415,
+          "critical_matched_random": 0.007683319557044241,
+          "critical_redundant": 0.012099757583604919
+        },
+        "f2exec01/gen-a/lockbox/000052": {
+          "critical_parent": 0.01185420431472637,
+          "critical_matched_random": 0.009795847555829419,
+          "critical_redundant": 0.011666384404870096
+        },
+        "f2exec01/gen-a/lockbox/000053": {
+          "critical_parent": 0.007891662574062744,
+          "critical_matched_random": 0.003226593654188845,
+          "critical_redundant": 0.007239844236108992
+        },
+        "f2exec01/gen-a/lockbox/000054": {
+          "critical_parent": 0.011175854166072828,
+          "critical_matched_random": 0.01372004538360569,
+          "critical_redundant": 0.011118398341177789
+        },
+        "f2exec01/gen-a/lockbox/000055": {
+          "critical_parent": 0.011809878430708692,
+          "critical_matched_random": 0.01903880842857891,
+          "critical_redundant": 0.012065153517242933
+        },
+        "f2exec01/gen-a/lockbox/000056": {
+          "critical_parent": 0.005676718842652109,
+          "critical_matched_random": 0.006066158413887024,
+          "critical_redundant": 0.0058005091354802795
+        },
+        "f2exec01/gen-a/lockbox/000057": {
+          "critical_parent": 0.006625978828028396,
+          "critical_matched_random": 0.00668204782737626,
+          "critical_redundant": 0.006778535364126717
+        },
+        "f2exec01/gen-a/lockbox/000058": {
+          "critical_parent": 0.011203670546550443,
+          "critical_matched_random": 0.012956275708145566,
+          "critical_redundant": 0.01150886259145207
+        },
+        "f2exec01/gen-a/lockbox/000059": {
+          "critical_parent": 0.01869765117212578,
+          "critical_matched_random": 0.018347581434581015,
+          "critical_redundant": 0.01919078837252326
+        },
+        "f2exec01/gen-a/lockbox/000060": {
+          "critical_parent": 0.00617150689854666,
+          "critical_matched_random": 0.007014588556355901,
+          "critical_redundant": 0.005419621468280201
+        },
+        "f2exec01/gen-a/lockbox/000061": {
+          "critical_parent": 0.011034260779895165,
+          "critical_matched_random": 0.01006469927314255,
+          "critical_redundant": 0.01133609568286273
+        },
+        "f2exec01/gen-a/lockbox/000062": {
+          "critical_parent": 0.007034682410044803,
+          "critical_matched_random": 0.0037745535373687744,
+          "critical_redundant": 0.006461457780527848
+        },
+        "f2exec01/gen-a/lockbox/000063": {
+          "critical_parent": 0.018394829860577982,
+          "critical_matched_random": 0.016594511353307303,
+          "critical_redundant": 0.018431228154373386
+        },
+        "f2exec01/gen-a/lockbox/000064": {
+          "critical_parent": 0.013307663474093984,
+          "critical_matched_random": 0.009695255508025488,
+          "critical_redundant": 0.01368453220843717
+        },
+        "f2exec01/gen-a/lockbox/000065": {
+          "critical_parent": 0.010897969706328932,
+          "critical_matched_random": 0.012617937910060087,
+          "critical_redundant": 0.011019433779573
+        },
+        "f2exec01/gen-a/lockbox/000066": {
+          "critical_parent": 0.005474622654556124,
+          "critical_matched_random": 0.0056703052380018765,
+          "critical_redundant": 0.005432813238628484
+        },
+        "f2exec01/gen-a/lockbox/000067": {
+          "critical_parent": 0.006808765146329446,
+          "critical_matched_random": 0.007588362631698449,
+          "critical_redundant": 0.0068969797446495965
+        },
+        "f2exec01/gen-a/lockbox/000068": {
+          "critical_parent": 0.007602238044556644,
+          "critical_matched_random": 0.0045527807540363735,
+          "critical_redundant": 0.007698539765206752
+        },
+        "f2exec01/gen-a/lockbox/000069": {
+          "critical_parent": 0.006024680583289376,
+          "critical_matched_random": 0.004475274226731725,
+          "critical_redundant": 0.005855588777059759
+        },
+        "f2exec01/gen-a/lockbox/000070": {
+          "critical_parent": 0.0202021325972897,
+          "critical_matched_random": 0.012346716390715703,
+          "critical_redundant": 0.020504418795031527
+        },
+        "f2exec01/gen-a/lockbox/000071": {
+          "critical_parent": 0.010711016392128335,
+          "critical_matched_random": 0.006491722642547555,
+          "critical_redundant": 0.01002891277204509
+        },
+        "f2exec01/gen-a/lockbox/000072": {
+          "critical_parent": 0.00954015894482533,
+          "critical_matched_random": 0.008545219484302731,
+          "critical_redundant": 0.009387319424638042
+        },
+        "f2exec01/gen-a/lockbox/000073": {
+          "critical_parent": 0.010083612209806839,
+          "critical_matched_random": 0.013059575317634478,
+          "critical_redundant": 0.009896079250783832
+        },
+        "f2exec01/gen-a/lockbox/000074": {
+          "critical_parent": 0.008349945992921238,
+          "critical_matched_random": 0.010691428246597448,
+          "critical_redundant": 0.00841967349320098
+        },
+        "f2exec01/gen-a/lockbox/000075": {
+          "critical_parent": 0.005370265511037023,
+          "critical_matched_random": 0.005248438359962569,
+          "critical_redundant": 0.00514773727843055
+        },
+        "f2exec01/gen-a/lockbox/000076": {
+          "critical_parent": 0.009960549659337159,
+          "critical_matched_random": 0.012982065478960672,
+          "critical_redundant": 0.009519581338045773
+        },
+        "f2exec01/gen-a/lockbox/000077": {
+          "critical_parent": 0.007822236253155602,
+          "critical_matched_random": 0.008530310044685999,
+          "critical_redundant": 0.008017923872641943
+        },
+        "f2exec01/gen-a/lockbox/000078": {
+          "critical_parent": 0.005436681521435578,
+          "critical_matched_random": 0.002463167119357321,
+          "critical_redundant": 0.005237705902092987
+        },
+        "f2exec01/gen-a/lockbox/000079": {
+          "critical_parent": 0.01072348292089171,
+          "critical_matched_random": 0.012264302207363976,
+          "critical_redundant": 0.01129019705371724
+        },
+        "f2exec01/gen-a/lockbox/000080": {
+          "critical_parent": 0.018672831391018847,
+          "critical_matched_random": 0.019844544016652633,
+          "critical_redundant": 0.019760571920347438
+        },
+        "f2exec01/gen-a/lockbox/000081": {
+          "critical_parent": 0.006956441310682783,
+          "critical_matched_random": 0.00750732421875,
+          "critical_redundant": 0.007221727787206571
+        },
+        "f2exec01/gen-a/lockbox/000082": {
+          "critical_parent": 0.04685673598820964,
+          "critical_matched_random": 0.0340114397307237,
+          "critical_redundant": 0.04731295402679178
+        },
+        "f2exec01/gen-a/lockbox/000083": {
+          "critical_parent": 0.008357580578713506,
+          "critical_matched_random": 0.008241617638203831,
+          "critical_redundant": 0.008616505570157812
+        },
+        "f2exec01/gen-a/lockbox/000084": {
+          "critical_parent": 0.007855807379302053,
+          "critical_matched_random": 0.009036489555405246,
+          "critical_redundant": 0.007637921030874605
+        },
+        "f2exec01/gen-a/lockbox/000085": {
+          "critical_parent": 0.02310758247040212,
+          "critical_matched_random": 0.04022062321503957,
+          "critical_redundant": 0.023558711063944627
+        },
+        "f2exec01/gen-a/lockbox/000086": {
+          "critical_parent": 0.011955463810375442,
+          "critical_matched_random": 0.01607794293926822,
+          "critical_redundant": 0.011625201648308171
+        },
+        "f2exec01/gen-a/lockbox/000087": {
+          "critical_parent": 0.007421507431125199,
+          "critical_matched_random": 0.005470596978233921,
+          "critical_redundant": 0.006799560505896807
+        },
+        "f2exec01/gen-a/lockbox/000088": {
+          "critical_parent": 0.00754237266395379,
+          "critical_matched_random": 0.0075288278361161564,
+          "critical_redundant": 0.006738803176968186
+        },
+        "f2exec01/gen-a/lockbox/000089": {
+          "critical_parent": 0.03535945341853356,
+          "critical_matched_random": 0.0481446696859267,
+          "critical_redundant": 0.03571703741154461
+        },
+        "f2exec01/gen-a/lockbox/000090": {
+          "critical_parent": 0.007030686277344271,
+          "critical_matched_random": 0.010331481591694886,
+          "critical_redundant": 0.007255374350481563
+        },
+        "f2exec01/gen-a/lockbox/000091": {
+          "critical_parent": 0.00626303136555685,
+          "critical_matched_random": 0.004965527190102472,
+          "critical_redundant": 0.005931222673367571
+        },
+        "f2exec01/gen-a/lockbox/000092": {
+          "critical_parent": 0.018926113205789418,
+          "critical_matched_random": 0.020381696211795013,
+          "critical_redundant": 0.0198362704400939
+        },
+        "f2exec01/gen-a/lockbox/000093": {
+          "critical_parent": 0.004867957663480881,
+          "critical_matched_random": 0.004999333889120155,
+          "critical_redundant": 0.004880118580466068
+        },
+        "f2exec01/gen-a/lockbox/000094": {
+          "critical_parent": 0.015092504521210989,
+          "critical_matched_random": 0.008545438448588053,
+          "critical_redundant": 0.014049507608568226
+        },
+        "f2exec01/gen-a/lockbox/000095": {
+          "critical_parent": 0.006037327512684796,
+          "critical_matched_random": 0.005752214851478736,
+          "critical_redundant": 0.005648446476293936
+        }
+      }
+    },
+    "matched_random_interaction_asset_effect": {
+      "f2exec01/gen-a/lockbox/000000": 0.0008594921997023952,
+      "f2exec01/gen-a/lockbox/000001": 0.001193700513492028,
+      "f2exec01/gen-a/lockbox/000002": -0.00010132499867015408,
+      "f2exec01/gen-a/lockbox/000003": 0.00045304631607400044,
+      "f2exec01/gen-a/lockbox/000004": -0.0020551073054472595,
+      "f2exec01/gen-a/lockbox/000005": 0.0007612467226054934,
+      "f2exec01/gen-a/lockbox/000006": 0.0007206578221586016,
+      "f2exec01/gen-a/lockbox/000007": -0.000891454310880767,
+      "f2exec01/gen-a/lockbox/000008": 0.001747687709414297,
+      "f2exec01/gen-a/lockbox/000009": 0.00047969393846061456,
+      "f2exec01/gen-a/lockbox/000010": -0.0004287623903817601,
+      "f2exec01/gen-a/lockbox/000011": -0.00010494861958755379,
+      "f2exec01/gen-a/lockbox/000012": 0.0006649347229136359,
+      "f2exec01/gen-a/lockbox/000013": -0.0006000248508320905,
+      "f2exec01/gen-a/lockbox/000014": -0.00045458568880955375,
+      "f2exec01/gen-a/lockbox/000015": -0.0014708621116975944,
+      "f2exec01/gen-a/lockbox/000016": -0.0009180431047247516,
+      "f2exec01/gen-a/lockbox/000017": 4.408177402284415e-05,
+      "f2exec01/gen-a/lockbox/000018": 0.0009142915821737711,
+      "f2exec01/gen-a/lockbox/000019": 0.0008440007352166707,
+      "f2exec01/gen-a/lockbox/000020": 0.00016849544934100592,
+      "f2exec01/gen-a/lockbox/000021": 0.0010587098076939583,
+      "f2exec01/gen-a/lockbox/000022": 0.0019423057739105486,
+      "f2exec01/gen-a/lockbox/000023": 0.00020491616386506288,
+      "f2exec01/gen-a/lockbox/000024": -0.000142669408685632,
+      "f2exec01/gen-a/lockbox/000025": 0.00048584563450680847,
+      "f2exec01/gen-a/lockbox/000026": -0.001686690582169427,
+      "f2exec01/gen-a/lockbox/000027": 0.00028828769508335326,
+      "f2exec01/gen-a/lockbox/000028": -0.0005217541733549702,
+      "f2exec01/gen-a/lockbox/000029": -0.0016756308161550095,
+      "f2exec01/gen-a/lockbox/000030": -1.964971630109705e-05,
+      "f2exec01/gen-a/lockbox/000031": 0.0011408497682876058,
+      "f2exec01/gen-a/lockbox/000032": -0.0002043160299460094,
+      "f2exec01/gen-a/lockbox/000033": 0.0002094908203515741,
+      "f2exec01/gen-a/lockbox/000034": -0.00036040243382255244,
+      "f2exec01/gen-a/lockbox/000035": -0.0006908253870076605,
+      "f2exec01/gen-a/lockbox/000036": 0.0030998782151275208,
+      "f2exec01/gen-a/lockbox/000037": 0.001549227266675896,
+      "f2exec01/gen-a/lockbox/000038": -8.946419176128148e-05,
+      "f2exec01/gen-a/lockbox/000039": 0.0010611076011425916,
+      "f2exec01/gen-a/lockbox/000040": -0.001268379752420717,
+      "f2exec01/gen-a/lockbox/000041": 0.0005199131038453843,
+      "f2exec01/gen-a/lockbox/000042": 0.0010798708018329407,
+      "f2exec01/gen-a/lockbox/000043": 0.00015970857606993757,
+      "f2exec01/gen-a/lockbox/000044": 8.381789343224618e-05,
+      "f2exec01/gen-a/lockbox/000045": 0.0005403511329657501,
+      "f2exec01/gen-a/lockbox/000046": -0.00019941918758882424,
+      "f2exec01/gen-a/lockbox/000047": 0.0007295940174824659,
+      "f2exec01/gen-a/lockbox/000048": 0.00339763466682699,
+      "f2exec01/gen-a/lockbox/000049": 0.0010683780743016135,
+      "f2exec01/gen-a/lockbox/000050": 0.0013371515605184766,
+      "f2exec01/gen-a/lockbox/000051": -0.0004298458289768959,
+      "f2exec01/gen-a/lockbox/000052": -0.0004865032517247733,
+      "f2exec01/gen-a/lockbox/000053": -0.0006364314402971004,
+      "f2exec01/gen-a/lockbox/000054": -0.00021382514387369156,
+      "f2exec01/gen-a/lockbox/000055": -0.0035317623987793922,
+      "f2exec01/gen-a/lockbox/000056": 0.0008344234795206122,
+      "f2exec01/gen-a/lockbox/000057": -0.0011351465558012326,
+      "f2exec01/gen-a/lockbox/000058": 0.0014905373876293502,
+      "f2exec01/gen-a/lockbox/000059": -0.00047282926324341136,
+      "f2exec01/gen-a/lockbox/000060": 0.0015870755952265528,
+      "f2exec01/gen-a/lockbox/000061": -0.0007575236053930387,
+      "f2exec01/gen-a/lockbox/000062": -0.000197575841512945,
+      "f2exec01/gen-a/lockbox/000063": -0.0021385694336560042,
+      "f2exec01/gen-a/lockbox/000064": 0.0019863261323836115,
+      "f2exec01/gen-a/lockbox/000065": 0.0010590080896185504,
+      "f2exec01/gen-a/lockbox/000066": 0.0016181760778029761,
+      "f2exec01/gen-a/lockbox/000067": 0.0029974695191615154,
+      "f2exec01/gen-a/lockbox/000068": -6.093229684564754e-06,
+      "f2exec01/gen-a/lockbox/000069": 0.0005853256831566489,
+      "f2exec01/gen-a/lockbox/000070": 0.004195020844539005,
+      "f2exec01/gen-a/lockbox/000071": -0.0021406043734815386,
+      "f2exec01/gen-a/lockbox/000072": -0.0009280603068570296,
+      "f2exec01/gen-a/lockbox/000073": 0.0008757708387242422,
+      "f2exec01/gen-a/lockbox/000074": 0.002189690868059794,
+      "f2exec01/gen-a/lockbox/000075": 0.00024535600095987304,
+      "f2exec01/gen-a/lockbox/000076": 0.000791102803001801,
+      "f2exec01/gen-a/lockbox/000077": 0.0016096454734603567,
+      "f2exec01/gen-a/lockbox/000078": 3.6392257445388466e-05,
+      "f2exec01/gen-a/lockbox/000079": -0.0006511350058846996,
+      "f2exec01/gen-a/lockbox/000080": 0.0018908647406432363,
+      "f2exec01/gen-a/lockbox/000081": -0.001747565395716164,
+      "f2exec01/gen-a/lockbox/000082": 0.0033547601973017037,
+      "f2exec01/gen-a/lockbox/000083": 0.0017460712956057656,
+      "f2exec01/gen-a/lockbox/000084": 0.003538683212051789,
+      "f2exec01/gen-a/lockbox/000085": 0.004732633940875531,
+      "f2exec01/gen-a/lockbox/000086": -0.0004830974050694043,
+      "f2exec01/gen-a/lockbox/000087": -0.00098578202434712,
+      "f2exec01/gen-a/lockbox/000088": 0.0009918501083221707,
+      "f2exec01/gen-a/lockbox/000089": 0.0007536897642744927,
+      "f2exec01/gen-a/lockbox/000090": -0.0009620584961440829,
+      "f2exec01/gen-a/lockbox/000091": 0.0037858860774172675,
+      "f2exec01/gen-a/lockbox/000092": -0.0008151694718334409,
+      "f2exec01/gen-a/lockbox/000093": 0.00349370167694158,
+      "f2exec01/gen-a/lockbox/000094": 0.0023266628591550723,
+      "f2exec01/gen-a/lockbox/000095": 0.002243780893170171
+    },
+    "state_mae_ratio": {
+      "estimate": 1.015379696601887,
+      "ci": [
+        1.0042872428680147,
+        1.026380577846156
+      ],
+      "bootstrap_se": 0.006810413388791322,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091804
+    },
+    "failure_mae_ratio": {
+      "estimate": 1.0058823026011448,
+      "ci": [
+        0.9952694452280826,
+        1.0183868361720898
+      ],
+      "bootstrap_se": 0.006991711973849903,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091804
+    },
+    "models": [
+      "PROP-DIRECT",
+      "B-STDPROB",
+      "B-INDEP",
+      "B-INVAR",
+      "B-CDE",
+      "B-SET",
+      "B-WIDEN"
+    ]
+  },
+  "provenance": {
+    "contract": "formal_runs/f3_c2_information_loss_a40_0.1.0/c2_formal_contract.json",
+    "formal_authorization": "formal_runs/f3_c2_information_loss_a40_0.1.0/formal_authorization.json",
+    "source_prediction_manifest": "formal_runs/f3_c2_information_loss_a40_0.1.0/inputs/lockbox/prediction_manifest.json",
+    "source_reference_manifest": "formal_runs/f3_c2_information_loss_a40_0.1.0/inputs/lockbox/reference_manifest.json",
+    "source_metrics": "formal_runs/f3_c2_information_loss_a40_0.1.0/inputs/lockbox/metrics/per_row_metrics.jsonl",
+    "base_f2_prediction_manifest": "formal_runs/f2_sufficient_compatibility/frz3-f2-0.1.0/lockbox/prediction_manifest.json",
+    "base_f2_reference_manifest": "formal_runs/f2_sufficient_compatibility/frz3-f2-0.1.0/lockbox/reference_manifest.json",
+    "extension_prediction_manifest": "formal_runs/f3_c2_information_loss_a40_0.1.0/inputs/extension/lockbox/prediction_manifest.json",
+    "extension_reference_manifest": "formal_runs/f3_c2_information_loss_a40_0.1.0/inputs/extension/lockbox/reference_manifest.json",
+    "models": [
+      "PROP-DIRECT",
+      "B-STDPROB",
+      "B-INDEP",
+      "B-INVAR",
+      "B-CDE",
+      "B-SET",
+      "B-WIDEN"
+    ],
+    "evaluator": {
+      "id": "formal_pipeline.f2.c2_geometry.off_diagonal_energy_distance_v1",
+      "cross_diagonal": "excluded",
+      "within_diagonal": "excluded",
+      "oracle_sample_coupling": "same_info_metric CRN across matched views",
+      "model_sample_coupling": "independent frozen predictive draws",
+      "clamp_negative_estimates": true
+    },
+    "thresholds_changed_after_scoring": false,
+    "formal_outcomes_accessed_before_scoring": false
+  },
+  "created_at_utc": "2026-10-02T06:59:04.900187+00:00"
+}

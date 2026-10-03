@@ -1,0 +1,186 @@
+{
+  "artifact_id": "F2-C1-OA-FORMAL-SPLIT-SCORE-03",
+  "contract_id": "f2-c1-outcome-aware-0.1.0",
+  "split_role": "test",
+  "status": "SCORED",
+  "primary_budget": 256,
+  "resolution_budget": 64,
+  "primary": {
+    "relative_reduction": {
+      "estimate": 0.3803410425138982,
+      "ci": [
+        0.351207108818314,
+        0.4066249703157272
+      ],
+      "replicates": 2000,
+      "seed": 2026092201
+    },
+    "absolute_guardrail": {
+      "estimate": 0.0002887410524568555,
+      "upper_90": 0.0003030433854785961,
+      "threshold": 0.00035,
+      "pass": true
+    },
+    "contrasts": {
+      "PROP-DIRECT_minus_B-INDEP": -0.00017722663665434667,
+      "PROP-DIRECT_minus_B-STDPROB": -0.00016838811234826868
+    }
+  },
+  "resolution_check": {
+    "models": {
+      "PROP-DIRECT": 0.00028843762517265724,
+      "B-INDEP": 0.00047056611983413107,
+      "B-STDPROB": 0.00045522060755490796
+    },
+    "relative_reduction": {
+      "estimate": 0.38704124029514053,
+      "ci": [
+        0.358319188212041,
+        0.41278358109844465
+      ],
+      "replicates": 2000,
+      "seed": 2026092201
+    }
+  },
+  "guardrails": {
+    "support_and_finiteness": {
+      "model_support": {
+        "PROP-DIRECT|1701": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 6027
+        },
+        "PROP-DIRECT|2303": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 6027
+        },
+        "PROP-DIRECT|2909": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 6027
+        },
+        "B-INDEP|1701": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 6027
+        },
+        "B-INDEP|2303": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 6027
+        },
+        "B-INDEP|2909": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 6027
+        },
+        "B-STDPROB|1701": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 6027
+        },
+        "B-STDPROB|2303": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 6027
+        },
+        "B-STDPROB|2909": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 6027
+        }
+      },
+      "coverage": {
+        "model_seed_count": 9,
+        "expected_model_seed_count": 9,
+        "pair_count": 6,
+        "expected_pair_count": 6,
+        "asset_count": 96,
+        "expected_asset_count": 96,
+        "all_model_rows_share_identity": true,
+        "pass": true
+      },
+      "pass": true
+    },
+    "state_mae": {
+      "ratios": {
+        "PROP-DIRECT": {
+          "estimate": 0.9880688190460205,
+          "ci": [
+            0.9737892150878906,
+            1.0010778903961182
+          ],
+          "upper_90": 1.0010778903961182,
+          "replicates": 2000,
+          "seed": 2026092218
+        },
+        "B-STDPROB": {
+          "estimate": 0.9750499129295349,
+          "ci": [
+            0.9603842496871948,
+            0.9898051023483276
+          ],
+          "upper_90": 0.9898051023483276,
+          "replicates": 2000,
+          "seed": 2026092219
+        }
+      },
+      "asset_count": 96
+    },
+    "failure_mae": {
+      "ratios": {
+        "PROP-DIRECT": {
+          "estimate": 0.99135822057724,
+          "ci": [
+            0.97661954164505,
+            1.0066033601760864
+          ],
+          "upper_90": 1.0066033601760864,
+          "replicates": 2000,
+          "seed": 2026092224
+        },
+        "B-STDPROB": {
+          "estimate": 0.9812688827514648,
+          "ci": [
+            0.9659367203712463,
+            0.9959839582443237
+          ],
+          "upper_90": 0.9959839582443237,
+          "replicates": 2000,
+          "seed": 2026092225
+        }
+      },
+      "asset_count": 96
+    },
+    "pair_asset_coverage": {
+      "model_seed_count": 9,
+      "expected_model_seed_count": 9,
+      "pair_count": 6,
+      "expected_pair_count": 6,
+      "asset_count": 96,
+      "expected_asset_count": 96,
+      "all_model_rows_share_identity": true,
+      "pass": true
+    },
+    "direction": {
+      "prop_minus_b_indep": -0.00017722663665434667,
+      "prop_minus_b_stdprob": -0.00016838811234826868
+    }
+  },
+  "secondary_oracle_relative": {
+    "PROP-DIRECT": 0.0006885981585336044,
+    "B-INDEP": 0.0007749230267277366,
+    "B-STDPROB": 0.0007955676341180714
+  },
+  "provenance": {
+    "contract": "formal_runs/f2_c1_outcome_aware_0.1.0/c1_outcome_aware_contract.json",
+    "formal_authorization": "formal_runs/f2_c1_outcome_aware_0.1.0/formal_authorization.json",
+    "prediction_manifest": "formal_runs/f2_c1_outcome_aware_0.1.0/test/prediction_manifest.json",
+    "reference_manifest": "formal_runs/f2_c1_outcome_aware_0.1.0/test/sealed/reference_manifest.json",
+    "estimator": "crn_weighted_energy_distance_off_diagonal_v1",
+    "thresholds_changed_after_scoring": false,
+    "formal_outcomes_accessed_before_scoring": false,
+    "scored_after_formal_authorization": true
+  }
+}

@@ -5,6 +5,13 @@
 
 The central result is a geometric one. When the available sensor views remain task-sufficient, explicitly conditioning the predictor on the observation process reduces disagreement between posterior predictions for the same asset. The 38.6\% reduction in cross-view energy distance is stable across the independent test and lockbox partitions and remains after a four-fold reduction in Monte Carlo samples. The effect therefore captures a property of the representation rather than a particular sampling budget.
 
+The oracle-relative audit supplies an important qualification. In the sufficient-view
+C1 scores, the descriptive residual is smaller for PROP-DIRECT than for B-STDPROB
+on both held-out splits, while the asset-bootstrap comparison in the information-loss
+regimes does not separate the two methods. The primary result should therefore be
+read as evidence of cross-view consistency under the stated protocol, not as a claim
+that a small distance alone establishes posterior correctness.
+
 The boundary experiment gives this result its meaning. Once functionally critical sensors are removed, PROP-DIRECT no longer preserves the same advantage. Its oracle-model correlation is 9.9\% weaker in the matched-random comparison, whereas B-STDPROB shows the opposite ordering. The cases are exploratory and share assets, so the correlation is best read as a mechanistic clue. The clue is nevertheless specific: the architecture responds to the amount of available information more readily than to the role played by an individual sensor. A model can therefore be geometrically stable across views while still being insufficiently sensitive to what has been lost.
 
 This distinction separates two questions that are often combined in missing-sensor studies. The first asks whether predictions for one asset remain compatible as its observation set changes. The second asks whether the model recognizes that different missing sensors can have different consequences. The present architecture addresses the first question under task sufficiency and exposes the second as its current boundary.
@@ -19,16 +26,56 @@ Hierarchical representations could separate subsystem status from individual sen
 
 \subsection{Relation to Existing Prognostic Practice}
 
-Imputation and missing-data methods~\citep{rubin1976inference,little2019statistical,che2018gru,cao2018brits,tashiro2021csdi} primarily reconstruct an unobserved measurement before making a prediction. Observation-process conditioning keeps the availability event explicit, allowing uncertainty about the observation process to remain visible in the posterior. The results here suggest that the two ideas are complementary: imputation may recover information from a critical channel, while conditioning can maintain a coherent geometry across the views that remain.
+The closest recent work treats missing sensing as a problem of input recovery or
+representation robustness. RobustUQ combines missing-value distribution modeling
+with conformal prediction to target valid RUL intervals~\citep{wang2025robustuq};
+MSCCAN addresses variable-sensor inputs through cross-channel attention and
+augmentation~\citep{zhang2025msccan}; and GF-GGAT uses graph structure to fuse
+partially missing multi-sensor features~\citep{wang2025gfggat}. Dynamic imputation
+and adaptive model selection provide another route to missing-data robustness
+~\citep{niu2026dynamic}, while Liu et al.~\citep{liu2026strsmtnet} jointly optimize
+reconstruction and RUL prediction in a spatio-temporal multi-task network. Explicit
+sensor-degradation models account for changing measurement quality, from earlier
+state-space formulations~\citep{mukhopadhyay2023degradingsensors,hachem2024sensordegradation}
+to recent bearing-focused work~\citep{zhao2026sensordegradation}. These methods are
+complementary to PROP-DIRECT. Their principal outcomes are prediction error, interval
+validity, recovery quality, or sensor-state estimation; our primary outcome is the
+relation between two posterior predictions for the same asset under different
+observation processes.
 
-Set encoders and attention mechanisms~\citep{lee2019settransformer,vaswani2017attention,zaheer2017deep} provide natural alternatives for representing variable sensor collections. Their presence in a model does not by itself establish importance awareness. A meaningful comparison should therefore pair standard point and probabilistic accuracy with the cross-view and matched-random tests used here. Multi-task or meta-learning objectives~\citep{finn2017model} could further supply training signals for configurations that a single shared model must serve.
+This distinction places the C2 result in a constructive context. The present
+sensor-set encoder is deliberately flat: it records which channels are available
+without encoding a graph of subsystem or functional relationships. The matched-random
+failure therefore points toward structured conditioning rather than away from the
+observation-process formulation. Graph-based representations such as GF-GGAT
+~\citep{wang2025gfggat}, hierarchical sensor groups, or state-dependent attention
+could supply the missing importance signal. They should be evaluated with both
+single-view accuracy and the paired cross-view and matched-random tests used here.
+
+The uncertainty interpretation is also complementary to established RUL work.
+Sankararaman~\citep{sankararaman201501405029} emphasizes uncertainty propagation in
+prognostics, and Bayesian RUL frameworks distinguish epistemic from aleatoric
+uncertainty~\citep{li202103009593}. Recent uncertainty-aware RUL work combines
+Bayesian predictive distributions with explicit calibration and conformal interval
+construction~\citep{xu2026calibratedrul}. We add an observation-process perspective:
+even when marginal predictive uncertainty is well calibrated, changing the sensor
+set can alter the relationship among posterior distributions. The calibration result
+and the geometry result should therefore be reported together rather than treated as
+interchangeable evidence of probabilistic reliability.
+
+Set encoders and attention mechanisms~\citep{lee2019settransformer,vaswani2017attention,zaheer2017deep}
+remain natural implementation alternatives, and domain-generalization methods
+~\citep{ding202322110199,tong202443366689} offer useful training strategies for
+operating-condition shifts. Their inclusion does not by itself establish
+importance-awareness; the paired estimands in this study provide a direct test of
+whether a model distinguishes a change in sensor count from a change in sensor role.
 
 \subsection{The C-MAPSS Result in Context}
 \label{sec:limitations}
 
 The synthetic generator gives the primary experiment a property that field data cannot easily provide: an exact oracle posterior and direct control over which observation process is applied to the same latent asset. C-MAPSS FD001 offers a complementary public reference point, but it is also a simulated benchmark. In the shared-model evaluation, one predictor per method was trained on all three views, the predictors used an MSE point head with dropout sampling, and each reduced view was formed by artificial deletion of three of the 14 active channels.
 
-The result is conditional. PROP-DIRECT reduces distance to the full view by 18.5--28.9\%, but is 36.6\% worse than B-STDPROB for the pair of equally sized reduced views. Single-view MAE is close across methods, so the reversal does not track a broad point-accuracy collapse. The pattern is consistent with sensitivity to sensor identity that remains incomplete under the current representation. It is protocol-aligned evidence from a simulated benchmark, not field validation; data with naturally occurring sensor loss would test whether the same boundary matters in operation.
+The result is conditional. PROP-DIRECT has 18.5--28.9\% smaller distance to the full view, but a 36.6\% larger distance than B-STDPROB for the pair of equally sized reduced views. Single-view MAE is close across methods, so the reversal does not track a broad point-accuracy collapse. Because C-MAPSS has no oracle posterior for these artificial views, the larger distance cannot be interpreted as a less correct posterior; it is evidence that the two methods respond differently to sensor identity. The result is protocol-aligned evidence from a simulated benchmark, not field validation; data with naturally occurring sensor loss would test whether the same boundary matters in operation.
 
 \subsection{Scope and Future Tests}
 

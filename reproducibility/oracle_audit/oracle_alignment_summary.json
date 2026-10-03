@@ -1,0 +1,86 @@
+{
+  "source": "formal_runs/f3_c2_information_loss_a40_0.1.0/test/score/c2_pair_distance_audit.npz",
+  "estimand": "oracle_relative_geometry_error = abs(model_energy_distance - oracle_energy_distance)",
+  "aggregation": "mean across optimization seeds; query cases within asset and pair class; mean across assets",
+  "bootstrap_unit": "asset",
+  "pair_classes": {
+    "critical_parent": {
+      "PROP-DIRECT": {
+        "estimate": 0.012920295255888186,
+        "ci_lower": 0.011945435650758791,
+        "ci_upper": 0.013949025245340266,
+        "assets": 96,
+        "replicates": 2000,
+        "seed": 2026091803
+      },
+      "B-STDPROB": {
+        "estimate": 0.01289225632722208,
+        "ci_lower": 0.011730013087440002,
+        "ci_upper": 0.01426164639417914,
+        "assets": 96,
+        "replicates": 2000,
+        "seed": 2026091803
+      },
+      "PROP-DIRECT_minus_B-STDPROB": {
+        "estimate": 2.8038928666106303e-05,
+        "ci_lower": -0.0004327469694993695,
+        "ci_upper": 0.0004869246542242495,
+        "assets": 96,
+        "replicates": 2000,
+        "seed": 2026091803
+      }
+    },
+    "critical_matched_random": {
+      "PROP-DIRECT": {
+        "estimate": 0.013440993938948613,
+        "ci_lower": 0.012311934645792158,
+        "ci_upper": 0.014677679312417575,
+        "assets": 96,
+        "replicates": 2000,
+        "seed": 2026091803
+      },
+      "B-STDPROB": {
+        "estimate": 0.013068667434035215,
+        "ci_lower": 0.011718351329262884,
+        "ci_upper": 0.014498131770718221,
+        "assets": 96,
+        "replicates": 2000,
+        "seed": 2026091803
+      },
+      "PROP-DIRECT_minus_B-STDPROB": {
+        "estimate": 0.00037232650491340045,
+        "ci_lower": -0.00042519309429701945,
+        "ci_upper": 0.0010879628889530004,
+        "assets": 96,
+        "replicates": 2000,
+        "seed": 2026091803
+      }
+    },
+    "critical_redundant": {
+      "PROP-DIRECT": {
+        "estimate": 0.012863275433680687,
+        "ci_lower": 0.011871232876082004,
+        "ci_upper": 0.013908600983366924,
+        "assets": 96,
+        "replicates": 2000,
+        "seed": 2026091803
+      },
+      "B-STDPROB": {
+        "estimate": 0.012699320906252934,
+        "ci_lower": 0.011519733762767749,
+        "ci_upper": 0.013990693612580754,
+        "assets": 96,
+        "replicates": 2000,
+        "seed": 2026091803
+      },
+      "PROP-DIRECT_minus_B-STDPROB": {
+        "estimate": 0.00016395452742775315,
+        "ci_lower": -0.00032066057074526145,
+        "ci_upper": 0.0006170836695718556,
+        "assets": 96,
+        "replicates": 2000,
+        "seed": 2026091803
+      }
+    }
+  }
+}

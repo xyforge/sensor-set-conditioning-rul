@@ -5,9 +5,18 @@ type: software
 authors:
   - family-names: Xin
     given-names: Yu
-version: 0.1.0
+version: 0.2.0
 date-released: 2026-10-03
 abstract: >-
-  Reproducible manuscript source and analysis artifacts for evaluating
-  sensor-set conditioning in probabilistic remaining-useful-life prediction.
+  Versioned manuscript source, frozen protocol contracts, thresholds, decision
+  snapshots, and compact analysis artifacts for evaluating sensor-set conditioning
+  in probabilistic remaining-useful-life prediction.
+keywords:
+  - prognostics and health management
+  - remaining useful life prediction
+  - variable sensor configurations
+  - missing sensor data
+  - probabilistic forecasting
+  - uncertainty quantification
+  - posterior consistency
 repository-code: "https://github.com/xyforge/sensor-set-conditioning-rul"

@@ -18,6 +18,10 @@ Gains Under Operational Variability and the Importance-Awareness Boundary}
 \input{sections/01_abstract}
 \end{abstract}
 
+\noindent\textbf{Keywords:} prognostics and health management; remaining useful life prediction;
+variable sensor configurations; missing sensor data; probabilistic forecasting;
+uncertainty quantification; posterior consistency; calibration
+
 \input{sections/02_introduction}
 \input{sections/03_methods}
 \input{sections/04_results}
@@ -26,27 +30,21 @@ Gains Under Operational Variability and the Importance-Awareness Boundary}
 
 \section*{Data Availability Statement}
 
-The synthetic generator used in this study is based on controlled degradation models that enable exact oracle posterior computation. Complete generator specifications, evaluation scripts, protocol documents, and compact result artifacts are available in the public repository. Due to the pre-registration protocol, all evaluation code was frozen prior to accessing lockbox validation data. The repository includes:
-
-\begin{itemize}
-    \item Synthetic data generator with seed specifications for replication
-    \item Shared-model C-MAPSS training and evaluation scripts with configurations and results
-    \item Calibration analysis code, coverage/PIT summaries, and the reliability figure
-    \item Compact scoring outputs and decision documentation; large prediction stores and checkpoints can be regenerated from the recorded protocols
-    \item Pre-registration documents including frozen thresholds and decision rules
-\end{itemize}
-
 The public code and manuscript repository is available at
 \url{https://github.com/xyforge/sensor-set-conditioning-rul}. It contains the
-manuscript source, evaluation scripts, frozen protocol documents, compact
-result summaries, and the shared-model C-MAPSS report. Raw C-MAPSS data and
-large prediction stores are excluded and must be obtained or regenerated under
-their respective data-access conditions. A persistent DOI can be added when a
-versioned release is deposited in a research repository.
+manuscript source, synthetic-generator specifications and seed settings,
+evaluation scripts, shared-model C-MAPSS configurations and results, calibration
+summaries, compact score artifacts, and the frozen protocol documents. All
+evaluation code and decision rules were frozen before lockbox validation.
+
+Raw C-MAPSS data, large prediction stores, and model checkpoints are excluded
+from the repository and can be obtained or regenerated under their respective
+access conditions. A persistent DOI can be added when a versioned release is
+deposited in a research repository.
 
 \section*{Acknowledgements}
 
-This research was conducted under a preregistered protocol with independent test and lockbox evaluation splits. We thank the reviewers for their constructive feedback. C-MAPSS turbofan data were provided by NASA Ames Prognostics Center of Excellence. Computational resources were provided by institutional high-performance computing facilities. All experimental decisions were made prior to accessing validation outcomes to ensure statistical integrity.
+This research was conducted under a preregistered protocol with independent test and lockbox evaluation splits. C-MAPSS turbofan data were provided by NASA Ames Prognostics Center of Excellence. Computational resources were provided by Shanghai University of Engineering Science. All experimental decisions were made prior to accessing validation outcomes to ensure statistical integrity.
 
 \section*{Conflict of Interest Statement}
 

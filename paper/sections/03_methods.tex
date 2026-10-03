@@ -143,6 +143,18 @@ The causal structure of this generator is shown in Figure~\ref{fig:synthetic-gen
 It separates the latent degradation state from noisy measurements and makes the
 critical, redundant, and ancillary sensor roles explicit.
 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.86\linewidth]{fig4_synthetic_generator.png}
+  \caption{\textbf{Synthetic degradation-data generator.} A latent health state
+  evolves under physics-based dynamics and crosses a failure threshold at the
+  true RUL. Noisy observation channels produce critical, redundant, and ancillary
+  sensors, while different sensor subsets of the same latent asset support exact
+  oracle-posterior computation.}
+  \label{fig:synthetic-generator}
+\end{figure}
+\FloatBarrier
+
 \subsubsection{Asset Population}
 
 We generate 96 synthetic assets with the following variation:
@@ -155,7 +167,7 @@ We generate 96 synthetic assets with the following variation:
 
 Each asset is observed from initial deployment until failure, with queries sampled at regular intervals (every 50 cycles) throughout its lifecycle. This produces approximately 96 assets $\times$ 100 query times $\times$ multiple observation configurations = tens of thousands of evaluation cases.
 
-\subsection{Experimental Protocol}
+\subsection{Study Design and Evaluation Protocol}
 \label{sec:methods:protocol}
 
 \subsubsection{Preregistration and Data Partitioning}
@@ -166,11 +178,22 @@ Figure~\ref{fig:preregistration-protocol} provides a compact view of the four
 stages and the separation between exploratory development, test replication, and
 the lockbox used for the primary claim.
 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.86\linewidth]{fig5_preregistration_protocol.png}
+  \caption{\textbf{Preregistered evaluation protocol.} Model development and
+  threshold selection are completed before held-out evaluation. The test split
+  serves as a directional replication check, whereas the untouched lockbox is
+  evaluated with frozen decision rules and supplies the primary scientific claim.}
+  \label{fig:preregistration-protocol}
+\end{figure}
+\FloatBarrier
+
 \paragraph{Stage 1: Model Development and Freezing}
 \begin{enumerate}
     \item Train all seven models (PROP-DIRECT + six baselines) on a designated training set (60 assets).
     \item Select hyperparameters via validation set performance (16 assets).
-    \item Freeze model checkpoints and commit them to a versioned model registry (analogous to clinical trial registration).
+    \item Freeze model checkpoints and record them in a versioned registry.
 \end{enumerate}
 
 \paragraph{Stage 2: Threshold Specification}
@@ -198,7 +221,7 @@ the lockbox used for the primary claim.
     \item Lockbox results are the primary basis for scientific claims.
 \end{enumerate}
 
-This staged protocol mirrors confirmatory clinical trials and prevents ``researcher degrees of freedom'' that inflate false discovery rates in exploratory analysis.
+This staging records which decisions are made before each held-out evaluation and keeps exploratory analyses separate from the primary claim.
 
 \subsubsection{Data Split Composition}
 
@@ -212,6 +235,21 @@ This staged protocol mirrors confirmatory clinical trials and prevents ``researc
 All splits are stratified by degradation regime (low/medium/high load) and sensor topology to ensure balanced representation.
 
 The partition above applies to the sufficient-observation analysis, whose primary claims rest on the lockbox split. The information-loss analysis uses a separate frozen evaluation covering all 96 assets; its descriptive quality metrics (Table~\ref{tab:c2_quality}) therefore summarize that population rather than the 10-asset test split. Model checkpoints and decision rules were frozen before either evaluation was accessed.
+
+\subsubsection{Information-loss boundary design}
+
+The boundary analysis compares sensor deletions that differ in functional importance
+while holding the number of removed channels fixed. We use three pair classes:
+\begin{itemize}
+    \item \textbf{Critical deletion:} sensors identified by the oracle analysis as critical for RUL prediction;
+    \item \textbf{Random deletion:} the same number of sensors selected at random, providing a matched control for information quantity;
+    \item \textbf{Redundant deletion:} sensors carrying overlapping information, providing a low-impact comparison.
+\end{itemize}
+
+The corresponding estimand asks whether an importance-aware architecture keeps the
+critical-versus-random posterior contrast closer to the oracle-defined contrast than
+a model that only observes masked values. This design separates the effect of how
+many sensors are removed from the effect of which sensors are removed.
 
 \subsection{Evaluation Metrics}
 \label{sec:methods:metrics}
@@ -231,10 +269,22 @@ d_E(p_1, p_2) = 2 \mathbb{E}_{Y_1 \sim p_1, Y_2 \sim p_2}[|Y_1 - Y_2|] - \mathbb
 
 This metric:
 \begin{itemize}
-    \item Equals zero if and only if $p_1 = p_2$ (perfect consistency).
+    \item Equals zero if and only if $p_1 = p_2$ (distributional consistency across views).
     \item Increases with both location shift and shape differences.
     \item Does not require parametric assumptions about posterior forms.
 \end{itemize}
+
+A small $d_E$ is a consistency statement, not an accuracy statement: a model
+that emits the same posterior for every sensor set can attain $d_E=0$ while
+ignoring the observation process. To evaluate whether the distance has the
+right magnitude, we therefore report the secondary oracle-relative geometry
+error
+\[
+E_{\mathrm{geometry}} = \left|d_E(p_{\mathrm{model},1},p_{\mathrm{model},2}) - d_E(p_{\mathrm{oracle},1},p_{\mathrm{oracle},2})\right|.
+\]
+Lower values indicate closer agreement with the oracle-defined geometry. This
+post-hoc quantity is reported as an exploratory diagnostic and does not replace
+the preregistered cross-view consistency endpoint.
 
 In practice, we estimate $d_E$ via Monte Carlo sampling: draw $N=256$ samples from each posterior (or $N=64$ for computational budget sensitivity), compute pairwise distances, and average.
 
@@ -309,6 +359,32 @@ Preregistered decision criteria:
     \item \textbf{Quality guardrails:} CRPS and MAE must satisfy non-inferiority vs. baseline to ensure geometric gains do not degrade prediction quality.
 \end{itemize}
 
+\subsection{C-MAPSS Shared-Model Evaluation}
+\label{sec:methods:cmapss}
+
+We use C-MAPSS FD001 as a complementary public simulated benchmark. The dataset
+contains 100 training and 100 test engine trajectories and 14 non-constant sensor
+channels after preprocessing. It provides a common reference for the geometry
+analysis while remaining distinct from field data.
+
+We retain the full 14-channel view and construct two reduced views by deleting
+three channels from each; the deletion sets differ by six channels. For each method,
+a single predictor is trained on the union of all three views. The 100 training
+engines are split by engine into 80 fitting and 20 validation engines, so views of
+the same engine never cross a split. Unlike the synthetic experiments, which use an
+explicitly distributional mixture-of-log-normals head, C-MAPSS uses an MSE
+point-prediction head. We construct predictive samples with 128 Monte Carlo dropout
+passes~\citep{gal2016dropout}. This is a complementary uncertainty representation,
+not a direct replication of the synthetic posterior model. We evaluate the final
+window of each test engine, report energy distances on the raw RUL scale, and use
+engine-level bootstrap resampling for confidence intervals. Single-view MAE is
+reported as a point-accuracy check alongside the geometry results.
+
+This protocol tests whether the geometry pattern survives a shared-model training
+setup. Because the benchmark is simulated and the reduced views are created by
+artificial deletion, its results are interpreted as complementary benchmark evidence
+rather than field validation.
+
 \subsection{Exploratory Mechanistic Analysis}
 \label{sec:methods:exploratory}
 
@@ -318,7 +394,8 @@ Beyond the preregistered analysis, we use an exploratory oracle comparison to in
 For each paired observation case, we compute:
 \begin{itemize}
     \item \textbf{Oracle distance:} The true geometric inconsistency $d_E(p_{\text{oracle},1}, p_{\text{oracle},2})$ computed from the known ground-truth degradation state.
-    \item \textbf{Model geometry error:} The model's predicted inconsistency $d_E(p_{\text{model},1}, p_{\text{model},2})$.
+    \item \textbf{Oracle-relative geometry error:} The residual
+    $E_{\mathrm{geometry}}=|d_E(p_{\text{model},1},p_{\text{model},2})-d_E(p_{\text{oracle},1},p_{\text{oracle},2})|$.
 \end{itemize}
 
 If the model successfully tracks task difficulty, these should correlate: cases where the oracle shows large inconsistency (observation processes genuinely differ) should also exhibit large model inconsistency.

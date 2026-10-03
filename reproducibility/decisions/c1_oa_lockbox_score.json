@@ -1,0 +1,186 @@
+{
+  "artifact_id": "F2-C1-OA-FORMAL-SPLIT-SCORE-03",
+  "contract_id": "f2-c1-outcome-aware-0.1.0",
+  "split_role": "lockbox",
+  "status": "SCORED",
+  "primary_budget": 256,
+  "resolution_budget": 64,
+  "primary": {
+    "relative_reduction": {
+      "estimate": 0.38635371948400477,
+      "ci": [
+        0.34782490514966075,
+        0.4244420714317082
+      ],
+      "replicates": 2000,
+      "seed": 2026092201
+    },
+    "absolute_guardrail": {
+      "estimate": 0.00028642355539853235,
+      "upper_90": 0.000305051798033988,
+      "threshold": 0.00035,
+      "pass": true
+    },
+    "contrasts": {
+      "PROP-DIRECT_minus_B-INDEP": -0.0001803332139209005,
+      "PROP-DIRECT_minus_B-STDPROB": -0.00017775816628766926
+    }
+  },
+  "resolution_check": {
+    "models": {
+      "PROP-DIRECT": 0.0002849129375169502,
+      "B-INDEP": 0.0004668525259519272,
+      "B-STDPROB": 0.00045964856825001475
+    },
+    "relative_reduction": {
+      "estimate": 0.3897153347601502,
+      "ci": [
+        0.35034523215683167,
+        0.426619600310491
+      ],
+      "replicates": 2000,
+      "seed": 2026092201
+    }
+  },
+  "guardrails": {
+    "support_and_finiteness": {
+      "model_support": {
+        "PROP-DIRECT|1701": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 5985
+        },
+        "PROP-DIRECT|2303": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 5985
+        },
+        "PROP-DIRECT|2909": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 5985
+        },
+        "B-INDEP|1701": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 5985
+        },
+        "B-INDEP|2303": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 5985
+        },
+        "B-INDEP|2909": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 5985
+        },
+        "B-STDPROB|1701": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 5985
+        },
+        "B-STDPROB|2303": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 5985
+        },
+        "B-STDPROB|2909": {
+          "finite": true,
+          "noncollapsed": true,
+          "row_count": 5985
+        }
+      },
+      "coverage": {
+        "model_seed_count": 9,
+        "expected_model_seed_count": 9,
+        "pair_count": 6,
+        "expected_pair_count": 6,
+        "asset_count": 96,
+        "expected_asset_count": 96,
+        "all_model_rows_share_identity": true,
+        "pass": true
+      },
+      "pass": true
+    },
+    "state_mae": {
+      "ratios": {
+        "PROP-DIRECT": {
+          "estimate": 0.9836568832397461,
+          "ci": [
+            0.9709535241127014,
+            0.9966854453086853
+          ],
+          "upper_90": 0.9966854453086853,
+          "replicates": 2000,
+          "seed": 2026092218
+        },
+        "B-STDPROB": {
+          "estimate": 0.973431408405304,
+          "ci": [
+            0.9572873115539551,
+            0.9892422556877136
+          ],
+          "upper_90": 0.9892422556877136,
+          "replicates": 2000,
+          "seed": 2026092219
+        }
+      },
+      "asset_count": 96
+    },
+    "failure_mae": {
+      "ratios": {
+        "PROP-DIRECT": {
+          "estimate": 1.024869441986084,
+          "ci": [
+            1.0095179080963135,
+            1.0404473543167114
+          ],
+          "upper_90": 1.0404473543167114,
+          "replicates": 2000,
+          "seed": 2026092224
+        },
+        "B-STDPROB": {
+          "estimate": 0.9864435791969299,
+          "ci": [
+            0.9727339744567871,
+            0.9991883039474487
+          ],
+          "upper_90": 0.9991883039474487,
+          "replicates": 2000,
+          "seed": 2026092225
+        }
+      },
+      "asset_count": 96
+    },
+    "pair_asset_coverage": {
+      "model_seed_count": 9,
+      "expected_model_seed_count": 9,
+      "pair_count": 6,
+      "expected_pair_count": 6,
+      "asset_count": 96,
+      "expected_asset_count": 96,
+      "all_model_rows_share_identity": true,
+      "pass": true
+    },
+    "direction": {
+      "prop_minus_b_indep": -0.0001803332139209005,
+      "prop_minus_b_stdprob": -0.00017775816628766926
+    }
+  },
+  "secondary_oracle_relative": {
+    "PROP-DIRECT": 0.0008073350611174432,
+    "B-INDEP": 0.0008695031001367664,
+    "B-STDPROB": 0.0009288841276070287
+  },
+  "provenance": {
+    "contract": "formal_runs/f2_c1_outcome_aware_0.1.0/c1_outcome_aware_contract.json",
+    "formal_authorization": "formal_runs/f2_c1_outcome_aware_0.1.0/formal_authorization.json",
+    "prediction_manifest": "formal_runs/f2_c1_outcome_aware_0.1.0/lockbox/prediction_manifest.json",
+    "reference_manifest": "formal_runs/f2_c1_outcome_aware_0.1.0/lockbox/sealed/reference_manifest.json",
+    "estimator": "crn_weighted_energy_distance_off_diagonal_v1",
+    "thresholds_changed_after_scoring": false,
+    "formal_outcomes_accessed_before_scoring": false,
+    "scored_after_formal_authorization": true
+  }
+}

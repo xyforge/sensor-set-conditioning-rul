@@ -1,0 +1,1321 @@
+{
+  "artifact_id": "F3-C2-FORMAL-SPLIT-SCORE-01",
+  "contract_id": "f3-c2-formal-a40-0.1.0",
+  "split_role": "test",
+  "status": "SCORED",
+  "scientific_status": "CORE-FAIL",
+  "execution_status": "VALID",
+  "primary_estimands": {
+    "C2-P1:delta_R_crit": {
+      "estimate": 0.0008652393440615364,
+      "ci": [
+        0.0007363976852996722,
+        0.0009912794215824199
+      ],
+      "bootstrap_se": 7.632510842872266e-05,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091803
+    },
+    "C2-P2:delta_G_loss": {
+      "estimate": 0.00018810665366908647,
+      "ci": [
+        -0.00035547875644317633,
+        0.0006990639047928102
+      ],
+      "bootstrap_se": 0.00031655641161333967,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091803
+    },
+    "C2-P3:I_R": {
+      "estimate": 0.0007676928594096185,
+      "ci": [
+        0.0005162900760532703,
+        0.0010283978028854581
+      ],
+      "bootstrap_se": 0.00015815511366985743,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091803
+    }
+  },
+  "guardrails": {
+    "C2-G0:critical_R_absolute": {
+      "estimate": 0.005283240088043205,
+      "ci": [
+        0.004867963729199722,
+        0.005751364440858409
+      ],
+      "bootstrap_se": 0.0002627004476632763,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091803
+    },
+    "C2-G0:loss_G_absolute": {
+      "estimate": 0.013074854876172498,
+      "ci": [
+        0.012121652776347028,
+        0.01407771813446968
+      ],
+      "bootstrap_se": 0.0006053540426609197,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091803
+    },
+    "C2-G2:failure_CRPS_delta": {
+      "estimate": 0.0004071673958736908,
+      "ci": [
+        -2.2336060430758177e-05,
+        0.0008469513017276837
+      ],
+      "bootstrap_se": 0.00026426435526794576,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091803
+    },
+    "C2-G4:full_R_delta": {
+      "estimate": 0.00012849982624329022,
+      "ci": [
+        -1.3283860919598116e-05,
+        0.00026133422513710156
+      ],
+      "bootstrap_se": 8.273661438148133e-05,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091803
+    },
+    "C2-G3-MODEL": {
+      "pass": true,
+      "model_support": {
+        "PROP-DIRECT": {
+          "row_count": 19872,
+          "expected_row_count": 19872,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        },
+        "B-STDPROB": {
+          "row_count": 19872,
+          "expected_row_count": 19872,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        },
+        "B-INDEP": {
+          "row_count": 19872,
+          "expected_row_count": 19872,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        },
+        "B-INVAR": {
+          "row_count": 19872,
+          "expected_row_count": 19872,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        },
+        "B-CDE": {
+          "row_count": 19872,
+          "expected_row_count": 19872,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        },
+        "B-SET": {
+          "row_count": 19872,
+          "expected_row_count": 19872,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        },
+        "B-WIDEN": {
+          "row_count": 19872,
+          "expected_row_count": 19872,
+          "complete": true,
+          "finite": true,
+          "support_valid": true,
+          "noncollapsed": true,
+          "nonfinite_fraction": 0.0
+        }
+      }
+    }
+  },
+  "checks": {
+    "C2-P1": false,
+    "C2-P2": false,
+    "C2-P3": false,
+    "C2-G0-critical": true,
+    "C2-G0-loss": true,
+    "C2-G2": true,
+    "C2-G3-MODEL": true,
+    "C2-G4": true
+  },
+  "admissibility": {
+    "C2-G6a": true,
+    "source_prediction_manifests_clean": true,
+    "source_reference_manifests_clean": true,
+    "formal_outcomes_accessed_before_scoring": false
+  },
+  "numerical_health": {
+    "pass": true,
+    "pair_class_counts": {
+      "critical_parent": 39744,
+      "critical_matched_random": 6624,
+      "critical_redundant": 39744
+    },
+    "asset_count": 96,
+    "critical_cell_count": 6,
+    "models": [
+      "PROP-DIRECT",
+      "B-STDPROB",
+      "B-INDEP",
+      "B-INVAR",
+      "B-CDE",
+      "B-SET",
+      "B-WIDEN"
+    ],
+    "auxiliary_models_not_recomputed": []
+  },
+  "diagnostics": {
+    "loss_by_class": {
+      "PROP-DIRECT": {
+        "f2exec01/gen-a/test/000000": {
+          "critical_parent": 0.008959663273007781,
+          "critical_matched_random": 0.013227391263677014,
+          "critical_redundant": 0.008712720074173477
+        },
+        "f2exec01/gen-a/test/000001": {
+          "critical_parent": 0.010944907467260406,
+          "critical_matched_random": 0.01858386387013727,
+          "critical_redundant": 0.010529637440211244
+        },
+        "f2exec01/gen-a/test/000002": {
+          "critical_parent": 0.014318370915673397,
+          "critical_matched_random": 0.01553487715621789,
+          "critical_redundant": 0.01386044005414954
+        },
+        "f2exec01/gen-a/test/000003": {
+          "critical_parent": 0.012747664366745287,
+          "critical_matched_random": 0.019171242084768083,
+          "critical_redundant": 0.01315944529724894
+        },
+        "f2exec01/gen-a/test/000004": {
+          "critical_parent": 0.014993460055578639,
+          "critical_matched_random": 0.015400506556034088,
+          "critical_redundant": 0.015705829348277165
+        },
+        "f2exec01/gen-a/test/000005": {
+          "critical_parent": 0.008962173721994515,
+          "critical_matched_random": 0.008185976909266578,
+          "critical_redundant": 0.009316235125340798
+        },
+        "f2exec01/gen-a/test/000006": {
+          "critical_parent": 0.013916203614186357,
+          "critical_matched_random": 0.0156615422003799,
+          "critical_redundant": 0.012597470216591048
+        },
+        "f2exec01/gen-a/test/000007": {
+          "critical_parent": 0.020702714583388085,
+          "critical_matched_random": 0.01762665539152092,
+          "critical_redundant": 0.019397191047944407
+        },
+        "f2exec01/gen-a/test/000008": {
+          "critical_parent": 0.011043408713131038,
+          "critical_matched_random": 0.011324437231653266,
+          "critical_redundant": 0.010307387069419579
+        },
+        "f2exec01/gen-a/test/000009": {
+          "critical_parent": 0.012861240344742933,
+          "critical_matched_random": 0.01618215110566881,
+          "critical_redundant": 0.013052364466366944
+        },
+        "f2exec01/gen-a/test/000010": {
+          "critical_parent": 0.019077619589451287,
+          "critical_matched_random": 0.01449391059577465,
+          "critical_redundant": 0.018705871490830625
+        },
+        "f2exec01/gen-a/test/000011": {
+          "critical_parent": 0.013942844527601092,
+          "critical_matched_random": 0.01508494011229939,
+          "critical_redundant": 0.01374616748135951
+        },
+        "f2exec01/gen-a/test/000012": {
+          "critical_parent": 0.01008737416662,
+          "critical_matched_random": 0.008510326345761618,
+          "critical_redundant": 0.010119697872411322
+        },
+        "f2exec01/gen-a/test/000013": {
+          "critical_parent": 0.0069464558252581845,
+          "critical_matched_random": 0.005727515348957646,
+          "critical_redundant": 0.007334716031672778
+        },
+        "f2exec01/gen-a/test/000014": {
+          "critical_parent": 0.0153244536852947,
+          "critical_matched_random": 0.011423578071925374,
+          "critical_redundant": 0.01487308093864057
+        },
+        "f2exec01/gen-a/test/000015": {
+          "critical_parent": 0.013444473673761994,
+          "critical_matched_random": 0.018143968967099983,
+          "critical_redundant": 0.014226433890009368
+        },
+        "f2exec01/gen-a/test/000016": {
+          "critical_parent": 0.015208111317069443,
+          "critical_matched_random": 0.01483140533996953,
+          "critical_redundant": 0.014531188437508212
+        },
+        "f2exec01/gen-a/test/000017": {
+          "critical_parent": 0.013735962376274446,
+          "critical_matched_random": 0.015187525500853857,
+          "critical_redundant": 0.014446329187463832
+        },
+        "f2exec01/gen-a/test/000018": {
+          "critical_parent": 0.022701380843365634,
+          "critical_matched_random": 0.021263202445374593,
+          "critical_redundant": 0.021707703014490782
+        },
+        "f2exec01/gen-a/test/000019": {
+          "critical_parent": 0.011826037067092128,
+          "critical_matched_random": 0.005501674281226263,
+          "critical_redundant": 0.011560345603222097
+        },
+        "f2exec01/gen-a/test/000020": {
+          "critical_parent": 0.011679825683434805,
+          "critical_matched_random": 0.020928551649881735,
+          "critical_redundant": 0.01179135740838117
+        },
+        "f2exec01/gen-a/test/000021": {
+          "critical_parent": 0.011250668326047835,
+          "critical_matched_random": 0.012086657703750663,
+          "critical_redundant": 0.01166467199584952
+        },
+        "f2exec01/gen-a/test/000022": {
+          "critical_parent": 0.03548687667137495,
+          "critical_matched_random": 0.022292074229982164,
+          "critical_redundant": 0.035353931305171164
+        },
+        "f2exec01/gen-a/test/000023": {
+          "critical_parent": 0.006403995867542647,
+          "critical_matched_random": 0.005074933378232849,
+          "critical_redundant": 0.006593498004669393
+        },
+        "f2exec01/gen-a/test/000024": {
+          "critical_parent": 0.01707094073019646,
+          "critical_matched_random": 0.009204594004485343,
+          "critical_redundant": 0.016327249714069896
+        },
+        "f2exec01/gen-a/test/000025": {
+          "critical_parent": 0.017785072826814873,
+          "critical_matched_random": 0.02225260643495454,
+          "critical_redundant": 0.01652945414254511
+        },
+        "f2exec01/gen-a/test/000026": {
+          "critical_parent": 0.010127243396170714,
+          "critical_matched_random": 0.008805918300317394,
+          "critical_redundant": 0.01036254464890118
+        },
+        "f2exec01/gen-a/test/000027": {
+          "critical_parent": 0.008794465102255343,
+          "critical_matched_random": 0.00861728915737735,
+          "critical_redundant": 0.008973134026207306
+        },
+        "f2exec01/gen-a/test/000028": {
+          "critical_parent": 0.015952941375198187,
+          "critical_matched_random": 0.014971147808763715,
+          "critical_redundant": 0.01633349188637954
+        },
+        "f2exec01/gen-a/test/000029": {
+          "critical_parent": 0.012510873360076434,
+          "critical_matched_random": 0.009099682793021202,
+          "critical_redundant": 0.012777775094878895
+        },
+        "f2exec01/gen-a/test/000030": {
+          "critical_parent": 0.011143722054031161,
+          "critical_matched_random": 0.011168195659087762,
+          "critical_redundant": 0.010658415344854196
+        },
+        "f2exec01/gen-a/test/000031": {
+          "critical_parent": 0.008489663885147483,
+          "critical_matched_random": 0.014413224429719977,
+          "critical_redundant": 0.00793920688469101
+        },
+        "f2exec01/gen-a/test/000032": {
+          "critical_parent": 0.005606904884593355,
+          "critical_matched_random": 0.004859815144704448,
+          "critical_redundant": 0.005846401659288892
+        },
+        "f2exec01/gen-a/test/000033": {
+          "critical_parent": 0.009511599299946319,
+          "critical_matched_random": 0.0068518490427070195,
+          "critical_redundant": 0.009824235526913846
+        },
+        "f2exec01/gen-a/test/000034": {
+          "critical_parent": 0.020611967011872265,
+          "critical_matched_random": 0.02276780145863692,
+          "critical_redundant": 0.02118573299850579
+        },
+        "f2exec01/gen-a/test/000035": {
+          "critical_parent": 0.009888798791777204,
+          "critical_matched_random": 0.007629748744269212,
+          "critical_redundant": 0.009108280487082622
+        },
+        "f2exec01/gen-a/test/000036": {
+          "critical_parent": 0.03057131629989103,
+          "critical_matched_random": 0.045875732890433736,
+          "critical_redundant": 0.02935655725498994
+        },
+        "f2exec01/gen-a/test/000037": {
+          "critical_parent": 0.006138940100316649,
+          "critical_matched_random": 0.005222500405377812,
+          "critical_redundant": 0.005830597235924668
+        },
+        "f2exec01/gen-a/test/000038": {
+          "critical_parent": 0.009227265431373208,
+          "critical_matched_random": 0.007925203070044518,
+          "critical_redundant": 0.009236683120468148
+        },
+        "f2exec01/gen-a/test/000039": {
+          "critical_parent": 0.013398249944051107,
+          "critical_matched_random": 0.01186922233965662,
+          "critical_redundant": 0.013291160541552084
+        },
+        "f2exec01/gen-a/test/000040": {
+          "critical_parent": 0.006381792930403241,
+          "critical_matched_random": 0.006391456661125024,
+          "critical_redundant": 0.006333960099490704
+        },
+        "f2exec01/gen-a/test/000041": {
+          "critical_parent": 0.01667021058016905,
+          "critical_matched_random": 0.019107155398362215,
+          "critical_redundant": 0.01654680804521949
+        },
+        "f2exec01/gen-a/test/000042": {
+          "critical_parent": 0.018060441663557733,
+          "critical_matched_random": 0.024684925667113732,
+          "critical_redundant": 0.01843954948708415
+        },
+        "f2exec01/gen-a/test/000043": {
+          "critical_parent": 0.01676316757651943,
+          "critical_matched_random": 0.014934921637177467,
+          "critical_redundant": 0.016489952492217224
+        },
+        "f2exec01/gen-a/test/000044": {
+          "critical_parent": 0.010378847226362536,
+          "critical_matched_random": 0.01026655040267441,
+          "critical_redundant": 0.00939085308669342
+        },
+        "f2exec01/gen-a/test/000045": {
+          "critical_parent": 0.01078995099912087,
+          "critical_matched_random": 0.008134813461866643,
+          "critical_redundant": 0.010986394248902798
+        },
+        "f2exec01/gen-a/test/000046": {
+          "critical_parent": 0.017642735676081094,
+          "critical_matched_random": 0.008867740941544374,
+          "critical_redundant": 0.01774419947630829
+        },
+        "f2exec01/gen-a/test/000047": {
+          "critical_parent": 0.010703710804658907,
+          "critical_matched_random": 0.014914815624554953,
+          "critical_redundant": 0.011132363333470292
+        },
+        "f2exec01/gen-a/test/000048": {
+          "critical_parent": 0.02280084681869657,
+          "critical_matched_random": 0.01304869270986981,
+          "critical_redundant": 0.02368514984846115
+        },
+        "f2exec01/gen-a/test/000049": {
+          "critical_parent": 0.0060019960661453235,
+          "critical_matched_random": 0.005789434226850669,
+          "critical_redundant": 0.006432672376158061
+        },
+        "f2exec01/gen-a/test/000050": {
+          "critical_parent": 0.009458462621464773,
+          "critical_matched_random": 0.006480945688154963,
+          "critical_redundant": 0.008786102084236013
+        },
+        "f2exec01/gen-a/test/000051": {
+          "critical_parent": 0.00827932632010844,
+          "critical_matched_random": 0.009548372175130578,
+          "critical_redundant": 0.008113328177757837
+        },
+        "f2exec01/gen-a/test/000052": {
+          "critical_parent": 0.013146831757492488,
+          "critical_matched_random": 0.01288602211409145,
+          "critical_redundant": 0.013369969402750334
+        },
+        "f2exec01/gen-a/test/000053": {
+          "critical_parent": 0.007550172387035908,
+          "critical_matched_random": 0.010266441644893752,
+          "critical_redundant": 0.007684991194832105
+        },
+        "f2exec01/gen-a/test/000054": {
+          "critical_parent": 0.04478766653617775,
+          "critical_matched_random": 0.03972715284261438,
+          "critical_redundant": 0.04519168113323826
+        },
+        "f2exec01/gen-a/test/000055": {
+          "critical_parent": 0.029030634935393377,
+          "critical_matched_random": 0.01674129886345731,
+          "critical_redundant": 0.028075719683396592
+        },
+        "f2exec01/gen-a/test/000056": {
+          "critical_parent": 0.007643850934174326,
+          "critical_matched_random": 0.010968601331114769,
+          "critical_redundant": 0.008244240897949095
+        },
+        "f2exec01/gen-a/test/000057": {
+          "critical_parent": 0.0067284018387673075,
+          "critical_matched_random": 0.009949787416391902,
+          "critical_redundant": 0.006848758672950444
+        },
+        "f2exec01/gen-a/test/000058": {
+          "critical_parent": 0.01582539859400303,
+          "critical_matched_random": 0.024275864681435957,
+          "critical_redundant": 0.015013023210620438
+        },
+        "f2exec01/gen-a/test/000059": {
+          "critical_parent": 0.009543325872746882,
+          "critical_matched_random": 0.009062185469600888,
+          "critical_redundant": 0.009451246509949366
+        },
+        "f2exec01/gen-a/test/000060": {
+          "critical_parent": 0.007244386503265963,
+          "critical_matched_random": 0.00838956961201297,
+          "critical_redundant": 0.007905292842123244
+        },
+        "f2exec01/gen-a/test/000061": {
+          "critical_parent": 0.009779705045123896,
+          "critical_matched_random": 0.010808096681204105,
+          "critical_redundant": 0.009274632463024722
+        },
+        "f2exec01/gen-a/test/000062": {
+          "critical_parent": 0.011339783427064066,
+          "critical_matched_random": 0.012970551020569272,
+          "critical_redundant": 0.011596816419451325
+        },
+        "f2exec01/gen-a/test/000063": {
+          "critical_parent": 0.01223998447811162,
+          "critical_matched_random": 0.011820103559229108,
+          "critical_redundant": 0.012005154854031625
+        },
+        "f2exec01/gen-a/test/000064": {
+          "critical_parent": 0.010379321304046445,
+          "critical_matched_random": 0.00828162001238929,
+          "critical_redundant": 0.010626214159721578
+        },
+        "f2exec01/gen-a/test/000065": {
+          "critical_parent": 0.007948334656517815,
+          "critical_matched_random": 0.009094569832086565,
+          "critical_redundant": 0.008146426450737097
+        },
+        "f2exec01/gen-a/test/000066": {
+          "critical_parent": 0.006331338581663591,
+          "critical_matched_random": 0.010002221187783612,
+          "critical_redundant": 0.006499696919625556
+        },
+        "f2exec01/gen-a/test/000067": {
+          "critical_parent": 0.011609183210465642,
+          "critical_matched_random": 0.015712734932700794,
+          "critical_redundant": 0.012467711715510596
+        },
+        "f2exec01/gen-a/test/000068": {
+          "critical_parent": 0.011201515569593068,
+          "critical_matched_random": 0.012986886108087167,
+          "critical_redundant": 0.01092757976234511
+        },
+        "f2exec01/gen-a/test/000069": {
+          "critical_parent": 0.014764160435232853,
+          "critical_matched_random": 0.014326294884085655,
+          "critical_redundant": 0.014333209436800746
+        },
+        "f2exec01/gen-a/test/000070": {
+          "critical_parent": 0.010234182597034507,
+          "critical_matched_random": 0.009825352786315812,
+          "critical_redundant": 0.010596273622165123
+        },
+        "f2exec01/gen-a/test/000071": {
+          "critical_parent": 0.011482327141695552,
+          "critical_matched_random": 0.010965486367543539,
+          "critical_redundant": 0.011204466534157595
+        },
+        "f2exec01/gen-a/test/000072": {
+          "critical_parent": 0.010480656512771492,
+          "critical_matched_random": 0.0068248047803839045,
+          "critical_redundant": 0.010127343582334343
+        },
+        "f2exec01/gen-a/test/000073": {
+          "critical_parent": 0.00918428944768729,
+          "critical_matched_random": 0.011174617852601742,
+          "critical_redundant": 0.008388984844916398
+        },
+        "f2exec01/gen-a/test/000074": {
+          "critical_parent": 0.00952228781318775,
+          "critical_matched_random": 0.006133524907959833,
+          "critical_redundant": 0.009789611023195364
+        },
+        "f2exec01/gen-a/test/000075": {
+          "critical_parent": 0.013702988383118753,
+          "critical_matched_random": 0.018568285430471104,
+          "critical_redundant": 0.014556968412189572
+        },
+        "f2exec01/gen-a/test/000076": {
+          "critical_parent": 0.01092379524682959,
+          "critical_matched_random": 0.011306824990444712,
+          "critical_redundant": 0.009620702118371372
+        },
+        "f2exec01/gen-a/test/000077": {
+          "critical_parent": 0.01464312475312639,
+          "critical_matched_random": 0.02603916296114524,
+          "critical_redundant": 0.014899761622978583
+        },
+        "f2exec01/gen-a/test/000078": {
+          "critical_parent": 0.013560615997347565,
+          "critical_matched_random": 0.013209229852590298,
+          "critical_redundant": 0.014217138152431558
+        },
+        "f2exec01/gen-a/test/000079": {
+          "critical_parent": 0.0063754928781202536,
+          "critical_matched_random": 0.006212680186662409,
+          "critical_redundant": 0.0064239983653856655
+        },
+        "f2exec01/gen-a/test/000080": {
+          "critical_parent": 0.010674020741134882,
+          "critical_matched_random": 0.019086044695642262,
+          "critical_redundant": 0.010706918538306598
+        },
+        "f2exec01/gen-a/test/000081": {
+          "critical_parent": 0.0070128047286912255,
+          "critical_matched_random": 0.0029847478080126974,
+          "critical_redundant": 0.007311158796289453
+        },
+        "f2exec01/gen-a/test/000082": {
+          "critical_parent": 0.013169869832280611,
+          "critical_matched_random": 0.013678392395377159,
+          "critical_redundant": 0.012045316346403627
+        },
+        "f2exec01/gen-a/test/000083": {
+          "critical_parent": 0.013063783153753589,
+          "critical_matched_random": 0.012245887269576391,
+          "critical_redundant": 0.012892416868082903
+        },
+        "f2exec01/gen-a/test/000084": {
+          "critical_parent": 0.018985784026207746,
+          "critical_matched_random": 0.024106666963133544,
+          "critical_redundant": 0.019083114668588943
+        },
+        "f2exec01/gen-a/test/000085": {
+          "critical_parent": 0.018557004475345213,
+          "critical_matched_random": 0.027189655746850703,
+          "critical_redundant": 0.018506552023744138
+        },
+        "f2exec01/gen-a/test/000086": {
+          "critical_parent": 0.01795282701237334,
+          "critical_matched_random": 0.02467988628066248,
+          "critical_redundant": 0.018825861107971933
+        },
+        "f2exec01/gen-a/test/000087": {
+          "critical_parent": 0.006709633067388226,
+          "critical_matched_random": 0.007090532531340917,
+          "critical_redundant": 0.006473430518612817
+        },
+        "f2exec01/gen-a/test/000088": {
+          "critical_parent": 0.015653458061731525,
+          "critical_matched_random": 0.017751871711677976,
+          "critical_redundant": 0.015354315025938882
+        },
+        "f2exec01/gen-a/test/000089": {
+          "critical_parent": 0.009784348653974357,
+          "critical_matched_random": 0.014107729825708603,
+          "critical_redundant": 0.010094268212991732
+        },
+        "f2exec01/gen-a/test/000090": {
+          "critical_parent": 0.015470420786490045,
+          "critical_matched_random": 0.014875606737203069,
+          "critical_redundant": 0.015161472045023133
+        },
+        "f2exec01/gen-a/test/000091": {
+          "critical_parent": 0.009459109183538844,
+          "critical_matched_random": 0.007638504418234031,
+          "critical_redundant": 0.009047938717736138
+        },
+        "f2exec01/gen-a/test/000092": {
+          "critical_parent": 0.007383710273576003,
+          "critical_matched_random": 0.013215832722683748,
+          "critical_redundant": 0.007362485777034804
+        },
+        "f2exec01/gen-a/test/000093": {
+          "critical_parent": 0.007142011869560789,
+          "critical_matched_random": 0.00898626995169454,
+          "critical_redundant": 0.007325598193953435
+        },
+        "f2exec01/gen-a/test/000094": {
+          "critical_parent": 0.011911736853006815,
+          "critical_matched_random": 0.012180719421141677,
+          "critical_redundant": 0.012176868091854786
+        },
+        "f2exec01/gen-a/test/000095": {
+          "critical_parent": 0.012886724555519999,
+          "critical_matched_random": 0.006833833331863086,
+          "critical_redundant": 0.014063146568972756
+        }
+      },
+      "B-STDPROB": {
+        "f2exec01/gen-a/test/000000": {
+          "critical_parent": 0.0070718719830943485,
+          "critical_matched_random": 0.00641201508955823,
+          "critical_redundant": 0.006426106931434738
+        },
+        "f2exec01/gen-a/test/000001": {
+          "critical_parent": 0.009486824687984254,
+          "critical_matched_random": 0.013268601252800888,
+          "critical_redundant": 0.009226378777788745
+        },
+        "f2exec01/gen-a/test/000002": {
+          "critical_parent": 0.011920824681443197,
+          "critical_matched_random": 0.00830083630151219,
+          "critical_redundant": 0.011812167794064238
+        },
+        "f2exec01/gen-a/test/000003": {
+          "critical_parent": 0.011379109902514352,
+          "critical_matched_random": 0.018585563119914796,
+          "critical_redundant": 0.01136949468680002
+        },
+        "f2exec01/gen-a/test/000004": {
+          "critical_parent": 0.017035163180143743,
+          "critical_matched_random": 0.017422773357894685,
+          "critical_redundant": 0.017999797128140926
+        },
+        "f2exec01/gen-a/test/000005": {
+          "critical_parent": 0.007112741953244916,
+          "critical_matched_random": 0.006415905120472114,
+          "critical_redundant": 0.006897123961674947
+        },
+        "f2exec01/gen-a/test/000006": {
+          "critical_parent": 0.014402816675741363,
+          "critical_matched_random": 0.013925169594585896,
+          "critical_redundant": 0.014220144030534558
+        },
+        "f2exec01/gen-a/test/000007": {
+          "critical_parent": 0.016131302721246524,
+          "critical_matched_random": 0.014888906023568576,
+          "critical_redundant": 0.017980585081709754
+        },
+        "f2exec01/gen-a/test/000008": {
+          "critical_parent": 0.01458976904137267,
+          "critical_matched_random": 0.013499927707016468,
+          "critical_redundant": 0.013119264298843011
+        },
+        "f2exec01/gen-a/test/000009": {
+          "critical_parent": 0.012599805335479754,
+          "critical_matched_random": 0.012356303425298797,
+          "critical_redundant": 0.01229231952931042
+        },
+        "f2exec01/gen-a/test/000010": {
+          "critical_parent": 0.02740591517822058,
+          "critical_matched_random": 0.018959900985161465,
+          "critical_redundant": 0.02685605453465272
+        },
+        "f2exec01/gen-a/test/000011": {
+          "critical_parent": 0.007838289960528965,
+          "critical_matched_random": 0.010210520484381251,
+          "critical_redundant": 0.007422840705624332
+        },
+        "f2exec01/gen-a/test/000012": {
+          "critical_parent": 0.01109655196261075,
+          "critical_matched_random": 0.004368288649453056,
+          "critical_redundant": 0.010575415963238036
+        },
+        "f2exec01/gen-a/test/000013": {
+          "critical_parent": 0.004254864408048215,
+          "critical_matched_random": 0.0039026829310589363,
+          "critical_redundant": 0.0035984837967488505
+        },
+        "f2exec01/gen-a/test/000014": {
+          "critical_parent": 0.013804017928325467,
+          "critical_matched_random": 0.006462772583795919,
+          "critical_redundant": 0.013474431854707224
+        },
+        "f2exec01/gen-a/test/000015": {
+          "critical_parent": 0.013745055068284273,
+          "critical_matched_random": 0.01637668100496133,
+          "critical_redundant": 0.014084523250521334
+        },
+        "f2exec01/gen-a/test/000016": {
+          "critical_parent": 0.017588985531970306,
+          "critical_matched_random": 0.020844565704464912,
+          "critical_redundant": 0.016156435461231956
+        },
+        "f2exec01/gen-a/test/000017": {
+          "critical_parent": 0.011282131213832786,
+          "critical_matched_random": 0.01683514875670274,
+          "critical_redundant": 0.010853129508042778
+        },
+        "f2exec01/gen-a/test/000018": {
+          "critical_parent": 0.029230566212424525,
+          "critical_matched_random": 0.03489813394844532,
+          "critical_redundant": 0.027511694503051267
+        },
+        "f2exec01/gen-a/test/000019": {
+          "critical_parent": 0.012764197860465004,
+          "critical_matched_random": 0.008796209676398171,
+          "critical_redundant": 0.012660996591741289
+        },
+        "f2exec01/gen-a/test/000020": {
+          "critical_parent": 0.012383262644073476,
+          "critical_matched_random": 0.019101463879148167,
+          "critical_redundant": 0.011593175931247297
+        },
+        "f2exec01/gen-a/test/000021": {
+          "critical_parent": 0.011175235940350423,
+          "critical_matched_random": 0.013385202942623034,
+          "critical_redundant": 0.011987131589126808
+        },
+        "f2exec01/gen-a/test/000022": {
+          "critical_parent": 0.0428388870873109,
+          "critical_matched_random": 0.039733736465374626,
+          "critical_redundant": 0.04281901111136432
+        },
+        "f2exec01/gen-a/test/000023": {
+          "critical_parent": 0.006733510246569359,
+          "critical_matched_random": 0.005397406717141469,
+          "critical_redundant": 0.006265227907095793
+        },
+        "f2exec01/gen-a/test/000024": {
+          "critical_parent": 0.012489865120086407,
+          "critical_matched_random": 0.010784011541141404,
+          "critical_redundant": 0.012903544603398551
+        },
+        "f2exec01/gen-a/test/000025": {
+          "critical_parent": 0.015948592426462304,
+          "critical_matched_random": 0.018989649704760973,
+          "critical_redundant": 0.016821974629743233
+        },
+        "f2exec01/gen-a/test/000026": {
+          "critical_parent": 0.012013287593921026,
+          "critical_matched_random": 0.014914619425932566,
+          "critical_redundant": 0.012635693540451702
+        },
+        "f2exec01/gen-a/test/000027": {
+          "critical_parent": 0.005920587348993177,
+          "critical_matched_random": 0.0032069183265169463,
+          "critical_redundant": 0.005954213060990528
+        },
+        "f2exec01/gen-a/test/000028": {
+          "critical_parent": 0.017366695321268506,
+          "critical_matched_random": 0.010734887793660164,
+          "critical_redundant": 0.017920218201147184
+        },
+        "f2exec01/gen-a/test/000029": {
+          "critical_parent": 0.011983660860332075,
+          "critical_matched_random": 0.005118117564254337,
+          "critical_redundant": 0.012062606988129792
+        },
+        "f2exec01/gen-a/test/000030": {
+          "critical_parent": 0.010343242609114558,
+          "critical_matched_random": 0.008061682701938683,
+          "critical_redundant": 0.00967624155735528
+        },
+        "f2exec01/gen-a/test/000031": {
+          "critical_parent": 0.006482857520933504,
+          "critical_matched_random": 0.014968616267045336,
+          "critical_redundant": 0.006299851582971988
+        },
+        "f2exec01/gen-a/test/000032": {
+          "critical_parent": 0.005826097964826557,
+          "critical_matched_random": 0.0036121995912657846,
+          "critical_redundant": 0.005396863790573897
+        },
+        "f2exec01/gen-a/test/000033": {
+          "critical_parent": 0.006896761694440135,
+          "critical_matched_random": 0.006201403836409251,
+          "critical_redundant": 0.006803203391394129
+        },
+        "f2exec01/gen-a/test/000034": {
+          "critical_parent": 0.01978022420640897,
+          "critical_matched_random": 0.0224617092559735,
+          "critical_redundant": 0.017786375333175616
+        },
+        "f2exec01/gen-a/test/000035": {
+          "critical_parent": 0.012628137841130848,
+          "critical_matched_random": 0.011797055498593383,
+          "critical_redundant": 0.013052881264162285
+        },
+        "f2exec01/gen-a/test/000036": {
+          "critical_parent": 0.03548278942428253,
+          "critical_matched_random": 0.05082377067042721,
+          "critical_redundant": 0.03556809926198589
+        },
+        "f2exec01/gen-a/test/000037": {
+          "critical_parent": 0.00440314486277876,
+          "critical_matched_random": 0.0018958096495933002,
+          "critical_redundant": 0.0041169170980100275
+        },
+        "f2exec01/gen-a/test/000038": {
+          "critical_parent": 0.008698778968580343,
+          "critical_matched_random": 0.00852072269966205,
+          "critical_redundant": 0.008590750758432679
+        },
+        "f2exec01/gen-a/test/000039": {
+          "critical_parent": 0.008606961203946007,
+          "critical_matched_random": 0.008910120775302252,
+          "critical_redundant": 0.008725817556734438
+        },
+        "f2exec01/gen-a/test/000040": {
+          "critical_parent": 0.005806737027510448,
+          "critical_matched_random": 0.005310173249906964,
+          "critical_redundant": 0.0051275330630165565
+        },
+        "f2exec01/gen-a/test/000041": {
+          "critical_parent": 0.01420058373844734,
+          "critical_matched_random": 0.016434769042664107,
+          "critical_redundant": 0.012806912763389173
+        },
+        "f2exec01/gen-a/test/000042": {
+          "critical_parent": 0.020049253426906135,
+          "critical_matched_random": 0.022382417797214452,
+          "critical_redundant": 0.01979729334858281
+        },
+        "f2exec01/gen-a/test/000043": {
+          "critical_parent": 0.014451481281193319,
+          "critical_matched_random": 0.010091628361907272,
+          "critical_redundant": 0.01366330164105252
+        },
+        "f2exec01/gen-a/test/000044": {
+          "critical_parent": 0.011895282590692793,
+          "critical_matched_random": 0.007580343737370439,
+          "critical_redundant": 0.011444089641035708
+        },
+        "f2exec01/gen-a/test/000045": {
+          "critical_parent": 0.011868296570524023,
+          "critical_matched_random": 0.012638328183028432,
+          "critical_redundant": 0.01131648342642519
+        },
+        "f2exec01/gen-a/test/000046": {
+          "critical_parent": 0.02211792159963537,
+          "critical_matched_random": 0.013275699172582893,
+          "critical_redundant": 0.020946348051506063
+        },
+        "f2exec01/gen-a/test/000047": {
+          "critical_parent": 0.008690360709334965,
+          "critical_matched_random": 0.012797143517269028,
+          "critical_redundant": 0.008328804142635178
+        },
+        "f2exec01/gen-a/test/000048": {
+          "critical_parent": 0.021756287526201318,
+          "critical_matched_random": 0.015386931598186491,
+          "critical_redundant": 0.019953998012675177
+        },
+        "f2exec01/gen-a/test/000049": {
+          "critical_parent": 0.005220376765700402,
+          "critical_matched_random": 0.005998771120276716,
+          "critical_redundant": 0.005099298294495653
+        },
+        "f2exec01/gen-a/test/000050": {
+          "critical_parent": 0.01070313716169309,
+          "critical_matched_random": 0.007398559401432673,
+          "critical_redundant": 0.010223395829261453
+        },
+        "f2exec01/gen-a/test/000051": {
+          "critical_parent": 0.006611306254786474,
+          "critical_matched_random": 0.005061471420857641,
+          "critical_redundant": 0.006478714446226756
+        },
+        "f2exec01/gen-a/test/000052": {
+          "critical_parent": 0.01767021219280583,
+          "critical_matched_random": 0.016604983247816563,
+          "critical_redundant": 0.01842772100051796
+        },
+        "f2exec01/gen-a/test/000053": {
+          "critical_parent": 0.006531371131401371,
+          "critical_matched_random": 0.006746197326315773,
+          "critical_redundant": 0.006791513413190842
+        },
+        "f2exec01/gen-a/test/000054": {
+          "critical_parent": 0.047839114252753834,
+          "critical_matched_random": 0.03971298390792476,
+          "critical_redundant": 0.048746317400838485
+        },
+        "f2exec01/gen-a/test/000055": {
+          "critical_parent": 0.035410694139837114,
+          "critical_matched_random": 0.03358026335222853,
+          "critical_redundant": 0.03507822957234802
+        },
+        "f2exec01/gen-a/test/000056": {
+          "critical_parent": 0.007777435239404439,
+          "critical_matched_random": 0.00907199571116103,
+          "critical_redundant": 0.007947164673910096
+        },
+        "f2exec01/gen-a/test/000057": {
+          "critical_parent": 0.007534547984876014,
+          "critical_matched_random": 0.0075098609344826815,
+          "critical_redundant": 0.006962979091676297
+        },
+        "f2exec01/gen-a/test/000058": {
+          "critical_parent": 0.01206356526731893,
+          "critical_matched_random": 0.015368087838093443,
+          "critical_redundant": 0.011152924003976362
+        },
+        "f2exec01/gen-a/test/000059": {
+          "critical_parent": 0.00865969969028676,
+          "critical_matched_random": 0.007518107588920328,
+          "critical_redundant": 0.008603472883502642
+        },
+        "f2exec01/gen-a/test/000060": {
+          "critical_parent": 0.007715613581240177,
+          "critical_matched_random": 0.00985892986257871,
+          "critical_redundant": 0.007411216920310701
+        },
+        "f2exec01/gen-a/test/000061": {
+          "critical_parent": 0.007310964908726789,
+          "critical_matched_random": 0.005420219153165817,
+          "critical_redundant": 0.007749440579640644
+        },
+        "f2exec01/gen-a/test/000062": {
+          "critical_parent": 0.011931615502194121,
+          "critical_matched_random": 0.011536697753601603,
+          "critical_redundant": 0.011371943133848686
+        },
+        "f2exec01/gen-a/test/000063": {
+          "critical_parent": 0.01124925442315914,
+          "critical_matched_random": 0.011645592852599092,
+          "critical_redundant": 0.01156699321129256
+        },
+        "f2exec01/gen-a/test/000064": {
+          "critical_parent": 0.008978992752316924,
+          "critical_matched_random": 0.007070370225442781,
+          "critical_redundant": 0.009835828285388372
+        },
+        "f2exec01/gen-a/test/000065": {
+          "critical_parent": 0.004188767910279609,
+          "critical_matched_random": 0.005131163116958406,
+          "critical_redundant": 0.003910004523479276
+        },
+        "f2exec01/gen-a/test/000066": {
+          "critical_parent": 0.004979852828438636,
+          "critical_matched_random": 0.00726076163765457,
+          "critical_redundant": 0.004943858297472751
+        },
+        "f2exec01/gen-a/test/000067": {
+          "critical_parent": 0.01580247431303616,
+          "critical_matched_random": 0.022133674265609846,
+          "critical_redundant": 0.016961258801597136
+        },
+        "f2exec01/gen-a/test/000068": {
+          "critical_parent": 0.012925275239265626,
+          "critical_matched_random": 0.018226314232581194,
+          "critical_redundant": 0.012944795760429569
+        },
+        "f2exec01/gen-a/test/000069": {
+          "critical_parent": 0.015194204980852428,
+          "critical_matched_random": 0.01100293815963798,
+          "critical_redundant": 0.013349580440532277
+        },
+        "f2exec01/gen-a/test/000070": {
+          "critical_parent": 0.010959942014542994,
+          "critical_matched_random": 0.009034346685641343,
+          "critical_redundant": 0.011702902270136055
+        },
+        "f2exec01/gen-a/test/000071": {
+          "critical_parent": 0.013806508543590704,
+          "critical_matched_random": 0.012954942468139859,
+          "critical_redundant": 0.013967755871514477
+        },
+        "f2exec01/gen-a/test/000072": {
+          "critical_parent": 0.007953527504233298,
+          "critical_matched_random": 0.0036992394468850563,
+          "critical_redundant": 0.008745763450860977
+        },
+        "f2exec01/gen-a/test/000073": {
+          "critical_parent": 0.004866056454678376,
+          "critical_matched_random": 0.007354846120708519,
+          "critical_redundant": 0.004827201625125275
+        },
+        "f2exec01/gen-a/test/000074": {
+          "critical_parent": 0.007401986133859113,
+          "critical_matched_random": 0.00648909393284056,
+          "critical_redundant": 0.0075837685381648715
+        },
+        "f2exec01/gen-a/test/000075": {
+          "critical_parent": 0.015605729659674347,
+          "critical_matched_random": 0.018257646717958983,
+          "critical_redundant": 0.016540909323979308
+        },
+        "f2exec01/gen-a/test/000076": {
+          "critical_parent": 0.011203241482790975,
+          "critical_matched_random": 0.009941901183790632,
+          "critical_redundant": 0.011154397614990118
+        },
+        "f2exec01/gen-a/test/000077": {
+          "critical_parent": 0.016712815914716985,
+          "critical_matched_random": 0.026755646388563845,
+          "critical_redundant": 0.015966425874029046
+        },
+        "f2exec01/gen-a/test/000078": {
+          "critical_parent": 0.010804721861387845,
+          "critical_matched_random": 0.0073108236408895915,
+          "critical_redundant": 0.009872781078296679
+        },
+        "f2exec01/gen-a/test/000079": {
+          "critical_parent": 0.008553397548557431,
+          "critical_matched_random": 0.00638742082648807,
+          "critical_redundant": 0.007470375013158278
+        },
+        "f2exec01/gen-a/test/000080": {
+          "critical_parent": 0.011818597593379242,
+          "critical_matched_random": 0.019968039666612942,
+          "critical_redundant": 0.011679009620652154
+        },
+        "f2exec01/gen-a/test/000081": {
+          "critical_parent": 0.007627383478123833,
+          "critical_matched_random": 0.007347991483079062,
+          "critical_redundant": 0.006889633058259883
+        },
+        "f2exec01/gen-a/test/000082": {
+          "critical_parent": 0.011662212666124105,
+          "critical_matched_random": 0.016355590066976018,
+          "critical_redundant": 0.012262891219170005
+        },
+        "f2exec01/gen-a/test/000083": {
+          "critical_parent": 0.011428271299573004,
+          "critical_matched_random": 0.007837234478857782,
+          "critical_redundant": 0.01119667960813752
+        },
+        "f2exec01/gen-a/test/000084": {
+          "critical_parent": 0.019826104002142395,
+          "critical_matched_random": 0.02455311961885956,
+          "critical_redundant": 0.020012035758958924
+        },
+        "f2exec01/gen-a/test/000085": {
+          "critical_parent": 0.01778215311329674,
+          "critical_matched_random": 0.02137584353072776,
+          "critical_redundant": 0.017377634946670797
+        },
+        "f2exec01/gen-a/test/000086": {
+          "critical_parent": 0.011280562832123702,
+          "critical_matched_random": 0.01832426991313696,
+          "critical_redundant": 0.01158948325448566
+        },
+        "f2exec01/gen-a/test/000087": {
+          "critical_parent": 0.0076223405905895755,
+          "critical_matched_random": 0.0057594673708081245,
+          "critical_redundant": 0.007594061394532521
+        },
+        "f2exec01/gen-a/test/000088": {
+          "critical_parent": 0.013524934752947755,
+          "critical_matched_random": 0.013036373588773938,
+          "critical_redundant": 0.012453323609575078
+        },
+        "f2exec01/gen-a/test/000089": {
+          "critical_parent": 0.011814204010146635,
+          "critical_matched_random": 0.013286835824449858,
+          "critical_redundant": 0.010862465896126298
+        },
+        "f2exec01/gen-a/test/000090": {
+          "critical_parent": 0.019743197200888837,
+          "critical_matched_random": 0.017033407050702307,
+          "critical_redundant": 0.018346772442951246
+        },
+        "f2exec01/gen-a/test/000091": {
+          "critical_parent": 0.011895014438778162,
+          "critical_matched_random": 0.015072431829240585,
+          "critical_redundant": 0.011314171107692853
+        },
+        "f2exec01/gen-a/test/000092": {
+          "critical_parent": 0.007047524623986747,
+          "critical_matched_random": 0.009294323519700104,
+          "critical_redundant": 0.007344724248266882
+        },
+        "f2exec01/gen-a/test/000093": {
+          "critical_parent": 0.00561310823454901,
+          "critical_matched_random": 0.007366864217652216,
+          "critical_redundant": 0.005361397871402679
+        },
+        "f2exec01/gen-a/test/000094": {
+          "critical_parent": 0.010180072513995346,
+          "critical_matched_random": 0.006941411230299207,
+          "critical_redundant": 0.010870936240448993
+        },
+        "f2exec01/gen-a/test/000095": {
+          "critical_parent": 0.015044931581036916,
+          "critical_matched_random": 0.01774757407191727,
+          "critical_redundant": 0.01568870386108756
+        }
+      }
+    },
+    "matched_random_interaction_asset_effect": {
+      "f2exec01/gen-a/test/000000": 4.1740118629402515e-05,
+      "f2exec01/gen-a/test/000001": 0.002028131029672093,
+      "f2exec01/gen-a/test/000002": 5.332235660817936e-06,
+      "f2exec01/gen-a/test/000003": -0.0013355138815111588,
+      "f2exec01/gen-a/test/000004": 0.004766826310919391,
+      "f2exec01/gen-a/test/000005": 0.0007669030067821344,
+      "f2exec01/gen-a/test/000006": -0.0019522033528321316,
+      "f2exec01/gen-a/test/000007": 0.002320796147816711,
+      "f2exec01/gen-a/test/000008": -0.0005403504603438912,
+      "f2exec01/gen-a/test/000009": 0.0007545772112078134,
+      "f2exec01/gen-a/test/000010": -6.59223749405807e-05,
+      "f2exec01/gen-a/test/000011": 0.0004402931469182172,
+      "f2exec01/gen-a/test/000012": 0.0008149408838815162,
+      "f2exec01/gen-a/test/000013": 0.001737415635337432,
+      "f2exec01/gen-a/test/000014": 0.00415066500297851,
+      "f2exec01/gen-a/test/000015": 0.00024276381979385976,
+      "f2exec01/gen-a/test/000016": 0.0021907496783468454,
+      "f2exec01/gen-a/test/000017": 0.003178588166419003,
+      "f2exec01/gen-a/test/000018": 0.00033460785117414224,
+      "f2exec01/gen-a/test/000019": 0.0027416113557087057,
+      "f2exec01/gen-a/test/000020": 0.0006670546717941758,
+      "f2exec01/gen-a/test/000021": 5.81623365481696e-05,
+      "f2exec01/gen-a/test/000022": 0.0031761310270263087,
+      "f2exec01/gen-a/test/000023": 0.0006198508458005057,
+      "f2exec01/gen-a/test/000024": 0.0018071026230851812,
+      "f2exec01/gen-a/test/000025": 0.0025182870320147937,
+      "f2exec01/gen-a/test/000026": 0.002715642770959271,
+      "f2exec01/gen-a/test/000027": 0.0019720975930492086,
+      "f2exec01/gen-a/test/000028": 0.004796255897316669,
+      "f2exec01/gen-a/test/000029": 0.0012649252182907532,
+      "f2exec01/gen-a/test/000030": 0.0003637579890588919,
+      "f2exec01/gen-a/test/000031": -0.0008667887498935063,
+      "f2exec01/gen-a/test/000032": -0.0014492143462929462,
+      "f2exec01/gen-a/test/000033": 0.0010536399980386095,
+      "f2exec01/gen-a/test/000034": 0.001136462307638592,
+      "f2exec01/gen-a/test/000035": 0.0005634754068321657,
+      "f2exec01/gen-a/test/000036": 0.0001361335420774143,
+      "f2exec01/gen-a/test/000037": -0.00019268024091919267,
+      "f2exec01/gen-a/test/000038": 0.0022860605062709916,
+      "f2exec01/gen-a/test/000039": 0.0034935100831919247,
+      "f2exec01/gen-a/test/000040": -0.0008099834538168377,
+      "f2exec01/gen-a/test/000041": 0.0034470413294103415,
+      "f2exec01/gen-a/test/000042": -0.0006554970103833406,
+      "f2exec01/gen-a/test/000043": 0.0023324882818592917,
+      "f2exec01/gen-a/test/000044": 0.0015638743837674465,
+      "f2exec01/gen-a/test/000045": 0.0009947939672403866,
+      "f2exec01/gen-a/test/000046": 0.004477224105762111,
+      "f2exec01/gen-a/test/000047": -0.001228929704262151,
+      "f2exec01/gen-a/test/000048": 0.0008923151633805694,
+      "f2exec01/gen-a/test/000049": -0.0003083516947097248,
+      "f2exec01/gen-a/test/000050": -0.0003646185828579797,
+      "f2exec01/gen-a/test/000051": 0.00040528095430798013,
+      "f2exec01/gen-a/test/000052": -0.0013336067915790612,
+      "f2exec01/gen-a/test/000053": 0.0006960811507370734,
+      "f2exec01/gen-a/test/000054": -0.001378641256855593,
+      "f2exec01/gen-a/test/000055": 0.0019039465114474331,
+      "f2exec01/gen-a/test/000056": 0.0006826972692377039,
+      "f2exec01/gen-a/test/000057": 0.0013156263157725332,
+      "f2exec01/gen-a/test/000058": 0.0007350873202085497,
+      "f2exec01/gen-a/test/000059": 0.00040856138285663414,
+      "f2exec01/gen-a/test/000060": 0.0013404319890671311,
+      "f2exec01/gen-a/test/000061": 0.001321440666086144,
+      "f2exec01/gen-a/test/000062": 0.0005853186464971964,
+      "f2exec01/gen-a/test/000063": 0.0017722656743394002,
+      "f2exec01/gen-a/test/000064": -0.00041283920614255953,
+      "f2exec01/gen-a/test/000065": 0.0015794908006985986,
+      "f2exec01/gen-a/test/000066": 0.0032437558596332865,
+      "f2exec01/gen-a/test/000067": 0.0016198242083191874,
+      "f2exec01/gen-a/test/000068": -0.0007569162795941036,
+      "f2exec01/gen-a/test/000069": 0.0026086132145590247,
+      "f2exec01/gen-a/test/000070": 0.0016042953357100491,
+      "f2exec01/gen-a/test/000071": 0.0004420577444963988,
+      "f2exec01/gen-a/test/000072": -0.001504723603526751,
+      "f2exec01/gen-a/test/000073": 0.001819238532334566,
+      "f2exec01/gen-a/test/000074": -7.970796691046802e-05,
+      "f2exec01/gen-a/test/000075": 0.0027529911862479318,
+      "f2exec01/gen-a/test/000076": 0.00013637656552923944,
+      "f2exec01/gen-a/test/000077": -0.0035405555326077677,
+      "f2exec01/gen-a/test/000078": -0.00033218299763070205,
+      "f2exec01/gen-a/test/000079": -0.002018581765393416,
+      "f2exec01/gen-a/test/000080": -0.0010725015050007242,
+      "f2exec01/gen-a/test/000081": 0.00017173733148309915,
+      "f2exec01/gen-a/test/000082": -0.00025411850462357183,
+      "f2exec01/gen-a/test/000083": 0.0006552921194169257,
+      "f2exec01/gen-a/test/000084": 0.00042719813063740644,
+      "f2exec01/gen-a/test/000085": 0.0018041289618445774,
+      "f2exec01/gen-a/test/000086": 0.0018218919220897888,
+      "f2exec01/gen-a/test/000087": -0.0015744934272434977,
+      "f2exec01/gen-a/test/000088": -0.0008507698981298339,
+      "f2exec01/gen-a/test/000089": 0.0010844852982295889,
+      "f2exec01/gen-a/test/000090": -0.00025209360238578573,
+      "f2exec01/gen-a/test/000091": -0.002595635286221902,
+      "f2exec01/gen-a/test/000092": 0.00010998371160692662,
+      "f2exec01/gen-a/test/000093": -0.0004598230847881902,
+      "f2exec01/gen-a/test/000094": 0.00043259747326374076,
+      "f2exec01/gen-a/test/000095": -0.0004471658935977356
+    },
+    "state_mae_ratio": {
+      "estimate": 1.0079489870229743,
+      "ci": [
+        0.9965571486816803,
+        1.0192823298192197
+      ],
+      "bootstrap_se": 0.006912530409587402,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091803
+    },
+    "failure_mae_ratio": {
+      "estimate": 1.0056305209032363,
+      "ci": [
+        0.9950526763341689,
+        1.0174718786350883
+      ],
+      "bootstrap_se": 0.006721377762892095,
+      "asset_count": 96,
+      "replicates": 2000,
+      "seed": 2026091803
+    },
+    "models": [
+      "PROP-DIRECT",
+      "B-STDPROB",
+      "B-INDEP",
+      "B-INVAR",
+      "B-CDE",
+      "B-SET",
+      "B-WIDEN"
+    ]
+  },
+  "provenance": {
+    "contract": "formal_runs/f3_c2_information_loss_a40_0.1.0/c2_formal_contract.json",
+    "formal_authorization": "formal_runs/f3_c2_information_loss_a40_0.1.0/formal_authorization.json",
+    "source_prediction_manifest": "formal_runs/f3_c2_information_loss_a40_0.1.0/inputs/test/prediction_manifest.json",
+    "source_reference_manifest": "formal_runs/f3_c2_information_loss_a40_0.1.0/inputs/test/reference_manifest.json",
+    "source_metrics": "formal_runs/f3_c2_information_loss_a40_0.1.0/inputs/test/metrics/per_row_metrics.jsonl",
+    "base_f2_prediction_manifest": "formal_runs/f2_sufficient_compatibility/frz3-f2-0.1.0/test/prediction_manifest.json",
+    "base_f2_reference_manifest": "formal_runs/f2_sufficient_compatibility/frz3-f2-0.1.0/test/reference_manifest.json",
+    "extension_prediction_manifest": "formal_runs/f3_c2_information_loss_a40_0.1.0/inputs/extension/test/prediction_manifest.json",
+    "extension_reference_manifest": "formal_runs/f3_c2_information_loss_a40_0.1.0/inputs/extension/test/reference_manifest.json",
+    "models": [
+      "PROP-DIRECT",
+      "B-STDPROB",
+      "B-INDEP",
+      "B-INVAR",
+      "B-CDE",
+      "B-SET",
+      "B-WIDEN"
+    ],
+    "evaluator": {
+      "id": "formal_pipeline.f2.c2_geometry.off_diagonal_energy_distance_v1",
+      "cross_diagonal": "excluded",
+      "within_diagonal": "excluded",
+      "oracle_sample_coupling": "same_info_metric CRN across matched views",
+      "model_sample_coupling": "independent frozen predictive draws",
+      "clamp_negative_estimates": true
+    },
+    "thresholds_changed_after_scoring": false,
+    "formal_outcomes_accessed_before_scoring": false
+  },
+  "created_at_utc": "2026-10-02T06:57:04.133283+00:00"
+}

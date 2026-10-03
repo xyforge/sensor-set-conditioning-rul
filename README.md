@@ -54,7 +54,8 @@ release are listed in `reproducibility/release_manifest.json`.
 
 ## Release status
 
-This is a pre-release working tree. Before making a public GitHub release,
-choose a software license, review the data-availability statement, and create a
-versioned release containing the manuscript source and compact result bundle.
-The release can then be connected to Zenodo if a DOI is needed for submission.
+The `v0.2.0` archive candidate is prepared locally. It includes the frozen
+protocol, thresholds, decision snapshots, current manuscript source, and compact
+result bundle. See `RELEASE_NOTES_v0.2.0.md`, `zenodo.json`, and
+`reproducibility/RELEASE_CHECKLIST.md` for the publication sequence. A DOI is not
+claimed until the versioned GitHub release has been published through Zenodo.

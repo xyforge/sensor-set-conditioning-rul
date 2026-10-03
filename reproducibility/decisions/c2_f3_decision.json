@@ -1,0 +1,40 @@
+{
+  "artifact_id": "F3-C2-FORMAL-DECISION-01",
+  "contract_id": "f3-c2-formal-a40-0.1.0",
+  "status": "C2-CORE-FAIL",
+  "execution_status": "VALID",
+  "split_scores": {
+    "test": "formal_runs/f3_c2_information_loss_a40_0.1.0/test/score/c2_f3_split_score.json",
+    "lockbox": "formal_runs/f3_c2_information_loss_a40_0.1.0/lockbox/score/c2_f3_split_score.json"
+  },
+  "checks": {
+    "test": false,
+    "lockbox": false
+  },
+  "direction_consistency": {
+    "C2-P1:delta_R_crit": {
+      "test_estimate": 0.0008652393440615364,
+      "lockbox_estimate": 0.0008275288233158387,
+      "same_direction": true
+    },
+    "C2-P2:delta_G_loss": {
+      "test_estimate": 0.00018810665366908647,
+      "lockbox_estimate": 0.0006182575123775041,
+      "same_direction": true
+    },
+    "C2-P3:I_R": {
+      "test_estimate": 0.0007676928594096185,
+      "lockbox_estimate": 0.0004912956285773328,
+      "same_direction": true
+    }
+  },
+  "errors": [],
+  "provenance": {
+    "contract": "formal_runs/f3_c2_information_loss_a40_0.1.0/c2_formal_contract.json",
+    "authorization": "formal_runs/f3_c2_information_loss_a40_0.1.0/formal_authorization.json",
+    "frozen_input_manifest": "formal_runs/f3_c2_information_loss_a40_0.1.0/frozen_input_manifest.json",
+    "thresholds_changed_after_scoring": false,
+    "formal_outcomes_accessed_before_scoring": false
+  },
+  "created_at_utc": "2026-10-02T06:59:06.484293+00:00"
+}
