@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+title: "Sensor-Set Conditioning for Prognostic Posterior Consistency"
+message: "If you use the code or result artifacts, please cite this repository and the associated manuscript."
+type: software
+authors:
+  - family-names: Xin
+    given-names: Yu
+version: 0.1.0
+date-released: 2026-10-03
+abstract: >-
+  Reproducible manuscript source and analysis artifacts for evaluating
+  sensor-set conditioning in probabilistic remaining-useful-life prediction.
+repository-code: "https://github.com/xyforge/sensor-set-conditioning-rul"

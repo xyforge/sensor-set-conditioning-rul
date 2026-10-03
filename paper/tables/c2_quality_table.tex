@@ -1,0 +1,24 @@
+\begin{table}[tb]
+  \centering
+  \caption{Descriptive predictive quality under information loss
+  (covering the full 96-asset population; distinct from the 10-asset
+  test/lockbox partition described in
+  Section~\ref{sec:methods:protocol}). Values are means within asset followed
+  by means over 96 assets; lower is better.}
+  \label{tab:c2_quality}
+  \resizebox{\linewidth}{!}{%
+    \begin{tabular}{lrrrrrr}
+      \toprule
+      Model & State MAE & Failure MAE & CRPS & State rank & Failure rank & CRPS rank \\
+      \midrule
+      \propdirect{} & 0.014577 & 0.069585 & 0.048445 & 3 & 3 & 2 \\
+      \bstdprob{}   & 0.014462 & 0.069195 & 0.048038 & 2 & 1 & 1 \\
+      B-INDEP       & 0.014881 & 0.070197 & 0.049115 & 5 & 5 & 5 \\
+      B-INVAR       & 0.014847 & 0.069970 & 0.048645 & 4 & 4 & 3 \\
+      B-CDE         & 0.015563 & 0.070610 & 0.049103 & 6 & 6 & 4 \\
+      B-SET         & 0.017344 & 0.071081 & 0.049566 & 7 & 7 & 7 \\
+      B-WIDEN       & 0.014455 & 0.069255 & 0.049189 & 1 & 2 & 6 \\
+      \bottomrule
+    \end{tabular}%
+  }
+\end{table}

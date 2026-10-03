@@ -1,0 +1,37 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What the Results Show}
+
+The central result is a geometric one. When the available sensor views remain task-sufficient, explicitly conditioning the predictor on the observation process reduces disagreement between posterior predictions for the same asset. The 38.6\% reduction in cross-view energy distance is stable across the independent test and lockbox partitions and remains after a four-fold reduction in Monte Carlo samples. The effect therefore captures a property of the representation rather than a particular sampling budget.
+
+The boundary experiment gives this result its meaning. Once functionally critical sensors are removed, PROP-DIRECT no longer preserves the same advantage. Its oracle-model correlation is 9.9\% weaker in the matched-random comparison, whereas B-STDPROB shows the opposite ordering. The cases are exploratory and share assets, so the correlation is best read as a mechanistic clue. The clue is nevertheless specific: the architecture responds to the amount of available information more readily than to the role played by an individual sensor. A model can therefore be geometrically stable across views while still being insufficiently sensitive to what has been lost.
+
+This distinction separates two questions that are often combined in missing-sensor studies. The first asks whether predictions for one asset remain compatible as its observation set changes. The second asks whether the model recognizes that different missing sensors can have different consequences. The present architecture addresses the first question under task sufficiency and exposes the second as its current boundary.
+
+\subsection{An Architectural Interpretation}
+
+PROP-DIRECT supplies the model with a representation of the available sensor set alongside the observed sequence. This gives the predictor a direct route to adjust its posterior geometry when the observation process changes. It also creates a demand on that representation: the set description must preserve distinctions that matter for degradation. The matched-random result suggests that the current flat representation does not reliably preserve those distinctions when sensor importance is strongly heterogeneous.
+
+The baseline provides a useful comparison because it has no explicit sensor-set input. Its stronger matched-random correlation is consistent with a more conservative response to missing observations: broad uncertainty may track the severity of a critical deletion better than a configuration-specific adjustment that lacks an importance signal. This explanation is plausible rather than identified by the present experiments. It motivates a design principle for the next model generation: condition on availability, but give the conditioning pathway a structured account of sensor function.
+
+Hierarchical representations could separate subsystem status from individual sensor status; state-dependent attention could allow importance to change with degradation mode; and physics-informed priors could encode known functional roles. These are extensions of the same geometric objective, rather than replacements for it. They should be evaluated with both sufficient-view consistency tests and deletion tests that hold sensor count fixed while changing functional importance.
+
+\subsection{Relation to Existing Prognostic Practice}
+
+Imputation and missing-data methods~\citep{rubin1976inference,little2019statistical,che2018gru,cao2018brits,tashiro2021csdi} primarily reconstruct an unobserved measurement before making a prediction. Observation-process conditioning keeps the availability event explicit, allowing uncertainty about the observation process to remain visible in the posterior. The results here suggest that the two ideas are complementary: imputation may recover information from a critical channel, while conditioning can maintain a coherent geometry across the views that remain.
+
+Set encoders and attention mechanisms~\citep{lee2019settransformer,vaswani2017attention,zaheer2017deep} provide natural alternatives for representing variable sensor collections. Their presence in a model does not by itself establish importance awareness. A meaningful comparison should therefore pair standard point and probabilistic accuracy with the cross-view and matched-random tests used here. Multi-task or meta-learning objectives~\citep{finn2017model} could further supply training signals for configurations that a single shared model must serve.
+
+\subsection{The C-MAPSS Result in Context}
+\label{sec:limitations}
+
+The synthetic generator gives the primary experiment a property that field data cannot easily provide: an exact oracle posterior and direct control over which observation process is applied to the same latent asset. C-MAPSS FD001 offers a complementary public reference point, but it is also a simulated benchmark. In the shared-model evaluation, one predictor per method was trained on all three views, the predictors used an MSE point head with dropout sampling, and each reduced view was formed by artificial deletion of three of the 14 active channels.
+
+The result is conditional. PROP-DIRECT reduces distance to the full view by 18.5--28.9\%, but is 36.6\% worse than B-STDPROB for the pair of equally sized reduced views. Single-view MAE is close across methods, so the reversal does not track a broad point-accuracy collapse. The pattern is consistent with sensitivity to sensor identity that remains incomplete under the current representation. It is protocol-aligned evidence from a simulated benchmark, not field validation; data with naturally occurring sensor loss would test whether the same boundary matters in operation.
+
+\subsection{Scope and Future Tests}
+
+Several aspects of the evidence define the next experiments rather than weaken the result already established. The synthetic study uses one generator family and focuses on RUL posterior geometry; the calibration diagnostic is broadly comparable between methods, but replication with independent generators, tail-risk metrics, and other prognostic tasks would test the breadth of the finding. The present model comparison also leaves attention-based, ensemble, and importance-aware architectures open. These comparisons are especially valuable because a model that is accurate in a single view can still be poorly aligned across views, while a model that is highly aligned can achieve that agreement by becoming insufficiently informative.
+
+For practical evaluation, the most informative sequence is therefore straightforward: first train a shared model across observation configurations on the public benchmark, then repeat the deletion study with domain-informed critical channels, and finally examine longitudinal assets with naturally occurring outages. If these tests preserve the geometry gain while improving the importance boundary, observation-process conditioning would offer a useful component for uncertainty-aware maintenance decisions. If they do not, the present study still identifies the relevant failure mode and the metric pair needed to detect it.

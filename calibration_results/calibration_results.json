@@ -1,0 +1,2384 @@
+{
+  "analysis": "descriptive posterior calibration",
+  "coordinates": [
+    "h1",
+    "h2",
+    "delta_T"
+  ],
+  "nominal_levels": [
+    0.5,
+    0.8,
+    0.9
+  ],
+  "bootstrap": {
+    "replicates": 2000,
+    "confidence": 0.9,
+    "unit": "asset"
+  },
+  "stores": [
+    {
+      "split": "test",
+      "model": "PROP-DIRECT",
+      "metadata": {
+        "artifact_id": "F2-C1-OA-PREDICTION-STORE-01",
+        "contract_id": "f2-c1-outcome-aware-0.1.0",
+        "split_role": "test",
+        "model_id": "PROP-DIRECT",
+        "optimization_seed": 1701,
+        "checkpoint": "formal_runs/development/f1-p1-formal-0.1.0/prop-direct/f1-p1-direct-t04/seed-1701/best_checkpoint.pt",
+        "formal_outcomes_accessed": false,
+        "same_info_metric_consumed": false
+      },
+      "rows": 6027,
+      "assets": 96,
+      "predictive_samples": 1024,
+      "coordinates": [
+        "h1",
+        "h2",
+        "delta_T"
+      ],
+      "central_coverage": {
+        "0.5": {
+          "h1": {
+            "estimate": 0.4977678571428572,
+            "ci_lower": 0.47072585978835974,
+            "ci_upper": 0.5257109788359788,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261003,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.5365410052910052,
+            "ci_lower": 0.5072751322751322,
+            "ci_upper": 0.5654844576719577,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261004,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.474619708994709,
+            "ci_lower": 0.4192253637566138,
+            "ci_upper": 0.5290343915343916,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261005,
+            "unit": "asset"
+          }
+        },
+        "0.8": {
+          "h1": {
+            "estimate": 0.7783564814814815,
+            "ci_lower": 0.7548735119047619,
+            "ci_upper": 0.8005125661375662,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261020,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.8072089947089948,
+            "ci_lower": 0.7779431216931217,
+            "ci_upper": 0.8361441798941799,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261021,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.8471395502645502,
+            "ci_lower": 0.807370205026455,
+            "ci_upper": 0.8815352182539683,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261022,
+            "unit": "asset"
+          }
+        },
+        "0.9": {
+          "h1": {
+            "estimate": 0.8831845238095238,
+            "ci_lower": 0.8658234126984127,
+            "ci_upper": 0.8998842592592592,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261037,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.8974867724867726,
+            "ci_lower": 0.876984126984127,
+            "ci_upper": 0.9171626984126983,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261038,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.9352678571428571,
+            "ci_lower": 0.9083167989417991,
+            "ci_upper": 0.9594122023809525,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261039,
+            "unit": "asset"
+          }
+        }
+      },
+      "pit": {
+        "h1": {
+          "mean": {
+            "estimate": 0.5493360246930804,
+            "ci_lower": 0.5239715333968874,
+            "ci_upper": 0.5737808550476398,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261103,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06617724867724868,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            510,
+            413,
+            497,
+            602,
+            563,
+            597,
+            620,
+            705,
+            695,
+            825
+          ]
+        },
+        "h2": {
+          "mean": {
+            "estimate": 0.4786840368200232,
+            "ci_lower": 0.4552322993202815,
+            "ci_upper": 0.5020938328334263,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261104,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06654431216931217,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            718,
+            512,
+            639,
+            614,
+            678,
+            674,
+            604,
+            615,
+            527,
+            446
+          ]
+        },
+        "delta_T": {
+          "mean": {
+            "estimate": 0.5442998169591188,
+            "ci_lower": 0.5022553459046378,
+            "ci_upper": 0.5873567772920799,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261105,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.11601190476190475,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            333,
+            653,
+            574,
+            525,
+            484,
+            568,
+            660,
+            751,
+            894,
+            585
+          ]
+        }
+      }
+    },
+    {
+      "split": "test",
+      "model": "PROP-DIRECT",
+      "metadata": {
+        "artifact_id": "F2-C1-OA-PREDICTION-STORE-01",
+        "contract_id": "f2-c1-outcome-aware-0.1.0",
+        "split_role": "test",
+        "model_id": "PROP-DIRECT",
+        "optimization_seed": 2303,
+        "checkpoint": "formal_runs/development/f1-p1-formal-0.1.0/prop-direct/f1-p1-direct-t04/seed-2303/best_checkpoint.pt",
+        "formal_outcomes_accessed": false,
+        "same_info_metric_consumed": false
+      },
+      "rows": 6027,
+      "assets": 96,
+      "predictive_samples": 1024,
+      "coordinates": [
+        "h1",
+        "h2",
+        "delta_T"
+      ],
+      "central_coverage": {
+        "0.5": {
+          "h1": {
+            "estimate": 0.48569775132275134,
+            "ci_lower": 0.4552703373015873,
+            "ci_upper": 0.5160466269841271,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261013,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.47792658730158727,
+            "ci_lower": 0.4536168981481481,
+            "ci_upper": 0.503968253968254,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261014,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.4581679894179895,
+            "ci_lower": 0.4044312169312169,
+            "ci_upper": 0.5107473544973544,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261015,
+            "unit": "asset"
+          }
+        },
+        "0.8": {
+          "h1": {
+            "estimate": 0.7869543650793651,
+            "ci_lower": 0.7610697751322751,
+            "ci_upper": 0.8116732804232805,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261030,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.7901785714285713,
+            "ci_lower": 0.7676835317460318,
+            "ci_upper": 0.8131696428571429,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261031,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.7920800264550265,
+            "ci_lower": 0.7484250992063493,
+            "ci_upper": 0.8359953703703703,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261032,
+            "unit": "asset"
+          }
+        },
+        "0.9": {
+          "h1": {
+            "estimate": 0.8854166666666666,
+            "ci_lower": 0.8675512566137565,
+            "ci_upper": 0.902612433862434,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261047,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.9010416666666666,
+            "ci_lower": 0.8840071097883598,
+            "ci_upper": 0.9171668320105821,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261048,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.9037698412698413,
+            "ci_lower": 0.874826388888889,
+            "ci_upper": 0.9299024470899471,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261049,
+            "unit": "asset"
+          }
+        }
+      },
+      "pit": {
+        "h1": {
+          "mean": {
+            "estimate": 0.48998482517464453,
+            "ci_lower": 0.467745519567419,
+            "ci_upper": 0.5118639547358115,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261113,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.0614021164021164,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            663,
+            635,
+            629,
+            580,
+            624,
+            601,
+            541,
+            561,
+            578,
+            615
+          ]
+        },
+        "h2": {
+          "mean": {
+            "estimate": 0.603228452975157,
+            "ci_lower": 0.5812980530753968,
+            "ci_upper": 0.6248548840719556,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261114,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06708333333333333,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            319,
+            360,
+            381,
+            446,
+            549,
+            634,
+            688,
+            789,
+            917,
+            944
+          ]
+        },
+        "delta_T": {
+          "mean": {
+            "estimate": 0.4607187906901042,
+            "ci_lower": 0.4175581876563017,
+            "ci_upper": 0.5055405833733776,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261115,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.11244047619047619,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            864,
+            702,
+            592,
+            584,
+            510,
+            554,
+            504,
+            698,
+            638,
+            381
+          ]
+        }
+      }
+    },
+    {
+      "split": "test",
+      "model": "PROP-DIRECT",
+      "metadata": {
+        "artifact_id": "F2-C1-OA-PREDICTION-STORE-01",
+        "contract_id": "f2-c1-outcome-aware-0.1.0",
+        "split_role": "test",
+        "model_id": "PROP-DIRECT",
+        "optimization_seed": 2909,
+        "checkpoint": "formal_runs/development/f1-p1-formal-0.1.0/prop-direct/f1-p1-direct-t04/seed-2909/best_checkpoint.pt",
+        "formal_outcomes_accessed": false,
+        "same_info_metric_consumed": false
+      },
+      "rows": 6027,
+      "assets": 96,
+      "predictive_samples": 1024,
+      "coordinates": [
+        "h1",
+        "h2",
+        "delta_T"
+      ],
+      "central_coverage": {
+        "0.5": {
+          "h1": {
+            "estimate": 0.5235615079365079,
+            "ci_lower": 0.4942915013227513,
+            "ci_upper": 0.5526661706349206,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261023,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.560515873015873,
+            "ci_lower": 0.5322420634920634,
+            "ci_upper": 0.5873015873015873,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261024,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.4794973544973544,
+            "ci_lower": 0.4259176587301587,
+            "ci_upper": 0.5358796296296297,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261025,
+            "unit": "asset"
+          }
+        },
+        "0.8": {
+          "h1": {
+            "estimate": 0.8147321428571429,
+            "ci_lower": 0.7925760582010583,
+            "ci_upper": 0.8371362433862434,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261040,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.8433366402116403,
+            "ci_lower": 0.8211805555555557,
+            "ci_upper": 0.8647569444444444,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261041,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.8375496031746031,
+            "ci_lower": 0.7962880291005291,
+            "ci_upper": 0.8759961970899471,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261042,
+            "unit": "asset"
+          }
+        },
+        "0.9": {
+          "h1": {
+            "estimate": 0.9086474867724869,
+            "ci_lower": 0.8934317129629629,
+            "ci_upper": 0.9244378306878307,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261057,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.9260912698412698,
+            "ci_lower": 0.910383597883598,
+            "ci_upper": 0.9406498015873017,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261058,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.937582671957672,
+            "ci_lower": 0.9112847222222222,
+            "ci_upper": 0.9596643518518518,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261059,
+            "unit": "asset"
+          }
+        }
+      },
+      "pit": {
+        "h1": {
+          "mean": {
+            "estimate": 0.5392799982948908,
+            "ci_lower": 0.5181511571167638,
+            "ci_upper": 0.5595062982468377,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261123,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06485780423280423,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            381,
+            490,
+            575,
+            635,
+            651,
+            652,
+            589,
+            671,
+            655,
+            728
+          ]
+        },
+        "h2": {
+          "mean": {
+            "estimate": 0.5101153661334324,
+            "ci_lower": 0.4877210788625888,
+            "ci_upper": 0.5324470479652365,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261124,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06608134920634921,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            486,
+            483,
+            558,
+            670,
+            725,
+            645,
+            714,
+            690,
+            603,
+            453
+          ]
+        },
+        "delta_T": {
+          "mean": {
+            "estimate": 0.48005950766265704,
+            "ci_lower": 0.43793746302367514,
+            "ci_upper": 0.5229913459253059,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261125,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.11361111111111111,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            595,
+            808,
+            574,
+            591,
+            508,
+            587,
+            581,
+            762,
+            654,
+            367
+          ]
+        }
+      }
+    },
+    {
+      "split": "test",
+      "model": "B-STDPROB",
+      "metadata": {
+        "artifact_id": "F2-C1-OA-PREDICTION-STORE-01",
+        "contract_id": "f2-c1-outcome-aware-0.1.0",
+        "split_role": "test",
+        "model_id": "B-STDPROB",
+        "optimization_seed": 1701,
+        "checkpoint": "formal_runs/development/f1-p1-formal-0.1.0/b-stdprob/f1-p1-stdprob-t04/seed-1701/best_checkpoint.pt",
+        "formal_outcomes_accessed": false,
+        "same_info_metric_consumed": false
+      },
+      "rows": 6027,
+      "assets": 96,
+      "predictive_samples": 1024,
+      "coordinates": [
+        "h1",
+        "h2",
+        "delta_T"
+      ],
+      "central_coverage": {
+        "0.5": {
+          "h1": {
+            "estimate": 0.4803240740740741,
+            "ci_lower": 0.450719246031746,
+            "ci_upper": 0.5107556216931216,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261103,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.5073578042328042,
+            "ci_lower": 0.4761863425925925,
+            "ci_upper": 0.5367063492063492,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261104,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.4499007936507937,
+            "ci_lower": 0.3933118386243386,
+            "ci_upper": 0.5099289021164022,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261105,
+            "unit": "asset"
+          }
+        },
+        "0.8": {
+          "h1": {
+            "estimate": 0.7756283068783069,
+            "ci_lower": 0.7518105158730157,
+            "ci_upper": 0.799280753968254,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261120,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.7937334656084657,
+            "ci_lower": 0.7690972222222222,
+            "ci_upper": 0.8191178902116402,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261121,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.8088624338624338,
+            "ci_lower": 0.766683201058201,
+            "ci_upper": 0.8490575396825398,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261122,
+            "unit": "asset"
+          }
+        },
+        "0.9": {
+          "h1": {
+            "estimate": 0.8734292328042329,
+            "ci_lower": 0.8555720899470899,
+            "ci_upper": 0.8903811177248678,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261137,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.8854166666666666,
+            "ci_lower": 0.8660714285714285,
+            "ci_upper": 0.9039351851851851,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261138,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.9127810846560847,
+            "ci_lower": 0.8852513227513228,
+            "ci_upper": 0.9399801587301587,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261139,
+            "unit": "asset"
+          }
+        }
+      },
+      "pit": {
+        "h1": {
+          "mean": {
+            "estimate": 0.5341793645626653,
+            "ci_lower": 0.5088780317356978,
+            "ci_upper": 0.5588292197575645,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261203,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06700066137566137,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            552,
+            460,
+            571,
+            596,
+            569,
+            606,
+            563,
+            594,
+            722,
+            794
+          ]
+        },
+        "h2": {
+          "mean": {
+            "estimate": 0.5269535609654018,
+            "ci_lower": 0.5017713274274554,
+            "ci_upper": 0.5518735572774573,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261204,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06807208994708995,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            624,
+            428,
+            488,
+            540,
+            603,
+            703,
+            642,
+            668,
+            715,
+            616
+          ]
+        },
+        "delta_T": {
+          "mean": {
+            "estimate": 0.46307913966910547,
+            "ci_lower": 0.4164574840081432,
+            "ci_upper": 0.50721435546875,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261205,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.118505291005291,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            779,
+            850,
+            555,
+            477,
+            540,
+            566,
+            555,
+            662,
+            684,
+            359
+          ]
+        }
+      }
+    },
+    {
+      "split": "test",
+      "model": "B-STDPROB",
+      "metadata": {
+        "artifact_id": "F2-C1-OA-PREDICTION-STORE-01",
+        "contract_id": "f2-c1-outcome-aware-0.1.0",
+        "split_role": "test",
+        "model_id": "B-STDPROB",
+        "optimization_seed": 2303,
+        "checkpoint": "formal_runs/development/f1-p1-formal-0.1.0/b-stdprob/f1-p1-stdprob-t04/seed-2303/best_checkpoint.pt",
+        "formal_outcomes_accessed": false,
+        "same_info_metric_consumed": false
+      },
+      "rows": 6027,
+      "assets": 96,
+      "predictive_samples": 1024,
+      "coordinates": [
+        "h1",
+        "h2",
+        "delta_T"
+      ],
+      "central_coverage": {
+        "0.5": {
+          "h1": {
+            "estimate": 0.4997519841269842,
+            "ci_lower": 0.4697337962962963,
+            "ci_upper": 0.5282738095238094,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261113,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.5330687830687831,
+            "ci_lower": 0.503629298941799,
+            "ci_upper": 0.5623511904761905,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261114,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.48561507936507936,
+            "ci_lower": 0.43185350529100525,
+            "ci_upper": 0.5357225529100529,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261115,
+            "unit": "asset"
+          }
+        },
+        "0.8": {
+          "h1": {
+            "estimate": 0.7860449735449735,
+            "ci_lower": 0.7597552910052912,
+            "ci_upper": 0.8095320767195768,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261130,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.8314318783068785,
+            "ci_lower": 0.8107597552910053,
+            "ci_upper": 0.8514384920634921,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261131,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.8284556878306878,
+            "ci_lower": 0.7910052910052912,
+            "ci_upper": 0.8655795304232804,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261132,
+            "unit": "asset"
+          }
+        },
+        "0.9": {
+          "h1": {
+            "estimate": 0.8913690476190478,
+            "ci_lower": 0.8746693121693122,
+            "ci_upper": 0.9074074074074074,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261147,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.9231977513227515,
+            "ci_lower": 0.9098007605820106,
+            "ci_upper": 0.9360160383597884,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261148,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.9250992063492062,
+            "ci_lower": 0.8974867724867724,
+            "ci_upper": 0.9480820105820106,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261149,
+            "unit": "asset"
+          }
+        }
+      },
+      "pit": {
+        "h1": {
+          "mean": {
+            "estimate": 0.516192804568659,
+            "ci_lower": 0.49138240107783565,
+            "ci_upper": 0.5419585414664455,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261213,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06392195767195767,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            609,
+            508,
+            533,
+            597,
+            631,
+            617,
+            590,
+            639,
+            624,
+            679
+          ]
+        },
+        "h2": {
+          "mean": {
+            "estimate": 0.5346481888382523,
+            "ci_lower": 0.5090069079525257,
+            "ci_upper": 0.5588860002144304,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261214,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.07049933862433862,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            446,
+            500,
+            469,
+            613,
+            647,
+            622,
+            701,
+            754,
+            709,
+            566
+          ]
+        },
+        "delta_T": {
+          "mean": {
+            "estimate": 0.5063986803488757,
+            "ci_lower": 0.4650868128216456,
+            "ci_upper": 0.5479050772530693,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261215,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.1110515873015873,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            482,
+            709,
+            649,
+            493,
+            549,
+            610,
+            642,
+            707,
+            647,
+            539
+          ]
+        }
+      }
+    },
+    {
+      "split": "test",
+      "model": "B-STDPROB",
+      "metadata": {
+        "artifact_id": "F2-C1-OA-PREDICTION-STORE-01",
+        "contract_id": "f2-c1-outcome-aware-0.1.0",
+        "split_role": "test",
+        "model_id": "B-STDPROB",
+        "optimization_seed": 2909,
+        "checkpoint": "formal_runs/development/f1-p1-formal-0.1.0/b-stdprob/f1-p1-stdprob-t04/seed-2909/best_checkpoint.pt",
+        "formal_outcomes_accessed": false,
+        "same_info_metric_consumed": false
+      },
+      "rows": 6027,
+      "assets": 96,
+      "predictive_samples": 1024,
+      "coordinates": [
+        "h1",
+        "h2",
+        "delta_T"
+      ],
+      "central_coverage": {
+        "0.5": {
+          "h1": {
+            "estimate": 0.5490244708994708,
+            "ci_lower": 0.5207465277777777,
+            "ci_upper": 0.5755704365079365,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261123,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.5810185185185185,
+            "ci_lower": 0.5491071428571429,
+            "ci_upper": 0.613260582010582,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261124,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.4985119047619048,
+            "ci_lower": 0.4442542989417989,
+            "ci_upper": 0.5540757275132275,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261125,
+            "unit": "asset"
+          }
+        },
+        "0.8": {
+          "h1": {
+            "estimate": 0.8379629629629629,
+            "ci_lower": 0.8171296296296297,
+            "ci_upper": 0.8589616402116403,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261140,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.8743386243386243,
+            "ci_lower": 0.8556382275132275,
+            "ci_upper": 0.8926917989417991,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261141,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.8450727513227513,
+            "ci_lower": 0.8048859126984127,
+            "ci_upper": 0.8819527116402115,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261142,
+            "unit": "asset"
+          }
+        },
+        "0.9": {
+          "h1": {
+            "estimate": 0.9256779100529101,
+            "ci_lower": 0.9122809193121694,
+            "ci_upper": 0.9385747354497355,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261157,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.9401455026455028,
+            "ci_lower": 0.9267526455026456,
+            "ci_upper": 0.9533730158730158,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261158,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.9422123015873017,
+            "ci_lower": 0.914926421957672,
+            "ci_upper": 0.9655340608465608,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261159,
+            "unit": "asset"
+          }
+        }
+      },
+      "pit": {
+        "h1": {
+          "mean": {
+            "estimate": 0.5059497167193701,
+            "ci_lower": 0.48452230786520334,
+            "ci_upper": 0.5277484510310744,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261223,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06579034391534391,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            475,
+            521,
+            602,
+            666,
+            706,
+            691,
+            635,
+            653,
+            577,
+            501
+          ]
+        },
+        "h2": {
+          "mean": {
+            "estimate": 0.5596740561187583,
+            "ci_lower": 0.5382772011731668,
+            "ci_upper": 0.5807970723147116,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261224,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06966931216931217,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            267,
+            372,
+            469,
+            591,
+            736,
+            726,
+            792,
+            802,
+            787,
+            485
+          ]
+        },
+        "delta_T": {
+          "mean": {
+            "estimate": 0.517404626916956,
+            "ci_lower": 0.4738099517014922,
+            "ci_upper": 0.5612194686970383,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20261225,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.11805224867724867,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            409,
+            620,
+            759,
+            473,
+            505,
+            627,
+            658,
+            777,
+            687,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "split": "lockbox",
+      "model": "PROP-DIRECT",
+      "metadata": {
+        "artifact_id": "F2-C1-OA-PREDICTION-STORE-01",
+        "contract_id": "f2-c1-outcome-aware-0.1.0",
+        "split_role": "lockbox",
+        "model_id": "PROP-DIRECT",
+        "optimization_seed": 1701,
+        "checkpoint": "formal_runs/development/f1-p1-formal-0.1.0/prop-direct/f1-p1-direct-t04/seed-1701/best_checkpoint.pt",
+        "formal_outcomes_accessed": false,
+        "same_info_metric_consumed": false
+      },
+      "rows": 5985,
+      "assets": 96,
+      "predictive_samples": 1024,
+      "coordinates": [
+        "h1",
+        "h2",
+        "delta_T"
+      ],
+      "central_coverage": {
+        "0.5": {
+          "h1": {
+            "estimate": 0.5223214285714285,
+            "ci_lower": 0.49718915343915343,
+            "ci_upper": 0.5494378306878307,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262003,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.4945436507936507,
+            "ci_lower": 0.4644510582010582,
+            "ci_upper": 0.5249751984126985,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262004,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.5403439153439153,
+            "ci_lower": 0.4818121693121693,
+            "ci_upper": 0.600380291005291,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262005,
+            "unit": "asset"
+          }
+        },
+        "0.8": {
+          "h1": {
+            "estimate": 0.8132440476190478,
+            "ci_lower": 0.7900090939153439,
+            "ci_upper": 0.8357349537037038,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262020,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.7977843915343916,
+            "ci_lower": 0.7699198082010582,
+            "ci_upper": 0.8250744047619049,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262021,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.8231646825396824,
+            "ci_lower": 0.774702380952381,
+            "ci_upper": 0.8692170965608466,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262022,
+            "unit": "asset"
+          }
+        },
+        "0.9": {
+          "h1": {
+            "estimate": 0.9091435185185186,
+            "ci_lower": 0.8907820767195769,
+            "ci_upper": 0.9267526455026456,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262037,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.8972387566137566,
+            "ci_lower": 0.8767319775132275,
+            "ci_upper": 0.9167534722222223,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262038,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.9007936507936508,
+            "ci_lower": 0.8601025132275134,
+            "ci_upper": 0.9371817129629629,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262039,
+            "unit": "asset"
+          }
+        }
+      },
+      "pit": {
+        "h1": {
+          "mean": {
+            "estimate": 0.5444352084366733,
+            "ci_lower": 0.5206326641102947,
+            "ci_upper": 0.5672464239534247,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262103,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.0650462962962963,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            431,
+            471,
+            503,
+            579,
+            588,
+            661,
+            696,
+            675,
+            699,
+            682
+          ]
+        },
+        "h2": {
+          "mean": {
+            "estimate": 0.44295416937934023,
+            "ci_lower": 0.419064540963955,
+            "ci_upper": 0.46626676529172867,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262104,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.07008597883597883,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            869,
+            715,
+            641,
+            629,
+            560,
+            563,
+            592,
+            574,
+            508,
+            334
+          ]
+        },
+        "delta_T": {
+          "mean": {
+            "estimate": 0.4698221519510582,
+            "ci_lower": 0.42892933194599453,
+            "ci_upper": 0.5112331894970445,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262105,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.12010251322751324,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            528,
+            615,
+            792,
+            726,
+            613,
+            602,
+            663,
+            546,
+            390,
+            510
+          ]
+        }
+      }
+    },
+    {
+      "split": "lockbox",
+      "model": "PROP-DIRECT",
+      "metadata": {
+        "artifact_id": "F2-C1-OA-PREDICTION-STORE-01",
+        "contract_id": "f2-c1-outcome-aware-0.1.0",
+        "split_role": "lockbox",
+        "model_id": "PROP-DIRECT",
+        "optimization_seed": 2303,
+        "checkpoint": "formal_runs/development/f1-p1-formal-0.1.0/prop-direct/f1-p1-direct-t04/seed-2303/best_checkpoint.pt",
+        "formal_outcomes_accessed": false,
+        "same_info_metric_consumed": false
+      },
+      "rows": 5985,
+      "assets": 96,
+      "predictive_samples": 1024,
+      "coordinates": [
+        "h1",
+        "h2",
+        "delta_T"
+      ],
+      "central_coverage": {
+        "0.5": {
+          "h1": {
+            "estimate": 0.5032242063492064,
+            "ci_lower": 0.47709986772486773,
+            "ci_upper": 0.5319113756613757,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262013,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.4891699735449735,
+            "ci_lower": 0.46006531084656077,
+            "ci_upper": 0.518030753968254,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262014,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.4558531746031746,
+            "ci_lower": 0.4006283068783068,
+            "ci_upper": 0.5106150793650793,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262015,
+            "unit": "asset"
+          }
+        },
+        "0.8": {
+          "h1": {
+            "estimate": 0.8081183862433862,
+            "ci_lower": 0.785875496031746,
+            "ci_upper": 0.8311838624338623,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262030,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.7924933862433862,
+            "ci_lower": 0.7673528439153439,
+            "ci_upper": 0.8171296296296297,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262031,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.7802579365079364,
+            "ci_lower": 0.7293320105820106,
+            "ci_upper": 0.8288690476190476,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262032,
+            "unit": "asset"
+          }
+        },
+        "0.9": {
+          "h1": {
+            "estimate": 0.9080687830687831,
+            "ci_lower": 0.8916997354497355,
+            "ci_upper": 0.9237764550264552,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262047,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.8923611111111113,
+            "ci_lower": 0.8744998346560847,
+            "ci_upper": 0.9091435185185186,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262048,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.8888888888888888,
+            "ci_lower": 0.85176917989418,
+            "ci_upper": 0.9242724867724866,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262049,
+            "unit": "asset"
+          }
+        }
+      },
+      "pit": {
+        "h1": {
+          "mean": {
+            "estimate": 0.4879128996026579,
+            "ci_lower": 0.4653254917689732,
+            "ci_upper": 0.5091670848705151,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262113,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06477513227513228,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            612,
+            655,
+            656,
+            559,
+            584,
+            635,
+            616,
+            603,
+            534,
+            531
+          ]
+        },
+        "h2": {
+          "mean": {
+            "estimate": 0.5681876530722967,
+            "ci_lower": 0.5470499876315001,
+            "ci_upper": 0.5890124729701451,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262114,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06690806878306878,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            395,
+            485,
+            440,
+            480,
+            562,
+            629,
+            675,
+            716,
+            767,
+            836
+          ]
+        },
+        "delta_T": {
+          "mean": {
+            "estimate": 0.385172687510334,
+            "ci_lower": 0.34467425472521906,
+            "ci_upper": 0.4258315353797226,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262115,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.11488425925925926,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            929,
+            1014,
+            823,
+            610,
+            627,
+            548,
+            446,
+            321,
+            327,
+            340
+          ]
+        }
+      }
+    },
+    {
+      "split": "lockbox",
+      "model": "PROP-DIRECT",
+      "metadata": {
+        "artifact_id": "F2-C1-OA-PREDICTION-STORE-01",
+        "contract_id": "f2-c1-outcome-aware-0.1.0",
+        "split_role": "lockbox",
+        "model_id": "PROP-DIRECT",
+        "optimization_seed": 2909,
+        "checkpoint": "formal_runs/development/f1-p1-formal-0.1.0/prop-direct/f1-p1-direct-t04/seed-2909/best_checkpoint.pt",
+        "formal_outcomes_accessed": false,
+        "same_info_metric_consumed": false
+      },
+      "rows": 5985,
+      "assets": 96,
+      "predictive_samples": 1024,
+      "coordinates": [
+        "h1",
+        "h2",
+        "delta_T"
+      ],
+      "central_coverage": {
+        "0.5": {
+          "h1": {
+            "estimate": 0.5339781746031745,
+            "ci_lower": 0.5071015211640212,
+            "ci_upper": 0.5597718253968255,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262023,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.5133928571428571,
+            "ci_lower": 0.4822916666666666,
+            "ci_upper": 0.5446593915343915,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262024,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.49834656084656076,
+            "ci_lower": 0.44013723544973543,
+            "ci_upper": 0.5575479497354497,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262025,
+            "unit": "asset"
+          }
+        },
+        "0.8": {
+          "h1": {
+            "estimate": 0.8354001322751322,
+            "ci_lower": 0.8139012896825396,
+            "ci_upper": 0.8561549272486774,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262040,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.8228339947089948,
+            "ci_lower": 0.7982762896825396,
+            "ci_upper": 0.8465608465608465,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262041,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.7956349206349206,
+            "ci_lower": 0.7418940145502646,
+            "ci_upper": 0.844593253968254,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262042,
+            "unit": "asset"
+          }
+        },
+        "0.9": {
+          "h1": {
+            "estimate": 0.9245205026455027,
+            "ci_lower": 0.9090608465608466,
+            "ci_upper": 0.9389054232804234,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262057,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.9098048941798943,
+            "ci_lower": 0.892526455026455,
+            "ci_upper": 0.9266699735449736,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262058,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.8865740740740741,
+            "ci_lower": 0.8470486111111111,
+            "ci_upper": 0.9241071428571429,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262059,
+            "unit": "asset"
+          }
+        }
+      },
+      "pit": {
+        "h1": {
+          "mean": {
+            "estimate": 0.545990959046379,
+            "ci_lower": 0.5259969802129836,
+            "ci_upper": 0.5668377629032842,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262123,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06496031746031745,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            295,
+            490,
+            593,
+            606,
+            649,
+            682,
+            609,
+            721,
+            655,
+            685
+          ]
+        },
+        "h2": {
+          "mean": {
+            "estimate": 0.4732301096436838,
+            "ci_lower": 0.45017109219990076,
+            "ci_upper": 0.4961235207855386,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262124,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06814484126984127,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            622,
+            747,
+            593,
+            591,
+            617,
+            632,
+            603,
+            625,
+            527,
+            428
+          ]
+        },
+        "delta_T": {
+          "mean": {
+            "estimate": 0.39925162502066797,
+            "ci_lower": 0.35949594003182866,
+            "ci_upper": 0.44108124990311876,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262125,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.11894510582010583,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            797,
+            870,
+            990,
+            655,
+            597,
+            572,
+            459,
+            386,
+            274,
+            385
+          ]
+        }
+      }
+    },
+    {
+      "split": "lockbox",
+      "model": "B-STDPROB",
+      "metadata": {
+        "artifact_id": "F2-C1-OA-PREDICTION-STORE-01",
+        "contract_id": "f2-c1-outcome-aware-0.1.0",
+        "split_role": "lockbox",
+        "model_id": "B-STDPROB",
+        "optimization_seed": 1701,
+        "checkpoint": "formal_runs/development/f1-p1-formal-0.1.0/b-stdprob/f1-p1-stdprob-t04/seed-1701/best_checkpoint.pt",
+        "formal_outcomes_accessed": false,
+        "same_info_metric_consumed": false
+      },
+      "rows": 5985,
+      "assets": 96,
+      "predictive_samples": 1024,
+      "coordinates": [
+        "h1",
+        "h2",
+        "delta_T"
+      ],
+      "central_coverage": {
+        "0.5": {
+          "h1": {
+            "estimate": 0.5029761904761905,
+            "ci_lower": 0.4750330687830688,
+            "ci_upper": 0.5306754298941799,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262103,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.46999007936507936,
+            "ci_lower": 0.4394799933862434,
+            "ci_upper": 0.500256283068783,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262104,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.4669312169312169,
+            "ci_lower": 0.40442294973544973,
+            "ci_upper": 0.525801917989418,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262105,
+            "unit": "asset"
+          }
+        },
+        "0.8": {
+          "h1": {
+            "estimate": 0.8045634920634921,
+            "ci_lower": 0.7826554232804233,
+            "ci_upper": 0.8273024140211641,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262120,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.7671130952380952,
+            "ci_lower": 0.7414847883597885,
+            "ci_upper": 0.7928323412698413,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262121,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.7848875661375662,
+            "ci_lower": 0.734457671957672,
+            "ci_upper": 0.8341641865079367,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262122,
+            "unit": "asset"
+          }
+        },
+        "0.9": {
+          "h1": {
+            "estimate": 0.8999669312169312,
+            "ci_lower": 0.8812748015873016,
+            "ci_upper": 0.9170056216931217,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262137,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.869378306878307,
+            "ci_lower": 0.8479621362433861,
+            "ci_upper": 0.8907944775132275,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262138,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.8866567460317459,
+            "ci_lower": 0.844973544973545,
+            "ci_upper": 0.925351355820106,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262139,
+            "unit": "asset"
+          }
+        }
+      },
+      "pit": {
+        "h1": {
+          "mean": {
+            "estimate": 0.5425712141410384,
+            "ci_lower": 0.5182562247785941,
+            "ci_upper": 0.5667388189406621,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262203,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06600859788359788,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            457,
+            495,
+            547,
+            515,
+            571,
+            636,
+            682,
+            684,
+            695,
+            703
+          ]
+        },
+        "h2": {
+          "mean": {
+            "estimate": 0.4763571118551588,
+            "ci_lower": 0.4511455556072255,
+            "ci_upper": 0.5031320359971788,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262204,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06762566137566138,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            832,
+            609,
+            582,
+            574,
+            559,
+            550,
+            584,
+            533,
+            614,
+            548
+          ]
+        },
+        "delta_T": {
+          "mean": {
+            "estimate": 0.3859453958178323,
+            "ci_lower": 0.3437760247124566,
+            "ci_upper": 0.429643003272001,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262205,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.12220899470899471,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            897,
+            964,
+            902,
+            679,
+            574,
+            551,
+            413,
+            382,
+            271,
+            352
+          ]
+        }
+      }
+    },
+    {
+      "split": "lockbox",
+      "model": "B-STDPROB",
+      "metadata": {
+        "artifact_id": "F2-C1-OA-PREDICTION-STORE-01",
+        "contract_id": "f2-c1-outcome-aware-0.1.0",
+        "split_role": "lockbox",
+        "model_id": "B-STDPROB",
+        "optimization_seed": 2303,
+        "checkpoint": "formal_runs/development/f1-p1-formal-0.1.0/b-stdprob/f1-p1-stdprob-t04/seed-2303/best_checkpoint.pt",
+        "formal_outcomes_accessed": false,
+        "same_info_metric_consumed": false
+      },
+      "rows": 5985,
+      "assets": 96,
+      "predictive_samples": 1024,
+      "coordinates": [
+        "h1",
+        "h2",
+        "delta_T"
+      ],
+      "central_coverage": {
+        "0.5": {
+          "h1": {
+            "estimate": 0.5235615079365079,
+            "ci_lower": 0.49585400132275126,
+            "ci_upper": 0.5511822089947089,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262113,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.5071924603174603,
+            "ci_lower": 0.4727017195767196,
+            "ci_upper": 0.54208416005291,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262114,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.5413359788359788,
+            "ci_lower": 0.4855654761904762,
+            "ci_upper": 0.5954034391534392,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262115,
+            "unit": "asset"
+          }
+        },
+        "0.8": {
+          "h1": {
+            "estimate": 0.8205191798941799,
+            "ci_lower": 0.7962094907407409,
+            "ci_upper": 0.8430059523809522,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262130,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.8097718253968255,
+            "ci_lower": 0.787776951058201,
+            "ci_upper": 0.8320147156084656,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262131,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.810598544973545,
+            "ci_lower": 0.758263062169312,
+            "ci_upper": 0.8586392195767196,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262132,
+            "unit": "asset"
+          }
+        },
+        "0.9": {
+          "h1": {
+            "estimate": 0.910383597883598,
+            "ci_lower": 0.8921130952380952,
+            "ci_upper": 0.9269179894179894,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262147,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.9092261904761906,
+            "ci_lower": 0.8937665343915344,
+            "ci_upper": 0.9247726521164021,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262148,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.8859953703703706,
+            "ci_lower": 0.839864417989418,
+            "ci_upper": 0.9278356481481482,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262149,
+            "unit": "asset"
+          }
+        }
+      },
+      "pit": {
+        "h1": {
+          "mean": {
+            "estimate": 0.5138013728711971,
+            "ci_lower": 0.4903891871215174,
+            "ci_upper": 0.5363959135832609,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262213,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.06378637566137567,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            479,
+            551,
+            587,
+            660,
+            597,
+            674,
+            631,
+            611,
+            609,
+            586
+          ]
+        },
+        "h2": {
+          "mean": {
+            "estimate": 0.48357799065806883,
+            "ci_lower": 0.4589149111793155,
+            "ci_upper": 0.5084266299293155,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262214,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.07087632275132276,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            635,
+            652,
+            600,
+            588,
+            591,
+            626,
+            634,
+            621,
+            556,
+            482
+          ]
+        },
+        "delta_T": {
+          "mean": {
+            "estimate": 0.4379175579737103,
+            "ci_lower": 0.39704036006221066,
+            "ci_upper": 0.48033359265201303,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262215,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.11621693121693122,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            641,
+            635,
+            926,
+            776,
+            652,
+            574,
+            552,
+            461,
+            309,
+            459
+          ]
+        }
+      }
+    },
+    {
+      "split": "lockbox",
+      "model": "B-STDPROB",
+      "metadata": {
+        "artifact_id": "F2-C1-OA-PREDICTION-STORE-01",
+        "contract_id": "f2-c1-outcome-aware-0.1.0",
+        "split_role": "lockbox",
+        "model_id": "B-STDPROB",
+        "optimization_seed": 2909,
+        "checkpoint": "formal_runs/development/f1-p1-formal-0.1.0/b-stdprob/f1-p1-stdprob-t04/seed-2909/best_checkpoint.pt",
+        "formal_outcomes_accessed": false,
+        "same_info_metric_consumed": false
+      },
+      "rows": 5985,
+      "assets": 96,
+      "predictive_samples": 1024,
+      "coordinates": [
+        "h1",
+        "h2",
+        "delta_T"
+      ],
+      "central_coverage": {
+        "0.5": {
+          "h1": {
+            "estimate": 0.5826719576719576,
+            "ci_lower": 0.5536458333333333,
+            "ci_upper": 0.6105324074074073,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262123,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.544890873015873,
+            "ci_lower": 0.5164475859788359,
+            "ci_upper": 0.5740740740740741,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262124,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.5734126984126984,
+            "ci_lower": 0.5173445767195768,
+            "ci_upper": 0.6312913359788359,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262125,
+            "unit": "asset"
+          }
+        },
+        "0.8": {
+          "h1": {
+            "estimate": 0.8478835978835978,
+            "ci_lower": 0.8262194113756614,
+            "ci_upper": 0.8685557208994709,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262140,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.8482142857142857,
+            "ci_lower": 0.8254794973544973,
+            "ci_upper": 0.869047619047619,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262141,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.8404431216931217,
+            "ci_lower": 0.7919932208994709,
+            "ci_upper": 0.8859126984126985,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262142,
+            "unit": "asset"
+          }
+        },
+        "0.9": {
+          "h1": {
+            "estimate": 0.9330357142857144,
+            "ci_lower": 0.9177414021164022,
+            "ci_upper": 0.9465112433862434,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262157,
+            "unit": "asset"
+          },
+          "h2": {
+            "estimate": 0.9289847883597884,
+            "ci_lower": 0.9153439153439153,
+            "ci_upper": 0.9426256613756614,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262158,
+            "unit": "asset"
+          },
+          "delta_T": {
+            "estimate": 0.9045965608465609,
+            "ci_lower": 0.8621031746031745,
+            "ci_upper": 0.9411375661375662,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262159,
+            "unit": "asset"
+          }
+        }
+      },
+      "pit": {
+        "h1": {
+          "mean": {
+            "estimate": 0.5078234798693783,
+            "ci_lower": 0.4864193184665902,
+            "ci_upper": 0.5280240659360532,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262223,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.0667228835978836,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            437,
+            493,
+            554,
+            694,
+            774,
+            704,
+            727,
+            621,
+            516,
+            465
+          ]
+        },
+        "h2": {
+          "mean": {
+            "estimate": 0.5227317204551092,
+            "ci_lower": 0.5005562030449116,
+            "ci_upper": 0.5451062641446552,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262224,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.069755291005291,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            425,
+            494,
+            596,
+            604,
+            634,
+            636,
+            729,
+            709,
+            683,
+            475
+          ]
+        },
+        "delta_T": {
+          "mean": {
+            "estimate": 0.44789801703559035,
+            "ci_lower": 0.4062454990608982,
+            "ci_upper": 0.4881924543431196,
+            "assets": 96,
+            "replicates": 2000,
+            "seed": 20262225,
+            "unit": "asset"
+          },
+          "histogram_l1": {
+            "estimate": 0.12101190476190475,
+            "assets": 96,
+            "bins": 10
+          },
+          "histogram": [
+            480,
+            683,
+            851,
+            836,
+            659,
+            707,
+            599,
+            447,
+            276,
+            447
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+.DS_Store
+__pycache__/
+*.pyc
+.runtime/
+.playwright-mcp/
+.pytest_cache/
+tmp/
+
+# External data and machine-local C-MAPSS run products.
+CMAPSSData/
+cmapss_views/*.pkl
+cmapss_models/
+cmapss_models_shared/*.pt
+cmapss_logs/
+
+# Private infrastructure notes must not enter a public repository.
+docs/a40_user_environment.md
+
+# Local experiment scratch outputs
+results/second_round_smoke/
+results/second_round_remote_smoke_from_server/
+
+# Full F1-P1 caches are regenerated deterministically and kept off Git because
+# the train cache is larger than common remote blob limits.
+formal_runs/development/f1-p1-preparation-0.1.0/*.pt
+
+# Formal F2 archive raw stores (hundreds of MB of npz/pt per split) and F1-P1
+# formal checkpoints stay off Git; decision, contract, manifest and pair-level
+# metric files are tracked.
+formal_runs/f2_sufficient_compatibility/*/*/predictions/
+formal_runs/f2_sufficient_compatibility/*/*/reference/
+formal_runs/f2_sufficient_compatibility/*/*/dataset/
+formal_runs/f2_sufficient_compatibility/*/*/metrics/per_row_metrics.jsonl
+formal_runs/development/f1-p1-formal-0.1.0/**/*.pt
+formal_runs/development/f1-p1-formal-0.1.0/sweep.pid

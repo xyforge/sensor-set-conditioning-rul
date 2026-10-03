@@ -1,0 +1,35 @@
+{
+  "release_name": "sensor-set-conditioning-manuscript",
+  "release_version": "0.1.0",
+  "release_status": "pre-publication",
+  "author": "Yu Xin",
+  "included": [
+    "paper/",
+    "scripts/analysis/calibration_analysis.py",
+    "scripts/cmapss/train_cmapss_shared.py",
+    "scripts/cmapss/evaluate_cmapss_geometry_shared.py",
+    "cmapss_results/SHARED_MODEL_RUN_REPORT.md",
+    "cmapss_results/shared_seed42_remote/cmapss_shared_geometry_results.json",
+    "calibration_results/calibration_results.json",
+    "calibration_results/calibration_compact.json",
+    "reproducibility/contracts/",
+    "requirements-calibration.txt"
+  ],
+  "external_inputs": [
+    "NASA C-MAPSS FD001 data, obtained from the NASA public data portal",
+    "Python and LaTeX dependencies described in README.md and requirements-calibration.txt"
+  ],
+  "excluded": [
+    "raw C-MAPSS data",
+    "large formal prediction stores",
+    "local GPU checkpoints",
+    "private server configuration and credentials"
+  ],
+  "reproducibility_notes": [
+    "The public bundle contains compact calibration outputs; the large C1 prediction stores remain in the full research workspace.",
+    "C-MAPSS shared-model artifacts record training and evaluation seeds and configurations.",
+    "Calibration is descriptive and does not modify preregistered decision rules."
+  ],
+  "doi": null,
+  "repository_url": "https://github.com/xyforge/sensor-set-conditioning-rul"
+}

@@ -1,0 +1,335 @@
+% Revised Methods - Publication Quality
+% Clear architecture description, experimental design, and evaluation protocol
+
+\section{Methods}
+\label{sec:methods}
+
+\subsection{The PROP-DIRECT Architecture}
+\label{sec:methods:architecture}
+
+\subsubsection{Motivation and Design Principles}
+
+Standard prognostic models treat sensor availability as fixed: the architecture assumes a specific set of sensors will be present at inference time. When sensors become unavailable, common approaches either impute missing values or use input masking, but neither explicitly represents \emph{which observation process is active}. Our architecture addresses this gap by treating the observation process as a first-class conditioning variable, analogous to how conditional generative models explicitly condition on class labels.
+
+\subsubsection{Architecture Overview}
+
+PROP-DIRECT (Prognostic Observation-Process-Directed) consists of three main components:
+
+Figure~\ref{fig:prop-direct-architecture} summarizes the information flow and makes
+the distinction from simple input masking explicit: the sensor-set embedding is
+injected into every recurrent step before the posterior is formed.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.86\linewidth]{fig1_prop_direct_architecture.png}
+  \caption{\textbf{Observation-process conditioning in PROP-DIRECT.} The model
+  encodes the available sensor set as $\mathbf{e}_{\mathcal{S}}$ and injects that
+  representation into each recurrent step before predicting the RUL posterior.
+  The lower strip shows the masking baseline, which replaces missing values but
+  provides no explicit observation-process signal.}
+  \label{fig:prop-direct-architecture}
+\end{figure}
+
+\paragraph{Sensor-Set Encoder}
+Given an observation at time $t$ from asset $a$, let $\mathcal{S}_t$ denote the set of available sensors and $\mathbf{x}_t \in \mathbb{R}^{|\mathcal{S}_t| \times d}$ the observed sensor values over a historical window of length $d$. The sensor-set encoder maps $\mathcal{S}_t$ to a fixed-dimensional embedding $\mathbf{e}_{\mathcal{S}} \in \mathbb{R}^{k}$:
+\[
+\mathbf{e}_{\mathcal{S}} = f_{\text{enc}}(\mathcal{S}_t; \theta_{\text{enc}})
+\]
+
+We implement $f_{\text{enc}}$ as a set encoder using a learned lookup table: each sensor has an embedding vector, and $\mathbf{e}_{\mathcal{S}}$ is computed as the element-wise mean of embeddings for sensors in $\mathcal{S}_t$. This permutation-invariant design ensures the representation does not depend on sensor ordering.
+
+\paragraph{Observation-Conditioned Feature Extraction}
+The observed sensor values $\mathbf{x}_t$ are processed by a recurrent encoder (LSTM or GRU) that is \emph{conditioned} on $\mathbf{e}_{\mathcal{S}}$:
+\[
+\mathbf{h}_t = f_{\text{rnn}}(\mathbf{x}_t, \mathbf{e}_{\mathcal{S}}; \theta_{\text{rnn}})
+\]
+
+Conditioning is implemented by concatenating $\mathbf{e}_{\mathcal{S}}$ with the hidden state at each recurrent step, enabling the feature extraction process to adapt based on sensor availability. This differs from standard masking approaches where the recurrent network sees only the values (or masked versions) without explicit knowledge of the observation configuration.
+
+\paragraph{Posterior Prediction Head}
+The extracted features $\mathbf{h}_t$ are passed to a prediction head that outputs distributional parameters for the remaining useful life (RUL) posterior. We model RUL as a mixture of log-normal distributions to capture multi-modal degradation behavior:
+\[
+p(\text{RUL} \mid \mathbf{x}_t, \mathcal{S}_t) = \sum_{i=1}^{M} \pi_i(\mathbf{h}_t, \mathbf{e}_{\mathcal{S}}) \cdot \text{LogNormal}(\mu_i(\mathbf{h}_t, \mathbf{e}_{\mathcal{S}}), \sigma_i(\mathbf{h}_t, \mathbf{e}_{\mathcal{S}}))
+\]
+
+Critically, all distributional parameters $\{\pi_i, \mu_i, \sigma_i\}$ depend on \emph{both} the observed data $\mathbf{h}_t$ and the sensor-set embedding $\mathbf{e}_{\mathcal{S}}$. This dual conditioning enables the posterior geometry to explicitly vary with observation configuration.
+
+\subsubsection{Training Objective}
+
+The model is trained to maximize the log-likelihood of observed failure times across diverse sensor configurations:
+\[
+\mathcal{L} = \sum_{(a,t,\mathcal{S}) \in \mathcal{D}} \log p(\text{RUL}_{a,t} \mid \mathbf{x}_{a,t}, \mathcal{S}; \theta)
+\]
+
+where $\mathcal{D}$ is the training dataset covering multiple assets, query times, and sensor configurations. The training data is deliberately constructed to include a variety of observation processes (not just the full sensor complement) so the model learns to adjust posteriors appropriately for different configurations.
+
+\subsection{Baseline Architectures}
+\label{sec:methods:baselines}
+
+To isolate the contribution of observation-process conditioning, we compare PROP-DIRECT to six baseline architectures, all trained on the same data and evaluated with the same protocol:
+
+\paragraph{B-STDPROB (Standard Probabilistic Baseline)}
+A recurrent neural network with a mixture-of-log-normals output distribution, but \emph{without} sensor-set conditioning. The architecture sees masked inputs (zeros for missing sensors) but does not receive explicit information about which sensors are available. This is the primary comparison model for isolating the effect of conditioning.
+
+\paragraph{B-INDEP (Independent Sensor Baseline)}
+Treats each sensor independently without modeling temporal or cross-sensor dependencies. Provides a lower bound on performance.
+
+\paragraph{B-INVAR (Time-Invariant Baseline)}
+Uses only static asset features without temporal modeling. Tests whether observation-process conditioning provides value beyond time-invariant prediction.
+
+\paragraph{B-CDE (Conditional Density Estimation)}
+A density estimation approach that models $p(\text{RUL} \mid \mathbf{x})$ directly via kernel methods rather than parametric distributions. Provides an alternative uncertainty quantification strategy.
+
+\paragraph{B-SET (Set-Based Aggregation)}
+Aggregates sensor values using permutation-invariant pooling (max, mean, attention-weighted) without explicit recurrence. Tests whether set structure alone suffices without temporal modeling.
+
+\paragraph{B-WIDEN (Wider Network)}
+A standard architecture (like B-STDPROB) but with increased capacity (more layers, wider hidden states). Controls for the possibility that PROP-DIRECT's gains come from additional parameters rather than conditioning structure.
+
+All models are trained with the same optimization procedure (Adam optimizer, learning rate schedule, early stopping criteria) and hyperparameters are selected via validation set performance to ensure fair comparison.
+
+\subsection{Synthetic Data Generator}
+\label{sec:methods:generator}
+
+\subsubsection{Rationale for Synthetic Data}
+
+Rigorous evaluation of observation-process conditioning requires knowing the \emph{true} posterior distribution under different sensor configurations—what we term the ``oracle posterior.'' Real-world PHM datasets do not provide this ground truth, making it impossible to directly measure whether predicted posteriors are geometrically consistent with true posteriors.
+
+We therefore employ a controlled synthetic generator based on established degradation physics. This generator enables:
+\begin{itemize}
+    \item \textbf{Oracle posterior computation:}\\
+    Exact calculation of $p(\RUL \mid \text{observations}, \text{degradation state})$ for any sensor configuration.
+    \item \textbf{Causal manipulation:} Controlled variation of observation processes while holding asset state fixed, enabling causal attribution.
+    \item \textbf{Importance ground truth:} Explicit specification of which sensors are critical versus redundant, necessary for evaluating importance-awareness.
+\end{itemize}
+
+We emphasize that synthetic data limits external validity—findings may not transfer to real industrial assets—but it is essential for the mechanistic analysis conducted here. Section~\ref{sec:limitations} discusses this trade-off in detail.
+
+\subsubsection{Generator Structure}
+
+The generator models asset degradation as a latent Markov process with observable sensor readings:
+
+\paragraph{Degradation Dynamics}
+Each asset's health state $\mathbf{z}_t \in \mathbb{R}^{D}$ evolves according to:
+\[
+\mathbf{z}_{t+1} = g(\mathbf{z}_t, \boldsymbol{\theta}_{\text{phys}}) + \boldsymbol{\epsilon}_t, \quad \boldsymbol{\epsilon}_t \sim \mathcal{N}(0, \Sigma_{\text{proc}})
+\]
+
+where $g(\cdot)$ is a physics-based degradation function (e.g., exponential bearing wear, cumulative fatigue damage) parameterized by $\boldsymbol{\theta}_{\text{phys}}$, and $\boldsymbol{\epsilon}_t$ represents process noise. The asset fails when any component of $\mathbf{z}_t$ crosses a failure threshold, defining the true RUL.
+
+\paragraph{Observation Process}
+Sensor readings $\mathbf{x}_t$ are noisy functions of the latent state:
+\[
+x_{s,t} = h_s(\mathbf{z}_t) + \eta_{s,t}, \quad \eta_{s,t} \sim \mathcal{N}(0, \sigma_s^2)
+\]
+
+where $h_s(\cdot)$ maps latent health to sensor $s$'s measurement and $\eta_{s,t}$ is observation noise. Different sensors have different mappings $h_s$:
+\begin{itemize}
+    \item \textbf{Critical sensors} directly observe components near failure thresholds (e.g., vibration monitoring bearing wear).
+    \item \textbf{Redundant sensors} observe the same physical quantity with independent noise (e.g., multiple temperature probes on the same subsystem).
+    \item \textbf{Ancillary sensors} observe tangentially related quantities (e.g., ambient temperature when bearing temperature is critical).
+\end{itemize}
+
+\paragraph{Observation Configurations}
+The generator samples sensor availability configurations according to specified distributions:
+\begin{itemize}
+    \item \textbf{Full configuration:} All sensors available (baseline).
+    \item \textbf{Sufficient deletions:} Remove ancillary or redundant sensors, maintaining critical coverage.
+    \item \textbf{Critical deletions:} Remove sensors that directly observe near-failure states.
+    \item \textbf{Random deletions:} Remove sensors uniformly at random, matched in count to critical deletions.
+\end{itemize}
+
+The causal structure of this generator is shown in Figure~\ref{fig:synthetic-generator}.
+It separates the latent degradation state from noisy measurements and makes the
+critical, redundant, and ancillary sensor roles explicit.
+
+\subsubsection{Asset Population}
+
+We generate 96 synthetic assets with the following variation:
+\begin{itemize}
+    \item \textbf{Degradation parameters} $\boldsymbol{\theta}_{\text{phys}}$: Sampled to produce heterogeneous failure times (mean RUL: 5000 cycles, range: 2000–8000).
+    \item \textbf{Observation noise} $\sigma_s^2$: Varies across sensors and assets to simulate sensor quality differences.
+    \item \textbf{Operating conditions:} Three regimes (low/medium/high load) affecting degradation rates.
+    \item \textbf{Sensor topologies:} Different mappings $h_s(\cdot)$ to simulate domain variety (e.g., vibration-dominated vs. temperature-dominated degradation).
+\end{itemize}
+
+Each asset is observed from initial deployment until failure, with queries sampled at regular intervals (every 50 cycles) throughout its lifecycle. This produces approximately 96 assets $\times$ 100 query times $\times$ multiple observation configurations = tens of thousands of evaluation cases.
+
+\subsection{Experimental Protocol}
+\label{sec:methods:protocol}
+
+\subsubsection{Preregistration and Data Partitioning}
+
+To ensure statistical integrity, we employ a preregistered evaluation protocol where all decision criteria, thresholds, and analysis plans are specified \emph{before} accessing evaluation outcomes. The protocol proceeds in stages:
+
+Figure~\ref{fig:preregistration-protocol} provides a compact view of the four
+stages and the separation between exploratory development, test replication, and
+the lockbox used for the primary claim.
+
+\paragraph{Stage 1: Model Development and Freezing}
+\begin{enumerate}
+    \item Train all seven models (PROP-DIRECT + six baselines) on a designated training set (60 assets).
+    \item Select hyperparameters via validation set performance (16 assets).
+    \item Freeze model checkpoints and commit them to a versioned model registry (analogous to clinical trial registration).
+\end{enumerate}
+
+\paragraph{Stage 2: Threshold Specification}
+\begin{enumerate}
+    \item Using the validation set and power analysis, specify:
+    \begin{itemize}
+        \item Non-inferiority margins for quality metrics (MAE, CRPS).
+        \item Superiority margins for geometric consistency metrics.
+        \item Acceptability thresholds for absolute geometry.
+    \end{itemize}
+    \item Commit these thresholds to a frozen registry before scoring test or lockbox data.
+\end{enumerate}
+
+\paragraph{Stage 3: Test Split Evaluation}
+\begin{enumerate}
+    \item Score all models on a held-out test split (10 assets) using frozen checkpoints.
+    \item Compare outcomes to preregistered criteria.
+    \item This stage serves as a ``replication check''—we expect consistent direction of effects with the validation set but do not make final scientific claims based on test results alone.
+\end{enumerate}
+
+\paragraph{Stage 4: Lockbox Validation}
+\begin{enumerate}
+    \item Score all models on a fully held-out lockbox split (10 assets) that no human has inspected during development.
+    \item Apply preregistered decision rules to lockbox outcomes.
+    \item Lockbox results are the primary basis for scientific claims.
+\end{enumerate}
+
+This staged protocol mirrors confirmatory clinical trials and prevents ``researcher degrees of freedom'' that inflate false discovery rates in exploratory analysis.
+
+\subsubsection{Data Split Composition}
+
+\begin{itemize}
+    \item \textbf{Training:} 60 assets, diverse degradation parameters and sensor configurations.
+    \item \textbf{Validation:} 16 assets, used for hyperparameter selection and threshold calibration.
+    \item \textbf{Test:} 10 assets, first held-out evaluation for replication check.
+    \item \textbf{Lockbox:} 10 assets, fully independent validation for primary claims.
+\end{itemize}
+
+All splits are stratified by degradation regime (low/medium/high load) and sensor topology to ensure balanced representation.
+
+The partition above applies to the sufficient-observation analysis, whose primary claims rest on the lockbox split. The information-loss analysis uses a separate frozen evaluation covering all 96 assets; its descriptive quality metrics (Table~\ref{tab:c2_quality}) therefore summarize that population rather than the 10-asset test split. Model checkpoints and decision rules were frozen before either evaluation was accessed.
+
+\subsection{Evaluation Metrics}
+\label{sec:methods:metrics}
+
+\subsubsection{Geometric Consistency Metrics}
+
+The primary evaluation question is whether PROP-DIRECT produces geometrically consistent posteriors across observation views of the same asset. We measure this via the \emph{cross-view posterior inconsistency} metric:
+
+\paragraph{Paired Observation Setup}
+For each asset $a$ at query time $t$, we generate predictions under two observation configurations $\mathcal{S}_1$ and $\mathcal{S}_2$ that should provide compatible information (e.g., full sensors vs. ancillary sensors removed). Denote the predicted posteriors as $p_1 = p(\text{RUL} \mid \mathbf{x}_{a,t}, \mathcal{S}_1)$ and $p_2 = p(\text{RUL} \mid \mathbf{x}_{a,t}, \mathcal{S}_2)$.
+
+\paragraph{Energy Distance}
+We quantify inconsistency using the energy distance, a proper metric on probability distributions:
+\[
+d_E(p_1, p_2) = 2 \mathbb{E}_{Y_1 \sim p_1, Y_2 \sim p_2}[|Y_1 - Y_2|] - \mathbb{E}_{Y_1, Y_1' \sim p_1}[|Y_1 - Y_1'|] - \mathbb{E}_{Y_2, Y_2' \sim p_2}[|Y_2 - Y_2'|]
+\]
+
+This metric:
+\begin{itemize}
+    \item Equals zero if and only if $p_1 = p_2$ (perfect consistency).
+    \item Increases with both location shift and shape differences.
+    \item Does not require parametric assumptions about posterior forms.
+\end{itemize}
+
+In practice, we estimate $d_E$ via Monte Carlo sampling: draw $N=256$ samples from each posterior (or $N=64$ for computational budget sensitivity), compute pairwise distances, and average.
+
+\paragraph{Metric Scale and Interpretation}
+All metrics (energy distance, MAE, CRPS) are computed on \emph{normalized RUL values}. Normalization is performed by dividing each asset's RUL by its maximum observed lifetime. For the synthetic generator used here, the mean lifetime is 5000 cycles (range: 2000--8000), so an energy distance of $2.86 \times 10^{-4}$ in normalized units corresponds to approximately 1.4 cycles of absolute distribution separation when scaled back to the raw RUL scale. Similarly, a normalized MAE of 0.015 corresponds to approximately 75 cycles of prediction error at mean scale.
+
+This normalization ensures metrics are comparable across assets with heterogeneous lifetimes and enables threshold specification in scale-invariant units. All thresholds ($\tau$ for superiority margins, acceptability bounds for absolute geometry) are specified in these normalized units and frozen prior to evaluation.
+
+\paragraph{Off-Diagonal Correction}
+To avoid spurious correlation from comparing a sample to itself, we use an off-diagonal estimator: when computing cross-distribution expectations $\mathbb{E}_{Y_1, Y_2}[|Y_1 - Y_2|]$, we exclude pairs where the same random number stream was used. This correction is critical for the mechanistic analysis where sample efficiency matters.
+
+\paragraph{Aggregation}
+For each model and observation-process pair type (e.g., full vs. ancillary-removed), we compute:
+\begin{enumerate}
+    \item Asset-level geometry: Mean energy distance over all query times for that asset.
+    \item Population-level geometry: Mean over all assets.
+\end{enumerate}
+
+The primary estimand is the \emph{relative reduction}:
+\[
+\text{Relative reduction} = \frac{d_E(\text{B-INDEP}) - d_E(\text{PROP-DIRECT})}{d_E(\text{B-INDEP})} \times 100\%
+\]
+
+where B-INDEP serves as the observation-agnostic baseline. A positive value indicates PROP-DIRECT is more consistent.
+
+\paragraph{Baseline Selection}
+B-INDEP is the preregistered primary comparator because it treats sensor
+channels independently and provides an observation-agnostic reference. We also
+report B-STDPROB, which shares the observation interface of PROP-DIRECT. Their
+near-identical energy distances on the test and lockbox splits
+(Table~\ref{tab:baseline_comparison}) provide a complementary baseline check.
+
+\subsubsection{Quality Metrics}
+
+To verify that geometric improvements do not come at the cost of prediction quality, we evaluate:
+
+\paragraph{Mean Absolute Error (MAE)}
+For RUL point predictions (posterior median):
+\[
+\text{MAE} = \frac{1}{N} \sum_{i=1}^{N} |\text{RUL}_{\text{true},i} - \text{RUL}_{\text{pred},i}|
+\]
+
+Computed separately for all time points (state MAE) and time points within 500 cycles of failure (failure MAE), as accuracy near failure is often more operationally critical.
+
+\paragraph{Continuous Ranked Probability Score (CRPS)}
+A proper scoring rule for probabilistic forecasts:
+\[
+\text{CRPS}(p, y) = \mathbb{E}_{Y \sim p}[|Y - y|] - \frac{1}{2} \mathbb{E}_{Y, Y' \sim p}[|Y - Y'|]
+\]
+
+where $p$ is the predicted distribution and $y$ is the observed RUL. CRPS jointly evaluates calibration (whether prediction intervals cover the true value at nominal rates) and sharpness (whether intervals are tight). Lower CRPS indicates better probabilistic prediction.
+
+\paragraph{Calibration diagnostics}
+As a complementary descriptive check, we compute central-interval coverage at nominal levels of 50\%, 80\%, and 90\% from the persisted posterior samples. We also compute the probability integral transform (PIT) for each coordinate using the mid-rank of the observed target among the predictive samples. Coverage is summarized over the three coordinates, while PIT histograms are compared with the uniform benchmark. These diagnostics are evaluated after the preregistered scoring and do not change any decision threshold or model designation.
+
+\subsubsection{Statistical Inference}
+
+\paragraph{Bootstrap Confidence Intervals}
+All primary estimates are accompanied by 90\% bootstrap confidence intervals computed as follows:
+\begin{enumerate}
+    \item Resample assets with replacement (preserving within-asset dependencies).
+    \item Recompute the estimand (e.g., relative reduction) on the resampled data.
+    \item Repeat 2,000 times.
+    \item Report the 5th and 95th percentiles of the bootstrap distribution.
+\end{enumerate}
+
+\paragraph{Decision Rules}
+Preregistered decision criteria:
+\begin{itemize}
+    \item \textbf{Superiority claim:} The 90\% CI must exclude zero \emph{and} exclude a prespecified margin $\tau$ representing the minimum scientifically meaningful effect.
+    \item \textbf{Non-inferiority claim:} The 90\% CI lower bound must exceed a non-inferiority margin (e.g., $-\tau$).
+    \item \textbf{Quality guardrails:} CRPS and MAE must satisfy non-inferiority vs. baseline to ensure geometric gains do not degrade prediction quality.
+\end{itemize}
+
+\subsection{Exploratory Mechanistic Analysis}
+\label{sec:methods:exploratory}
+
+Beyond the preregistered analysis, we use an exploratory oracle comparison to interpret the different regimes. It is hypothesis-generating rather than a confirmatory test.
+
+\paragraph{Oracle-Model Correlation}
+For each paired observation case, we compute:
+\begin{itemize}
+    \item \textbf{Oracle distance:} The true geometric inconsistency $d_E(p_{\text{oracle},1}, p_{\text{oracle},2})$ computed from the known ground-truth degradation state.
+    \item \textbf{Model geometry error:} The model's predicted inconsistency $d_E(p_{\text{model},1}, p_{\text{model},2})$.
+\end{itemize}
+
+If the model successfully tracks task difficulty, these should correlate: cases where the oracle shows large inconsistency (observation processes genuinely differ) should also exhibit large model inconsistency.
+
+We compute Pearson correlation $r$ separately for different observation-process pair types (critical vs. full, critical vs. random, etc.). Because prediction cases share assets and query structure, the correlations describe an effect-size pattern rather than a confirmatory independent-sample test. Asset-level or mixed-effects inference is a natural follow-up.
+
+\subsection{Computational Environment}
+
+All experiments are conducted on NVIDIA A40 GPUs with 48GB memory. Model training uses mixed-precision (FP16) arithmetic via PyTorch's automatic mixed precision. Evaluation scoring uses full FP32 precision to ensure numerical stability in bootstrap resampling. Monte Carlo sampling for energy distance computation is parallelized across query times and assets. Total computational budget: approximately 500 GPU-hours for training all models, 100 GPU-hours for evaluation scoring across all splits and configurations.
+
+Code and model checkpoints are archived with version control (Git) to enable
+exact replication. The complete evaluation pipeline, including bootstrap
+resampling and decision logic, is frozen prior to lockbox evaluation and
+committed to the archive.

@@ -1,0 +1,22 @@
+name: Build manuscript
+
+on:
+  push:
+    paths:
+      - "paper/**"
+      - ".github/workflows/latex.yml"
+  pull_request:
+    paths:
+      - "paper/**"
+      - ".github/workflows/latex.yml"
+
+jobs:
+  latex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: paper
+          root_file: main.tex
+          args: -pdf -interaction=nonstopmode -halt-on-error

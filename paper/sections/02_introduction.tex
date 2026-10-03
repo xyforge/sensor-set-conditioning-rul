@@ -1,0 +1,60 @@
+% Revised Introduction - Publication Quality
+% Tells a clear story: Problem → Gap → Approach → Contributions
+
+\section{Introduction}
+
+\subsection{Motivation: The Observation Process Problem}
+
+Industrial prognostic systems operate in environments where sensor configurations rarely remain static. Communication dropouts create intermittent data gaps. Individual sensors fail and await replacement. Maintenance interventions temporarily disable portions of the sensing infrastructure. During these events, predictive maintenance models must continue to provide reliable remaining useful life (RUL) estimates, yet most deep learning architectures assume the observation process---the subset and quality of available sensors---remains fixed throughout deployment.
+
+This mismatch creates a subtle but consequential failure mode. A model may achieve acceptable pointwise prediction accuracy while producing \emph{incompatible posterior distributions} when the same asset is viewed through different observation configurations. For example, predictions made with a full sensor complement may yield narrow, confident distributions, while predictions from a reduced sensor set produce wider distributions that do not properly overlap the full-sensor posterior---even though both views ostensibly describe the same underlying degradation state. Such geometric inconsistencies undermine uncertainty-aware decision making, where maintenance scheduling depends not just on the posterior mean but on tail probabilities, prediction intervals, and risk assessments.
+
+\subsection{Current Approaches and Their Limitations}
+
+Standard strategies for handling sensor availability changes fall into three categories, each with limitations:
+
+\paragraph{Imputation Methods} replace missing values with estimates (e.g., last observation carried forward, model-based interpolation~\citep{little2019statistical}) before feeding data to a fixed-architecture predictor. While simple to implement, imputation conflates two distinct uncertainties: the uncertainty about what the missing sensor \emph{would have} measured, and the uncertainty about RUL given those measurements~\citep{rubin1976inference}. This conflation can produce overconfident predictions that ignore information loss.
+
+\paragraph{Masking and Attention} mechanisms allow models to selectively attend to available inputs~\citep{vaswani2017attention}. Set-based architectures~\citep{zaheer2017deep} and masked self-attention in transformers~\citep{devlin2019bert} can handle variable input configurations. However, these approaches encode \emph{which} sensors are present but do not explicitly represent the observation process as a conditioning variable. The model must implicitly learn that different sensor subsets warrant different posterior geometries---a demanding requirement when training data may not exhaustively cover all possible observation configurations.
+
+\paragraph{Ensemble Methods} train separate models for each anticipated sensor configuration~\citep{dietterich2000ensemble}. This strategy scales poorly (exponentially in the number of sensors) and requires knowing all relevant configurations at training time, making it brittle to unanticipated outages.
+
+The broader literature provides complementary tools for this setting. Missing-data methods distinguish the observation process from the latent state being predicted~\citep{rubin1976inference,little2019statistical,che2018gru,cao2018brits,tashiro2021csdi}; attention and set encoders provide representations of variable inputs~\citep{lee2019settransformer}; and conditional neural processes formalize amortized inference from changing context sets~\citep{garnelo2018cnp}. Probabilistic prognostics also require proper scoring rules and calibrated uncertainty rather than point accuracy alone~\citep{gneiting2007scoring,matheson1976scoring,kuleshov2018calibrated,lakshminarayanan201661201474,angelopoulos202300000101}. In PHM, C-MAPSS and PRONOSTIA remain important public benchmarks for RUL methodology and uncertainty evaluation~\citep{saxena2008cmapss,ramasso2020v5i22236,nectoux2012pronostia,jardine2006review,lei2018machinery}.
+
+Recent time-series foundation-model work has expanded the forecasting model family and highlighted the need for realistic evaluation and transfer analysis~\citep{das202331010688,rasul202331008278,goswami202440203885,ansari202440307815,gao202440300131,woo202440202592,ekambaram202440103955,qiu202443665863,li202563737442}. This study isolates observation-process conditioning as an architectural ingredient for prognostic posterior geometry.
+
+\subsection{Our Approach: Explicit Observation-Process Conditioning}
+
+We propose an architecture that treats the observation process as a \emph{first-class conditioning variable}, analogous to how conditional generative models explicitly condition on class labels or attributes. The key insight is that posterior geometry should \emph{explicitly} depend on which sensors are available, not merely adapt implicitly through input masking.
+
+Concretely, our model---termed Prognostic Observation-Process-Directed (PROP-DIRECT)---embeds the sensor set configuration into a latent representation, then conditions all posterior computations on this representation alongside the observed sensor values. This design provides three potential benefits:
+
+\begin{enumerate}
+    \item \textbf{Explicit uncertainty propagation:} The model learns to widen posteriors appropriately when critical sensors are missing, rather than maintaining false confidence.
+    \item \textbf{Cross-view consistency:} Predictions from different observation views of the same asset should remain geometrically compatible---overlapping posteriors for overlapping information.
+    \item \textbf{Graceful degradation:} As sensor availability decreases, posterior uncertainty should increase smoothly rather than exhibiting discontinuous failures.
+\end{enumerate}
+
+\subsection{Scope and Contributions}
+
+We test this question with a preregistered protocol that separates model development from independent test and lockbox evaluations. The central hypothesis is conditional: conditioning should help when alternative sensor views remain \emph{task-sufficient}, meaning that the available measurements still support reliable RUL prediction. The protocol defines task sufficiency through oracle-posterior quality thresholds (Section~\ref{sec:methods:protocol}) and then examines what happens when functionally critical sensors are removed.
+
+Our contributions are:
+
+\begin{enumerate}
+    \item \textbf{Empirical result under task sufficiency:} Across 96 synthetic assets with controlled observation processes, sensor-set conditioning reduces cross-view posterior inconsistency by 38.6\% (90\% CI: 34.8--42.4\%) relative to observation-agnostic baselines. A complementary shared-model analysis on the public C-MAPSS simulated benchmark reveals that the geometry gain depends on which view pair is compared (Section~\ref{sec:results_cmapss}).
+
+    \item \textbf{Boundary characterization under information loss:} When critical sensors are removed, the architecture does not maintain its advantage across three pre-registered superiority criteria, locating the boundary of the conditioning mechanism.
+
+    \item \textbf{Mechanistic insight via exploratory analysis:} Post-hoc correlation analysis reveals \emph{why} the boundary exists: the model successfully detects magnitude of information loss (oracle-model correlation $r>0.53$), but shows a 9.9\% weaker correlation when importance matters. Because prediction cases share assets and query structure, this contrast is treated as exploratory rather than as a confirmatory independent-sample test. Crucially, the pattern is architecture-specific---a standard baseline shows the opposite direction.
+
+    \item \textbf{Quality-geometry separation:} In the synthetic information-loss evaluation, predictive quality remains competitive even when geometric consistency degrades, separating posterior shape from point prediction accuracy.
+\end{enumerate}
+
+\subsection{Experimental Design and Scope}
+
+We use a synthetic generator because exact oracle posteriors and controlled observation processes make the geometric comparison identifiable. A complementary analysis on the public C-MAPSS simulated turbofan benchmark asks whether the scoring pattern extends beyond this generator; the Discussion places that result alongside the still-open question of naturally occurring sensor loss.
+
+\subsection{Paper Organization}
+
+Section~\ref{sec:methods} describes the PROP-DIRECT architecture and experimental protocol. Section~\ref{sec:results} reports the preregistered primary analysis (sufficient observation regime), the information-loss boundary test, exploratory mechanistic analysis, and quality comparison across all model variants. Section~\ref{sec:discussion} interprets these findings, positions them relative to existing approaches, and provides deployment guidance. Section~\ref{sec:conclusion} summarizes contributions and outlines future directions.

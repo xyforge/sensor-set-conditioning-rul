@@ -1,0 +1,231 @@
+% Revised Results - Publication Quality
+% Clear narrative structure with meaningful section names
+
+\section{Results}
+\label{sec:results}
+
+We begin with the primary question: does sensor-set conditioning align predictions across views that remain task-sufficient? We then examine the information-loss boundary, use an exploratory oracle comparison to interpret that boundary, and check whether geometric behavior is accompanied by predictive-quality changes. A complementary C-MAPSS result closes the section. All reported intervals use 2,000 asset-level bootstrap replicates.
+
+\subsection{Cross-View Consistency Under Sufficient Observation}
+\label{sec:results:sufficient}
+
+\subsubsection{Primary Finding}
+
+When observation processes maintain task sufficiency---that is, when different sensor subsets all support reliable RUL prediction---PROP-DIRECT substantially reduces posterior inconsistency across views of the same asset. Table~\ref{tab:c1_resolution} reports the formal lockbox validation results.
+
+\input{tables/c1_resolution_table}
+\input{tables/baseline_comparison}
+
+The architecture achieves an absolute geometry metric of $2.86 \times 10^{-4}$ on the lockbox split, well below the pre-specified acceptability threshold of $3.5 \times 10^{-4}$. More importantly, this represents a \textbf{38.6\% reduction} (90\% CI: 34.8--42.4\%) in cross-view inconsistency relative to the observation-agnostic baseline (B-INDEP). The test split yields a consistent 38.1\% reduction (90\% CI: 34.2--41.9\%), confirming the effect is not an artifact of a single data partition.
+
+Figure~\ref{fig:c1-forest} visualizes the same effect sizes and confidence
+intervals. The close alignment of the test and lockbox estimates makes the
+replication pattern visible without relying on a numerical comparison alone.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.86\linewidth]{fig2_c1_main_result_forest.png}
+  \caption{\textbf{Primary consistency result.} PROP-DIRECT reduces cross-view posterior
+  inconsistency relative to B-INDEP by approximately 38\% on both the test and
+  lockbox splits. Squares show point estimates and horizontal bars show 90\%
+  bootstrap confidence intervals; the reduced 64-sample budget produces the same
+  conclusion.}
+  \label{fig:c1-forest}
+\end{figure}
+
+Predictions from different views of the same asset are therefore substantially closer in posterior geometry. The result motivates testing whether such alignment improves uncertainty-aware maintenance decisions, where prediction intervals and tail probabilities influence action.
+
+\subsubsection{Robustness to Sampling Budget}
+
+A critical deployment consideration is computational cost. Uncertainty quantification via Monte Carlo sampling typically dominates inference time, making sampling budget a key engineering constraint. We therefore evaluated whether the geometric improvement persists under reduced sampling.
+
+When the Monte Carlo budget is reduced four-fold from 256 to 64 samples per prediction, the effect size changes by only 0.34 percentage points: 38.97\% reduction (90\% CI: 35.03--42.67\%) versus 38.64\% at the standard budget. This stability indicates that the geometric benefit does not rely on high-precision uncertainty estimation within the synthetic evaluation; whether this translates into an acceptable deployment latency trade-off requires a direct systems benchmark.
+
+\subsubsection{Interpretation}
+
+These results support the hypothesis that explicit observation-process conditioning enables models to align posterior geometry across compatible views. The architecture appears to learn that different sensor configurations, when task-sufficient, should produce posteriors that overlap appropriately rather than diverging arbitrarily. The robustness to sampling budget suggests this is a structural property of the learned representations, not a fragile artifact of estimation precision.
+
+\subsection{Boundary Behavior Under Critical Sensor Loss}
+\label{sec:results:boundary}
+
+\subsubsection{Experimental Design}
+
+To test the limits of sensor-set conditioning, we constructed a second experimental regime where observation processes are \emph{not} task-equivalent. Specifically, we compare predictions under three sensor deletion scenarios:
+
+\begin{itemize}
+    \item \textbf{Critical deletion:} Remove sensors identified (via oracle analysis) as critical for RUL prediction accuracy.
+    \item \textbf{Random deletion:} Remove an equal number of sensors chosen randomly, serving as a matched control for information quantity.
+    \item \textbf{Redundant deletion:} Remove sensors that provide redundant information, serving as a minimal-impact control.
+\end{itemize}
+
+The hypothesis is that an importance-aware architecture should exhibit \emph{smaller} posterior inconsistency when comparing critical deletion to random deletion (recognizing that random deletion is less severe), relative to an importance-agnostic baseline.
+
+\subsubsection{Primary Finding: Hypothesis Not Supported}
+
+Contrary to the hypothesis, PROP-DIRECT does \emph{not} outperform the baseline in this regime. Across three pre-registered estimands measuring different aspects of geometric inconsistency under information loss, all comparisons favor the baseline or show no advantage:
+
+\begin{itemize}
+    \item \textbf{Critical-sensor excess risk:} $\Delta R_{\text{crit}} = +8.65 \times 10^{-4}$ (90\% CI: 7.36--9.91 $\times 10^{-4}$)
+    \item \textbf{Loss-geometry differential:} $\Delta G_{\text{loss}} = +1.88 \times 10^{-4}$ (90\% CI: $-3.55$ to $+6.99 \times 10^{-4}$)
+    \item \textbf{Interaction effect:} $I_R = +7.68 \times 10^{-4}$ (90\% CI: 5.16--10.28 $\times 10^{-4}$)
+\end{itemize}
+
+All point estimates are positive, indicating PROP-DIRECT exhibits \emph{greater} inconsistency than the baseline under importance-dependent information loss. The confidence intervals either exclude zero or barely overlap it, providing consistent evidence against the superiority hypothesis.
+
+\subsubsection{Quality Guardrail: No Catastrophic Failure}
+
+Importantly, this geometric degradation does \emph{not} indicate catastrophic prediction failure. A pre-specified quality guardrail based on continuous ranked probability score (CRPS)---a proper scoring rule for probabilistic forecasts---confirms that RUL prediction quality remains acceptable: $\Delta \text{CRPS} = +4.07 \times 10^{-4}$ (90\% CI: $-0.22$ to $+8.47 \times 10^{-4}$), well below the non-inferiority margin of $3.85 \times 10^{-3}$.
+
+This decoupling is scientifically informative: PROP-DIRECT's limitation in the information-loss regime concerns \emph{geometric consistency}, not fundamental prediction accuracy. The model still generates reasonable RUL estimates; it simply fails to maintain the geometric alignment it achieves under task-sufficient observation.
+
+\subsubsection{Pair-Class Decomposition}
+
+Examining the three comparison types reveals structure in the failure:
+
+Figure~\ref{fig:c2-pairs} provides a visual summary of the pair-class ordering
+before the numerical decomposition below.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.75\linewidth]{fig3_c2_pair_class_decomposition.png}
+  \caption{\textbf{Information-loss pair-class decomposition.} Excess inconsistency relative
+  to B-STDPROB is small for critical-versus-full comparisons but substantially
+  larger for the matched-random class. The associated win rates show the same
+  ordering, isolating the sensor-importance blindness pattern.}
+  \label{fig:c2-pairs}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Comparison & Mean Difference & PROP-DIRECT Win Rate \\
+\midrule
+Critical vs. Full (parent) & $+2.8 \times 10^{-5}$ & 48\% \\
+Critical vs. Random (matched) & $+3.72 \times 10^{-4}$ & 39\% \\
+Critical vs. Redundant & $+1.64 \times 10^{-4}$ & 42\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The pattern is striking: PROP-DIRECT performs nearly at parity when comparing critical deletion to the full sensor complement (only $+2.8 \times 10^{-5}$ worse, 48\% win rate), but degrades substantially when comparing to random or redundant deletions. The matched-random comparison is particularly revealing---this is precisely where an importance-aware model should excel, yet PROP-DIRECT is \emph{13 times worse} in this comparison than in the critical-vs-full comparison.
+
+Figure~\ref{fig:c2-pairs} makes this asymmetry explicit: the matched-random
+comparison has the largest excess inconsistency and the lowest PROP-DIRECT win
+rate, supporting the interpretation that the architecture detects missing
+information more readily than functional sensor importance.
+
+The following schematics connect the pair-class result to the data-generating process and the frozen evaluation protocol.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.86\linewidth]{fig4_synthetic_generator.png}
+  \caption{\textbf{Synthetic degradation-data generator.} A latent health state
+  evolves under physics-based dynamics and crosses a failure threshold at the
+  true RUL. Noisy observation channels produce critical, redundant, and ancillary
+  sensors, while different sensor subsets of the same latent asset support exact
+  oracle-posterior computation.}
+  \label{fig:synthetic-generator}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.86\linewidth]{fig5_preregistration_protocol.png}
+  \caption{\textbf{Preregistered evaluation protocol.} Model development and
+  threshold selection are completed before held-out evaluation. The test split
+  serves as a directional replication check, whereas the untouched lockbox is
+  evaluated with frozen decision rules and supplies the primary scientific claim.}
+  \label{fig:preregistration-protocol}
+\end{figure}
+
+For a concrete view of the posterior geometry, Figure~\ref{fig:prediction-example}
+shows predictions for one asset at one query time. Removing ancillary sensors
+leaves the posterior nearly unchanged, whereas removing a critical sensor widens
+and shifts the distribution.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.86\linewidth]{fig6_prediction_example.png}
+  \caption{\textbf{Illustrative prediction under changing sensor sets.} For the
+  same asset and query time, full sensors and ancillary-sensor removal produce
+  closely overlapping posteriors, while critical-sensor removal yields a wider
+  and shifted distribution. The example gives an operational interpretation of
+  cross-view consistency and its importance-dependent boundary.}
+  \label{fig:prediction-example}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Exploratory Mechanistic Analysis}
+\label{sec:results:mechanism}
+
+\subsubsection{Motivation and Scope}
+
+The boundary-regime results suggest PROP-DIRECT can detect that information has changed (near-parity vs. full sensor complement) but struggles when functional importance matters (poor performance vs. matched random deletion). To investigate this mechanism, we conducted a post-hoc exploratory analysis examining how model predictions track oracle-defined task difficulty. This analysis was \emph{not} part of the pre-registered decision criteria and should be interpreted as hypothesis-generating rather than confirmatory.
+
+\subsubsection{Oracle-Model Correlation}
+
+For each prediction, we computed:
+\begin{itemize}
+    \item \textbf{Oracle distance:} The true geometric inconsistency between posteriors under two observation processes, computed using the known ground-truth degradation model.
+    \item \textbf{Model geometry error:} The geometric inconsistency between the model's predicted posteriors under those same two processes.
+\end{itemize}
+
+If a model successfully tracks task difficulty, these quantities should correlate: cases where the oracle shows large inconsistency (i.e., observation processes genuinely yield different information) should also exhibit large model inconsistency.
+
+Figure~\ref{fig:b1-correlation} displays this relationship for PROP-DIRECT across the three comparison types. Pearson correlations are:
+
+\begin{itemize}
+    \item \textbf{Critical vs. Full:} $r = 0.5933$ ($n=119{,}232$)
+    \item \textbf{Critical vs. Redundant:} $r = 0.5836$ ($n=119{,}232$)
+    \item \textbf{Critical vs. Random:} $r = 0.5345$ ($n=19{,}872$)
+\end{itemize}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{figures/b1_oracle_correlation_figure.png}
+  \caption{\textbf{Model geometry error tracks oracle difficulty, but less reliably when sensor importance matters.} Each panel shows the relationship between true geometric inconsistency (oracle distance) and model-predicted inconsistency (geometry error) for PROP-DIRECT across 1,000 randomly sampled test cases. Left: Critical vs. full sensor complement ($r=0.5933$). Center: Critical vs. matched random deletion ($r=0.5345$). Right: Critical vs. redundant deletion ($r=0.5836$). The critical-vs-random correlation is 9.9\% weaker than critical-vs-full. Because cases share assets and query structure, the contrast is interpreted as exploratory evidence that the model detects information quantity more readily than functional importance.}
+  \label{fig:b1-correlation}
+\end{figure}
+
+The critical-vs-random correlation is 9.9\% weaker than the critical-vs-full correlation. We treat this contrast as an exploratory effect-size pattern; the paired cases share assets and query structure.
+
+\subsubsection{Baseline Comparison: Architecture-Specific Limitation}
+
+The standard baseline (B-STDPROB) exhibits the opposite pattern:
+\begin{itemize}
+    \item \textbf{Critical vs. Full:} $r = 0.6606$
+    \item \textbf{Critical vs. Random:} $r = 0.6732$
+\end{itemize}
+
+For B-STDPROB, the matched-random correlation is stronger. The contrast associates the weaker-correlation pattern with PROP-DIRECT's sensor-set conditioning pathway rather than with prognostic models in general.
+
+\subsubsection{Interpretation}
+
+The correlations suggest that PROP-DIRECT recognizes when information is missing, but represents the functional differences among missing sensors less reliably. In other words, availability is visible to the model while sensor role is only partially represented. This interpretation explains why the model can remain close to the full-sensor geometry yet perform poorly when critical and random deletions are compared.
+
+\subsection{Quality-Geometry Separation}
+\label{sec:results:quality}
+
+We compared standard prognostic quality metrics across all seven model variants in the frozen model suite. Table~\ref{tab:c2_quality} reports asset-level macro-averages on the information-loss evaluation, which is scored under a separate frozen contract covering the full 96-asset population (Section~\ref{sec:methods:protocol}); it is distinct from the 10-asset test/lockbox partition used for the sufficient-observation claims.
+
+\input{tables/c2_quality_table}
+
+PROP-DIRECT ranks third for both state mean absolute error (MAE) and failure-time MAE, and second for CRPS among the seven models. Its CRPS difference from B-STDPROB is $+4.07 \times 10^{-4}$.
+
+The quality table separates predictive accuracy from cross-view geometry: PROP-DIRECT remains competitive on single-view metrics even where its geometric advantage disappears. The C-MAPSS analysis next asks whether this distinction is visible on a public simulated benchmark.
+
+\subsection{Posterior Calibration}
+\label{sec:results:calibration}
+
+We next use the frozen C1 posterior samples for a descriptive calibration check. The central intervals are close to their nominal levels on both held-out splits: the mean 90\% coverage across the three coordinates is 0.909 for PROP-DIRECT on test and 0.902 on lockbox, compared with 0.913 and 0.903 for B-STDPROB. The PIT histograms are likewise close to the uniform reference (Figure~\ref{fig:calibration}); the small differences do not support a claim that either method is uniformly better calibrated. This result separates the paper's primary geometric finding from posterior reliability: the conditioning mechanism improves cross-view geometry under sufficient observation while calibration remains broadly comparable to the baseline.
+
+\input{tables/calibration_table}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.94\linewidth]{fig7_calibration_reliability.png}
+  \caption{\textbf{Posterior calibration diagnostics.} Left: empirical central coverage at nominal 50\%, 80\%, and 90\% levels, averaged over the three joint coordinates. Right: PIT histograms with the uniform reference shown by the dashed line. Circles and squares denote test and lockbox splits; the plots are descriptive checks rather than additional decision gates.}
+  \label{fig:calibration}
+\end{figure}
+
+\input{sections/04_results_cmapss}

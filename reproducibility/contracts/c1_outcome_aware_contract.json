@@ -1,0 +1,185 @@
+{
+  "schema_version": "0.2.0-c1-outcome-aware",
+  "artifact_id": "F2-C1-OUTCOME-AWARE-CONTRACT-01",
+  "contract_id": "f2-c1-outcome-aware-0.1.0",
+  "stage": "WP3/F2-C1",
+  "class": "C-OUTCOME-AWARE",
+  "mode": "FORMAL",
+  "status": "AUTHORIZED",
+  "formal_authorization": true,
+  "purpose": "Predeclare an estimable sufficient-view compatibility claim for a fresh C1 formal lockbox.",
+  "parent_contracts": {
+    "legacy_f2_execution": "formal_runs/f2_sufficient_compatibility/frz3-f2-0.1.0/f2_execution_contract.json",
+    "legacy_claim_registry": "formal_runs/contracts/frz-3-confirmatory-0.1.0/frz3_claim_metric_registry.json",
+    "development_amendment": "formal_runs/development/f2-c1-success-path-0.1.0/c1_outcome_aware_amendment.md",
+    "inheritance": "legacy execution, split, guardrail, and provenance rules remain inherited unless explicitly replaced below"
+  },
+  "claim": {
+    "claim_id": "C1-OA",
+    "decision_id": "C1-OA-DEC",
+    "scientific_question": "Does PROP-DIRECT reduce posterior incompatibility between matched sufficient views?",
+    "primary_estimand": {
+      "id": "C1-OA-P1",
+      "name": "zero_target_crn_relative_reduction",
+      "model_contrast": "1 - G_zero(PROP-DIRECT) / G_zero(B-INDEP)",
+      "G_zero": "asset-macro mean of pair-macro CRN weighted energy distance to the zero compatibility target",
+      "direction": "higher relative reduction is better",
+      "decision_rule": "lower_90_percent_bound(relative_reduction) >= 0.25",
+      "confidence_level": 0.9,
+      "resampling_unit": "asset_id"
+    },
+    "primary_absolute_guardrail": {
+      "id": "C1-OA-P1-ABS",
+      "estimand": "G_zero(PROP-DIRECT)",
+      "direction": "lower",
+      "decision_rule": "U_90_percent(G_zero_PROP) <= 3.5e-4"
+    },
+    "secondary_estimands": {
+      "C1-OA-S1-oracle_relative": {
+        "estimand": "G_suf(PROP-DIRECT) - G_suf(B-INDEP) using the frozen same_info_metric oracle reference",
+        "direction": "lower",
+        "decision_rule": "report estimate and 90% CI; no primary rescue",
+        "role": "descriptive_secondary"
+      },
+      "C1-OA-S2-baseline_comparison": {
+        "estimands": [
+          "PROP-DIRECT vs B-STDPROB",
+          "B-INDEP vs B-STDPROB"
+        ],
+        "role": "diagnostic_secondary"
+      }
+    },
+    "required_guardrails": [
+      "support_and_finiteness",
+      "pair_and_asset_coverage",
+      "state_failure_mae_inherited_limits",
+      "no_direction_reversal_between_test_and_lockbox",
+      "same_evaluator_convention_for_all_models"
+    ],
+    "failure_states": {
+      "contract_or_provenance_failure": "INVALID-CONTRACT-VIOLATION",
+      "missing_or_nonfinite_metric": "NON-ESTIMABLE-EXECUTION-HOLD",
+      "primary_or_absolute_guardrail_failure": "C1-CORE-FAIL",
+      "primary_pass_guardrail_unresolved": "C1-INTERPRETATION-HOLD"
+    }
+  },
+  "metric_contract": {
+    "estimator_id": "crn_weighted_energy_distance_off_diagonal_v1",
+    "predictive_samples_per_repeat": [
+      64,
+      256
+    ],
+    "predictive_repeats": 4,
+    "common_random_numbers": true,
+    "cross_term_diagonal": "excluded",
+    "within_term_diagonal": "excluded",
+    "negative_estimate_handling": "clamp_min_zero_after_complete_estimator",
+    "aggregation": "pair_macro_then_asset_macro_then split summary",
+    "bootstrap": {
+      "replicates": 2000,
+      "confidence_level": 0.9,
+      "method": "asset_clustered_stratified_paired_bootstrap",
+      "seed": 2026092201
+    },
+    "implementation": "formal_pipeline/f2/c1_rq_evaluator.py",
+    "training_objective_compatibility": "formal_pipeline/f2/c1_rq_objective.py uses the same off-diagonal CRN convention"
+  },
+  "thresholds": {
+    "relative_reduction_margin": {
+      "value": 0.25,
+      "unit": "fraction",
+      "status": "FROZEN-DEVELOPMENT",
+      "derivation": "predeclared operationally meaningful reduction, supported by independent validation rehearsal",
+      "derivation_artifact": "formal_runs/development/f2-c1-success-path-0.1.0/factorized_crn_evaluator.json",
+      "post_lockbox_adjustment_allowed": false
+    },
+    "absolute_adequacy_ceiling": {
+      "value": 0.00035,
+      "unit": "G_zero",
+      "status": "FROZEN-DEVELOPMENT",
+      "post_lockbox_adjustment_allowed": false
+    },
+    "confidence_level": 0.9,
+    "state_mae_ratio_upper": 1.25,
+    "failure_mae_ratio_upper": 1.25
+  },
+  "data_contract": {
+    "generator_family_id": "GEN-A",
+    "planned_assets_per_split": 96,
+    "sufficient_pair_policy": "re-enumerate and freeze the six eligible pairs before model selection",
+    "baseline_id": "B-INDEP",
+    "comparators": [
+      "PROP-DIRECT",
+      "B-INDEP",
+      "B-STDPROB"
+    ],
+    "split_roles": [
+      "development_selection",
+      "development_audit",
+      "test",
+      "lockbox"
+    ],
+    "formal_split_policy": "test is a blinded replication; lockbox is the primary decision split",
+    "asset_split_before_view_generation": true,
+    "same_asset_indices_for_all_models": true
+  },
+  "model_contract": {
+    "primary_model": "PROP-DIRECT",
+    "relation_branch": "not included in the formal primary claim",
+    "prop_geo": "deferred; no geometry-objective model selection in this contract",
+    "checkpoint_selection": "complete and freeze P4 B-INDEP designation and PROP-DIRECT checkpoint before formal scoring",
+    "formal_outcomes_available_to_selection": false
+  },
+  "models": [
+    "PROP-DIRECT",
+    "B-INDEP",
+    "B-STDPROB"
+  ],
+  "optimization_seeds": [
+    1701,
+    2303,
+    2909
+  ],
+  "prediction_contract": {
+    "seed_namespace": "c1oa01/predictive-mc",
+    "predictive_repeats": 4,
+    "samples_per_repeat": 256,
+    "same_info_metric_consumed": false,
+    "formal_outcomes_accessed": false
+  },
+  "provenance_contract": {
+    "selection_reference_role": "same_info_selection",
+    "formal_metric_reference_role": "same_info_metric",
+    "formal_outcomes_accessed_before_lockbox": false,
+    "test_or_lockbox_used_for_thresholds": false,
+    "forbidden_actions": [
+      "post_lockbox_margin_adjustment",
+      "changing eligible pairs after viewing formal outcomes",
+      "using test or lockbox predictions for checkpoint selection",
+      "switching between independent and CRN estimators after formal scoring"
+    ]
+  },
+  "execution_contract": {
+    "new_namespace": "formal_runs/f2_c1_outcome_aware_0.1.0/",
+    "required_artifacts_before_opening_test": [
+      "formal authorization manifest",
+      "frozen evaluator configuration",
+      "frozen eligible-pair list",
+      "frozen PROP-DIRECT and B-INDEP checkpoint manifest",
+      "test/lockbox seed manifest",
+      "lockbox access policy"
+    ],
+    "lockbox_primary": true,
+    "test_result_role": "replication and heterogeneity check; not pooled with lockbox",
+    "unlock_c2_c3": "only after amended C1 primary and guardrails pass on the lockbox",
+    "formal_authorization_path": "formal_runs/f2_c1_outcome_aware_0.1.0/formal_authorization.json",
+    "checkpoint_manifest": "formal_runs/f2_c1_outcome_aware_0.1.0/checkpoint_manifest.json"
+  },
+  "status_flags": {
+    "development_validation_completed": true,
+    "formal_checkpoint_selection_completed": true,
+    "formal_test_opened": true,
+    "formal_lockbox_opened": true,
+    "formal_outcomes_accessed": true
+  }
+}

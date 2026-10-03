@@ -1,0 +1,147 @@
+{
+  "artifact_id": "F3-C2-FORMAL-CONTRACT-01",
+  "contract_id": "f3-c2-formal-a40-0.1.0",
+  "mode": "FORMAL",
+  "status": "AUTHORIZED",
+  "stage": "F3/C2",
+  "claim_id": "C2",
+  "gate": "D",
+  "source_bundle": "formal_runs/contracts/frz-3-confirmatory-0.1.0",
+  "source_f2_namespace": "formal_runs/f2_sufficient_compatibility/frz3-f2-0.1.0",
+  "models": [
+    "PROP-DIRECT",
+    "B-STDPROB",
+    "B-INDEP",
+    "B-INVAR",
+    "B-CDE",
+    "B-SET",
+    "B-WIDEN"
+  ],
+  "core_models": [
+    "PROP-DIRECT",
+    "B-STDPROB"
+  ],
+  "auxiliary_models": [
+    "B-INDEP",
+    "B-INVAR",
+    "B-CDE",
+    "B-SET",
+    "B-WIDEN"
+  ],
+  "proposed_id": "PROP-DIRECT",
+  "baseline_id": "B-STDPROB",
+  "optimization_seeds": [
+    1701,
+    2303,
+    2909
+  ],
+  "split_roles": [
+    "test",
+    "lockbox"
+  ],
+  "lockbox_primary": true,
+  "asset_count": 96,
+  "reference_role": "same_info_metric",
+  "eligible_population": {
+    "eligibility_manifest": "formal_runs/world/f0-world-0.1.0/eligibility_n32/gen-a_cell_eligibility.json",
+    "critical_status": "ELIGIBLE-INFORMATION-LOSS",
+    "control_status": "ELIGIBLE-COMPATIBLE-PAIR",
+    "triplet_controls": [
+      "matched_random_deletion",
+      "redundant_deletion"
+    ],
+    "primary_interaction_control": "matched_random_deletion",
+    "critical_cell_ids": [
+      "S=critical_h1_deletion|R=dense_regular|Q=bursty_outage",
+      "S=critical_h1_deletion|R=irregular|Q=clean",
+      "S=critical_h1_deletion|R=sparse_regular|Q=bursty_outage",
+      "S=critical_h1_deletion|R=sparse_regular|Q=clean",
+      "S=critical_h1_deletion|R=sparse_regular|Q=heteroscedastic_noise",
+      "S=critical_h2_deletion|R=sparse_regular|Q=bursty_outage"
+    ],
+    "control_cell_ids": [
+      "S=matched_random_deletion|R=sparse_regular|Q=clean",
+      "S=redundant_deletion|R=dense_regular|Q=bursty_outage",
+      "S=redundant_deletion|R=irregular|Q=clean",
+      "S=redundant_deletion|R=sparse_regular|Q=bursty_outage",
+      "S=redundant_deletion|R=sparse_regular|Q=clean",
+      "S=redundant_deletion|R=sparse_regular|Q=heteroscedastic_noise"
+    ],
+    "source_f2_cell_ids": [
+      "S=critical_h1_deletion|R=irregular|Q=clean",
+      "S=critical_h1_deletion|R=sparse_regular|Q=bursty_outage",
+      "S=critical_h1_deletion|R=sparse_regular|Q=heteroscedastic_noise",
+      "S=critical_h2_deletion|R=sparse_regular|Q=bursty_outage",
+      "S=full|R=dense_regular|Q=bursty_outage",
+      "S=full|R=dense_regular|Q=clean",
+      "S=full|R=irregular|Q=clean",
+      "S=full|R=irregular|Q=heteroscedastic_noise",
+      "S=full|R=sparse_regular|Q=bursty_outage",
+      "S=full|R=sparse_regular|Q=clean",
+      "S=full|R=sparse_regular|Q=heteroscedastic_noise",
+      "S=matched_random_deletion|R=dense_regular|Q=bursty_outage",
+      "S=matched_random_deletion|R=irregular|Q=clean",
+      "S=matched_random_deletion|R=sparse_regular|Q=bursty_outage",
+      "S=matched_random_deletion|R=sparse_regular|Q=clean",
+      "S=matched_random_deletion|R=sparse_regular|Q=heteroscedastic_noise",
+      "S=redundant_deletion|R=dense_regular|Q=bursty_outage",
+      "S=redundant_deletion|R=irregular|Q=clean",
+      "S=redundant_deletion|R=sparse_regular|Q=bursty_outage",
+      "S=redundant_deletion|R=sparse_regular|Q=clean",
+      "S=redundant_deletion|R=sparse_regular|Q=heteroscedastic_noise"
+    ],
+    "c2_input_cell_ids": [
+      "S=critical_h1_deletion|R=irregular|Q=clean",
+      "S=critical_h1_deletion|R=sparse_regular|Q=bursty_outage",
+      "S=critical_h1_deletion|R=sparse_regular|Q=heteroscedastic_noise",
+      "S=critical_h2_deletion|R=sparse_regular|Q=bursty_outage",
+      "S=full|R=dense_regular|Q=bursty_outage",
+      "S=full|R=dense_regular|Q=clean",
+      "S=full|R=irregular|Q=clean",
+      "S=full|R=irregular|Q=heteroscedastic_noise",
+      "S=full|R=sparse_regular|Q=bursty_outage",
+      "S=full|R=sparse_regular|Q=clean",
+      "S=full|R=sparse_regular|Q=heteroscedastic_noise",
+      "S=matched_random_deletion|R=dense_regular|Q=bursty_outage",
+      "S=matched_random_deletion|R=irregular|Q=clean",
+      "S=matched_random_deletion|R=sparse_regular|Q=bursty_outage",
+      "S=matched_random_deletion|R=sparse_regular|Q=clean",
+      "S=matched_random_deletion|R=sparse_regular|Q=heteroscedastic_noise",
+      "S=redundant_deletion|R=dense_regular|Q=bursty_outage",
+      "S=redundant_deletion|R=irregular|Q=clean",
+      "S=redundant_deletion|R=sparse_regular|Q=bursty_outage",
+      "S=redundant_deletion|R=sparse_regular|Q=clean",
+      "S=redundant_deletion|R=sparse_regular|Q=heteroscedastic_noise",
+      "S=critical_h1_deletion|R=dense_regular|Q=bursty_outage",
+      "S=critical_h1_deletion|R=sparse_regular|Q=clean"
+    ],
+    "extension_cell_ids": [
+      "S=critical_h1_deletion|R=dense_regular|Q=bursty_outage",
+      "S=critical_h1_deletion|R=sparse_regular|Q=clean"
+    ],
+    "population_binding": "eligibility_population_with_frozen_f2_base_plus_c2_extension"
+  },
+  "estimands": {
+    "C2-P1": "delta_R_crit",
+    "C2-P2": "delta_G_loss",
+    "C2-P3": "I_R"
+  },
+  "aggregation": {
+    "p1": "query_to_asset_to_seed_to_critical_cell_macro",
+    "p2": "query_to_asset_to_seed_to_equal_pair_class_macro",
+    "p3": "query_to_asset_to_seed_to_triplet_macro",
+    "resampling_unit": "asset_id",
+    "test_and_lockbox_never_pooled": true
+  },
+  "threshold_source": "formal_runs/contracts/frz-3-confirmatory-0.1.0/frz3_claim_metric_registry.json",
+  "bootstrap": {
+    "replicates": 2000,
+    "confidence_level": 0.9,
+    "test_seed": 2026091803,
+    "lockbox_seed": 2026091804,
+    "method": "asset-clustered paired bootstrap"
+  },
+  "formal_outcomes_accessed_before_scoring": false,
+  "source_cell_contract": "formal_runs/f2_sufficient_compatibility/frz3-f2-0.1.0/f2_execution_contract.json",
+  "execution_input_manifest": "formal_runs/f3_c2_information_loss_a40_0.1.0/frozen_input_manifest.json"
+}
