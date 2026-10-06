@@ -189,6 +189,12 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path("."))
     parser.add_argument("--output-dir", type=Path, default=Path("calibration_results"))
+    parser.add_argument(
+        "--manuscript-dir",
+        type=Path,
+        default=None,
+        help="Optional manuscript directory for the figure and LaTeX table outputs.",
+    )
     args = parser.parse_args()
     root = args.root.resolve()
     output = (root / args.output_dir).resolve()
@@ -228,12 +234,18 @@ def main() -> None:
                 merged["pit"][coordinate]["histogram_l1"]["estimate"] = float(np.mean([item["pit"][coordinate]["histogram_l1"]["estimate"] for item in group]))
                 merged["pit"][coordinate]["histogram"] = np.mean([item["pit"][coordinate]["histogram"] for item in group], axis=0).tolist()
             compact.append(merged)
-    make_figure(compact, root / "paper/figures/fig7_calibration_reliability.png")
-    latex_table(compact, root / "paper/tables/calibration_table.tex")
+    if args.manuscript_dir is not None:
+        manuscript_dir = (root / args.manuscript_dir).resolve()
+        (manuscript_dir / "figures").mkdir(parents=True, exist_ok=True)
+        (manuscript_dir / "tables").mkdir(parents=True, exist_ok=True)
+        figure_path = manuscript_dir / "figures/fig7_calibration_reliability.png"
+        table_path = manuscript_dir / "tables/calibration_table.tex"
+        make_figure(compact, figure_path)
+        latex_table(compact, table_path)
+        print(f"Wrote {figure_path}")
+        print(f"Wrote {table_path}")
     (output / "calibration_compact.json").write_text(json.dumps(compact, indent=2), encoding="utf-8")
     print(f"Wrote {output / 'calibration_results.json'}")
-    print(f"Wrote {root / 'paper/figures/fig7_calibration_reliability.png'}")
-    print(f"Wrote {root / 'paper/tables/calibration_table.tex'}")
 
 
 if __name__ == "__main__":

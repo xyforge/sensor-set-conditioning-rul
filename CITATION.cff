@@ -8,9 +8,10 @@ authors:
 version: 0.2.0
 date-released: 2026-10-03
 abstract: >-
-  Versioned manuscript source, frozen protocol contracts, thresholds, decision
+  Versioned analysis code, frozen protocol contracts, thresholds, decision
   snapshots, and compact analysis artifacts for evaluating sensor-set conditioning
-  in probabilistic remaining-useful-life prediction.
+  in probabilistic remaining-useful-life prediction. The manuscript source is
+  temporarily withheld from the current branch.
 keywords:
   - prognostics and health management
   - remaining useful life prediction

@@ -1,8 +1,0 @@
-% Revised Abstract — honest scope, RESS-compliant length (<=200 words)
-% Changes vs previous draft:
-%  - discloses synthetic evaluation and simulated C-MAPSS benchmark
-%  - removes the unsupported "asset-level aggregated analysis confirms" claim
-%  - removes headline C-MAPSS 65% claim (specialist-regime confound)
-%  - unified 38.6% effect size
-
-Deep prognostic models typically assume a fixed sensor configuration, yet deployed systems routinely lose sensors to outages, failures, and maintenance. We study whether explicitly conditioning remaining useful life (RUL) predictions on the available sensor set improves cross-view posterior consistency---the requirement that predictions for the same asset viewed through different sensor subsets remain geometrically compatible. In a preregistered evaluation on a controlled synthetic benchmark with exact oracle posteriors (96 assets; independent test and lockbox splits), sensor-set conditioning reduces cross-view posterior inconsistency by 38.6\% (90\% CI: 34.8--42.4\%) relative to observation-agnostic baselines when alternative views remain task-sufficient, and the gain persists under a four-fold reduction in Monte Carlo sampling budget. Under permanent loss of critical sensors the advantage disappears: exploratory analysis indicates that the architecture detects information quantity more readily than functional sensor importance, while a standard baseline shows the opposite pattern. On C-MAPSS, a shared-model evaluation reduces distance to the full view but reverses for two equally sized reduced views, while point MAE remains close to the baseline. This conditional pattern sharpens the boundary of observation-process conditioning.

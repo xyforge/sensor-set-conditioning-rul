@@ -2,7 +2,7 @@
   "title": "Sensor-Set Conditioning for Prognostic Posterior Consistency",
   "upload_type": "software",
   "publication_date": "2026-10-03",
-  "description": "Versioned reproducibility archive for the manuscript and its frozen evaluation artifacts. The archive contains the manuscript source, the formal protocol and claim-metric contracts, frozen thresholds and decision snapshots, compact calibration and C-MAPSS shared-model results, and the scripts needed to regenerate the compact analyses. The primary study uses a controlled synthetic benchmark with exact oracle posteriors; C-MAPSS FD001 is included as a public simulated benchmark and is not presented as field validation. Raw C-MAPSS files, large prediction stores, and private checkpoints are excluded.",
+  "description": "Versioned reproducibility archive for the analysis code and frozen evaluation artifacts. The current branch temporarily withholds the manuscript source and contains the formal protocol and claim-metric contracts, frozen thresholds and decision snapshots, compact calibration and C-MAPSS shared-model results, and the scripts needed to regenerate the compact analyses. The primary study uses a controlled synthetic benchmark with exact oracle posteriors; C-MAPSS FD001 is included as a public simulated benchmark and is not presented as field validation. Raw C-MAPSS files, large prediction stores, and private checkpoints are excluded.",
   "creators": [
     {
       "name": "Yu Xin"
@@ -25,5 +25,5 @@
       "resource_type": "software"
     }
   ],
-  "notes": "The DOI should be minted from the versioned GitHub release after the repository is connected to Zenodo. Select the final code-and-manuscript license in the Zenodo deposit form before publication."
+  "notes": "Do not publish the historical v0.2.0 tag while the manuscript source is withheld. Create and review a later versioned GitHub release before connecting it to Zenodo, then select the final code license in the deposit form."
 }
