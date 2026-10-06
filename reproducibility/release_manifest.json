@@ -1,13 +1,12 @@
 {
-  "release_name": "sensor-set-conditioning-manuscript",
-  "release_version": "0.2.0",
-  "release_status": "timestamped-archive-candidate",
-  "prepared_at": "2026-10-03",
+  "release_name": "sensor-set-conditioning-code-only",
+  "release_version": "0.2.1",
+  "release_status": "code-only-release-candidate",
+  "prepared_at": "2026-10-06",
   "author": "Yu Xin",
   "repository_url": "https://github.com/xyforge/sensor-set-conditioning-rul",
-  "intended_release_tag": "v0.2.0",
+  "intended_release_tag": "v0.2.1",
   "included": [
-    "paper/",
     "scripts/analysis/calibration_analysis.py",
     "scripts/analysis/oracle_alignment_analysis.py",
     "scripts/cmapss/train_cmapss_shared.py",
@@ -21,12 +20,14 @@
     "reproducibility/oracle_audit/",
     "reproducibility/freeze_manifest.json",
     "reproducibility/RELEASE_CHECKLIST.md",
+    "RELEASE_NOTES_v0.2.1.md",
+    "CITATION.cff",
     "zenodo.json",
     "requirements-calibration.txt"
   ],
   "external_inputs": [
     "NASA C-MAPSS FD001 data, obtained from the NASA public data portal",
-    "Python and LaTeX dependencies described in README.md and requirements-calibration.txt"
+    "Python dependencies described in README.md and requirements-calibration.txt"
   ],
   "excluded": [
     "raw C-MAPSS data",
@@ -39,7 +40,8 @@
     "C2": "C2-CORE-FAIL"
   },
   "reproducibility_notes": [
-    "The public bundle contains compact calibration and oracle-relative geometry outputs; the large C1 prediction stores remain in the full research workspace.",
+    "The code-only bundle contains compact calibration and oracle-relative geometry outputs; the large C1 prediction stores remain in the full research workspace.",
+    "The manuscript source is intentionally withheld from this release and remains in the historical v0.2.0 tag.",
     "C-MAPSS shared-model artifacts record training and evaluation seeds and configurations.",
     "Calibration and oracle-relative geometry are descriptive secondary analyses and do not modify preregistered decision rules.",
     "The C2 failure is retained in the decision snapshot rather than omitted from the archive."

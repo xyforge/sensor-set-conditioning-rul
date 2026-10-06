@@ -5,8 +5,8 @@ type: software
 authors:
   - family-names: Xin
     given-names: Yu
-version: 0.2.0
-date-released: 2026-10-03
+version: 0.2.1
+date-released: 2026-10-06
 abstract: >-
   Versioned analysis code, frozen protocol contracts, thresholds, decision
   snapshots, and compact analysis artifacts for evaluating sensor-set conditioning

@@ -49,8 +49,8 @@ release are listed in `reproducibility/release_manifest.json`.
 
 ## Release status
 
-The historical `v0.2.0` archive candidate includes the manuscript source. The
-current branch temporarily withholds that directory while retaining the frozen
-protocol, thresholds, decision snapshots, and compact result bundle. See
-`RELEASE_NOTES_v0.2.0.md`, `zenodo.json`, and
-`reproducibility/RELEASE_CHECKLIST.md` before creating a later public release.
+The code-only `v0.2.1` release withholds the manuscript source while retaining
+the frozen protocol, thresholds, decision snapshots, and compact result bundle.
+The historical `v0.2.0` tag includes the manuscript source and should remain
+private. See `RELEASE_NOTES_v0.2.1.md`, `zenodo.json`, and
+`reproducibility/RELEASE_CHECKLIST.md` for the release record.
